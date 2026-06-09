@@ -7,57 +7,79 @@
   <meta name="description" content="Kuma Talent connects growing Canadian businesses with pre-screened, interview-ready professionals — powered by AI screening technology." />
   <meta name="robots" content="index, follow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --navy:    #0f2644;
-      --navy2:   #1e3a5f;
+      --navy2:   #1a3a5f;
       --teal:    #0d9488;
-      --teal2:   #0f766e;
-      --amber:   #f59e0b;
+      --teal2:   #0a6d63;
+      --amber:   #c8842c;
+      --cream:   #FBF8F1;
+      --cream2:  #F2EAD8;
+      --ink:     #15130f;
       --white:   #ffffff;
-      --gray50:  #f8fafc;
-      --gray100: #f1f5f9;
-      --gray200: #e2e8f0;
-      --gray400: #94a3b8;
-      --gray600: #475569;
-      --gray800: #1e293b;
-      --text:    #0f172a;
-      --radius:  10px;
-      --shadow:  0 4px 24px rgba(15,38,68,.10);
-      --shadowL: 0 8px 40px rgba(15,38,68,.14);
+      --gray600: #6b6358;
+      --gray400: #a39a8c;
+      --line:    rgba(15,38,68,.10);
+      --serif:   'Playfair Display', Georgia, serif;
+      --sans:    'Outfit', -apple-system, sans-serif;
+      --radius:  4px;
+      --shadow:  0 4px 24px rgba(15,38,68,.08);
+      --shadowL: 0 20px 60px rgba(15,38,68,.16);
+      --max:     1180px;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: var(--sans);
       font-size: 16px;
       line-height: 1.6;
-      color: var(--text);
-      background: var(--white);
+      color: var(--ink);
+      background: var(--cream);
     }
 
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; }
+
+    /* ── GRAIN TEXTURE ── */
+    .grain {
+      position: absolute;
+      inset: 0;
+      opacity: .35;
+      pointer-events: none;
+      mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    }
+    .grain-dark { mix-blend-mode: overlay; opacity: .5; }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1);
+    }
+    .reveal.in-view { opacity: 1; transform: none; }
 
     /* ── NAV ── */
     nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255,255,255,0.96);
+      background: rgba(251,248,241,0.92);
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--gray200);
+      border-bottom: 1px solid var(--line);
     }
     .nav-inner {
-      max-width: 1100px;
+      max-width: var(--max);
       margin: 0 auto;
-      padding: 0 24px;
-      height: 64px;
+      padding: 0 32px;
+      height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -65,42 +87,46 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 11px;
+      font-family: var(--serif);
       font-weight: 700;
-      font-size: 18px;
+      font-size: 22px;
       color: var(--navy);
       letter-spacing: -0.3px;
     }
     .logo-mark {
-      width: 34px;
-      height: 34px;
+      width: 36px;
+      height: 36px;
       background: var(--navy);
-      color: white;
-      border-radius: 8px;
+      color: var(--cream);
+      border-radius: 2px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 15px;
+      font-size: 17px;
       font-weight: 700;
+      font-style: italic;
     }
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
     .nav-links a {
-      padding: 6px 14px;
+      padding: 8px 16px;
       font-size: 14px;
       font-weight: 500;
       color: var(--gray600);
-      border-radius: 6px;
+      border-radius: var(--radius);
       transition: color .15s, background .15s;
     }
-    .nav-links a:hover { color: var(--navy); background: var(--gray100); }
+    .nav-links a:hover { color: var(--navy); background: var(--cream2); }
     .nav-cta {
       background: var(--navy) !important;
-      color: white !important;
-      padding: 8px 18px !important;
+      color: var(--cream) !important;
+      padding: 10px 22px !important;
+      margin-left: 8px;
+      font-weight: 600 !important;
     }
     .nav-cta:hover { background: var(--navy2) !important; }
     .nav-hamburger {
@@ -123,36 +149,52 @@
 
     /* ── HERO ── */
     .hero {
-      background: linear-gradient(135deg, var(--navy) 0%, #1a3a6e 60%, #0d4470 100%);
-      color: white;
-      padding: 100px 24px 90px;
-      text-align: center;
       position: relative;
       overflow: hidden;
+      padding: 64px 32px 0;
+      background: var(--cream);
     }
-    .hero::before {
-      content: '';
+    .hero-bgword {
       position: absolute;
-      inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-46%);
+      font-family: var(--serif);
+      font-weight: 800;
+      font-size: clamp(140px, 28vw, 420px);
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(15,38,68,.07);
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 0;
+      letter-spacing: -0.02em;
     }
-    .hero-inner {
-      max-width: 760px;
-      margin: 0 auto;
+    .hero-grid {
       position: relative;
+      z-index: 1;
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 48px;
+      align-items: center;
+      padding-bottom: 90px;
     }
     .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(255,255,255,.12);
-      border: 1px solid rgba(255,255,255,.2);
-      border-radius: 20px;
-      padding: 6px 16px;
-      font-size: 13px;
-      font-weight: 500;
-      margin-bottom: 28px;
-      color: rgba(255,255,255,.9);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 7px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      color: var(--teal2);
+      background: var(--white);
     }
     .hero-badge-dot {
       width: 7px;
@@ -161,414 +203,499 @@
       border-radius: 50%;
     }
     .hero h1 {
-      font-size: clamp(38px, 6vw, 60px);
+      font-family: var(--serif);
+      font-size: clamp(42px, 5.6vw, 76px);
       font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -1.5px;
-      margin-bottom: 22px;
+      line-height: 1.04;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+      margin-bottom: 26px;
     }
-    .hero h1 span { color: var(--teal); }
+    .hero h1 em {
+      font-style: italic;
+      font-weight: 600;
+      color: var(--teal);
+    }
     .hero p {
       font-size: 18px;
-      line-height: 1.65;
-      color: rgba(255,255,255,.78);
-      max-width: 560px;
-      margin: 0 auto 40px;
+      line-height: 1.7;
+      color: var(--gray600);
+      max-width: 460px;
+      margin-bottom: 40px;
       font-weight: 400;
     }
     .hero-ctas {
       display: flex;
-      gap: 14px;
-      justify-content: center;
+      gap: 16px;
       flex-wrap: wrap;
+      margin-bottom: 56px;
     }
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
+      gap: 9px;
+      padding: 16px 30px;
       border-radius: var(--radius);
       font-size: 15px;
       font-weight: 600;
-      transition: transform .15s, box-shadow .15s, background .15s;
+      transition: transform .18s, box-shadow .18s, background .18s, border-color .18s;
       cursor: pointer;
-      border: none;
+      border: 1.5px solid transparent;
+      font-family: var(--sans);
     }
-    .btn:hover { transform: translateY(-1px); }
+    .btn:hover { transform: translateY(-2px); }
     .btn-primary {
-      background: var(--teal);
-      color: white;
-      box-shadow: 0 4px 14px rgba(13,148,136,.4);
-    }
-    .btn-primary:hover { background: var(--teal2); box-shadow: 0 6px 20px rgba(13,148,136,.5); }
-    .btn-outline {
-      background: rgba(255,255,255,.1);
-      color: white;
-      border: 1px solid rgba(255,255,255,.3);
-    }
-    .btn-outline:hover { background: rgba(255,255,255,.18); }
-    .btn-dark {
       background: var(--navy);
-      color: white;
+      color: var(--cream);
       box-shadow: var(--shadow);
     }
-    .btn-dark:hover { background: var(--navy2); }
-    .btn-light {
-      background: white;
+    .btn-primary:hover { background: var(--navy2); box-shadow: var(--shadowL); }
+    .btn-outline {
+      background: transparent;
       color: var(--navy);
-      box-shadow: var(--shadow);
+      border-color: var(--navy);
     }
-    .btn-light:hover { background: var(--gray100); }
+    .btn-outline:hover { background: var(--navy); color: var(--cream); }
+    .btn-light {
+      background: var(--cream);
+      color: var(--navy);
+      border-color: rgba(255,255,255,.3);
+    }
+    .btn-light:hover { background: var(--white); }
 
-    /* ── STATS BAR ── */
-    .stats-bar {
-      background: white;
-      border-bottom: 1px solid var(--gray200);
-    }
-    .stats-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 32px 24px;
+    .hero-meta {
       display: flex;
-      justify-content: center;
-      gap: 64px;
+      gap: 40px;
       flex-wrap: wrap;
     }
-    .stat {
-      text-align: center;
-    }
-    .stat-num {
-      font-size: 28px;
-      font-weight: 800;
+    .hero-meta-item { }
+    .hero-meta-num {
+      font-family: var(--serif);
+      font-size: 30px;
+      font-weight: 700;
       color: var(--navy);
-      letter-spacing: -0.5px;
+      letter-spacing: -0.02em;
     }
-    .stat-label {
-      font-size: 13px;
+    .hero-meta-label {
+      font-size: 12.5px;
       color: var(--gray600);
       margin-top: 2px;
       font-weight: 500;
+      letter-spacing: .02em;
+    }
+
+    /* Hero visual */
+    .hero-visual-wrap {
+      position: relative;
+    }
+    .hero-visual-frame {
+      position: absolute;
+      inset: 18px -18px -18px 18px;
+      border: 1.5px solid var(--teal);
+      border-radius: 6px;
+      z-index: 0;
+    }
+    .hero-visual {
+      position: relative;
+      z-index: 1;
+      background: var(--navy);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: var(--shadowL);
+      transform: rotate(-1.4deg);
+    }
+    .hero-visual-top {
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .hero-visual-dots { display: flex; gap: 6px; }
+    .hero-visual-dot { width: 9px; height: 9px; border-radius: 50%; }
+    .hero-visual-title {
+      font-size: 12px;
+      color: rgba(255,255,255,.5);
+      font-weight: 500;
+      letter-spacing: .04em;
+    }
+    .hero-visual-body { padding: 26px 22px 30px; }
+    .hv-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px;
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .hv-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy);
+      flex-shrink: 0;
+      font-family: var(--serif);
+    }
+    .hv-info { flex: 1; }
+    .hv-name { font-size: 13.5px; font-weight: 600; color: var(--cream); }
+    .hv-role { font-size: 12px; color: rgba(255,255,255,.4); margin-top: 1px; }
+    .hv-score {
+      padding: 5px 12px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 700;
+      font-family: var(--serif);
+      color: var(--navy);
+    }
+    .hv-foot {
+      text-align: center;
+      padding-top: 14px;
+      font-size: 12px;
+      color: rgba(255,255,255,.35);
+      font-weight: 500;
+      letter-spacing: .03em;
     }
 
     /* ── SECTION SHELLS ── */
-    section { padding: 80px 24px; }
-    .section-inner { max-width: 1100px; margin: 0 auto; }
+    section { padding: 120px 32px; position: relative; }
+    .section-inner { max-width: var(--max); margin: 0 auto; }
     .section-label {
       font-size: 12px;
       font-weight: 700;
-      letter-spacing: 1.8px;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
       color: var(--teal);
-      margin-bottom: 12px;
+      margin-bottom: 18px;
+      font-family: var(--sans);
     }
     .section-title {
-      font-size: clamp(26px, 4vw, 40px);
-      font-weight: 800;
+      font-family: var(--serif);
+      font-size: clamp(30px, 4.4vw, 52px);
+      font-weight: 700;
       color: var(--navy);
-      line-height: 1.15;
-      letter-spacing: -0.8px;
-      margin-bottom: 16px;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 18px;
     }
+    .section-title em { font-style: italic; color: var(--teal); font-weight: 600; }
     .section-sub {
       font-size: 17px;
       color: var(--gray600);
       max-width: 540px;
-      line-height: 1.65;
+      line-height: 1.7;
     }
 
-    /* ── HOW IT WORKS ── */
-    #how-it-works { background: var(--gray50); }
+    /* ── HOW IT WORKS — editorial numbered list ── */
+    #how-it-works {
+      background: var(--white);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
     .steps-header {
-      text-align: center;
-      margin-bottom: 60px;
+      margin-bottom: 70px;
+      max-width: 640px;
     }
-    .steps-header .section-sub { margin: 0 auto; }
-    .steps-grid {
+    .step-row {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      position: relative;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
+      align-items: start;
+      padding: 48px 0;
+      border-top: 1px solid var(--line);
     }
-    .steps-grid::before {
-      content: '';
-      position: absolute;
-      top: 36px;
-      left: calc(16.5% + 12px);
-      right: calc(16.5% + 12px);
-      height: 2px;
-      background: linear-gradient(90deg, var(--teal), var(--navy));
-      border-radius: 2px;
-    }
-    .step-card {
-      background: white;
-      border-radius: 16px;
-      padding: 36px 28px;
-      box-shadow: var(--shadow);
-      text-align: center;
-      transition: box-shadow .2s, transform .2s;
-    }
-    .step-card:hover { box-shadow: var(--shadowL); transform: translateY(-3px); }
+    .step-row:last-child { border-bottom: 1px solid var(--line); }
     .step-num {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: var(--navy);
-      color: white;
-      font-size: 20px;
+      font-family: var(--serif);
+      font-size: 88px;
       font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
-      position: relative;
-      z-index: 1;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--teal);
+      letter-spacing: -0.02em;
     }
-    .step-card:nth-child(2) .step-num { background: var(--teal); }
-    .step-card:nth-child(3) .step-num { background: linear-gradient(135deg, var(--navy), var(--teal)); }
+    .step-content { padding-top: 14px; }
     .step-title {
-      font-size: 18px;
+      font-family: var(--serif);
+      font-size: 26px;
       font-weight: 700;
       color: var(--navy);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
     }
     .step-desc {
-      font-size: 14px;
+      font-size: 16px;
       color: var(--gray600);
-      line-height: 1.6;
+      line-height: 1.75;
+      max-width: 620px;
     }
 
     /* ── AUDIENCES (SPLIT) ── */
     #employers, #candidates {
-      padding: 80px 24px;
+      padding: 120px 32px;
     }
-    #employers { background: white; }
-    #candidates { background: var(--navy); color: white; }
+    #employers { background: var(--cream); }
+    #candidates { background: var(--navy); color: var(--cream); overflow: hidden; }
 
     .split-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 64px;
+      gap: 90px;
       align-items: center;
     }
     .split-content .section-label { color: var(--teal); }
-    #candidates .split-content .section-title { color: white; }
-    #candidates .split-content .section-sub { color: rgba(255,255,255,.7); }
+    #candidates .split-content .section-title { color: var(--cream); }
+    #candidates .split-content .section-sub { color: rgba(251,248,241,.62); }
     .feature-list {
-      margin-top: 28px;
+      margin-top: 32px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 22px;
     }
     .feature-item {
       display: flex;
       align-items: flex-start;
-      gap: 14px;
+      gap: 18px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--line);
     }
-    .feature-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      background: var(--gray100);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 17px;
+    .feature-item:last-child { border-bottom: none; padding-bottom: 0; }
+    #candidates .feature-item { border-bottom-color: rgba(251,248,241,.10); }
+    .feature-num {
+      font-family: var(--serif);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--teal);
       flex-shrink: 0;
-      margin-top: 2px;
+      margin-top: 3px;
+      letter-spacing: .04em;
     }
-    #candidates .feature-icon { background: rgba(255,255,255,.12); }
     .feature-text strong {
       display: block;
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 600;
       color: var(--navy);
-      margin-bottom: 2px;
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
     }
-    #candidates .feature-text strong { color: white; }
+    #candidates .feature-text strong { color: var(--cream); }
     .feature-text span {
-      font-size: 14px;
+      font-size: 14.5px;
       color: var(--gray600);
+      line-height: 1.6;
     }
-    #candidates .feature-text span { color: rgba(255,255,255,.6); }
+    #candidates .feature-text span { color: rgba(251,248,241,.55); }
 
-    /* Visual panel */
+    /* Visual panel with offset frame */
+    .visual-wrap { position: relative; }
+    .visual-frame {
+      position: absolute;
+      inset: -16px -16px 16px 16px;
+      border: 1.5px solid var(--amber);
+      border-radius: 6px;
+      z-index: 0;
+    }
+    #candidates .visual-frame { border-color: var(--teal); }
     .visual-panel {
-      background: linear-gradient(135deg, var(--gray50) 0%, var(--gray100) 100%);
-      border-radius: 20px;
+      position: relative;
+      z-index: 1;
+      background: var(--white);
+      border-radius: 6px;
       overflow: hidden;
       box-shadow: var(--shadowL);
+      transform: rotate(1.2deg);
     }
     #candidates .visual-panel {
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(251,248,241,.04);
+      border: 1px solid rgba(251,248,241,.10);
       box-shadow: none;
+      transform: rotate(-1.2deg);
     }
     .panel-top {
       background: var(--navy);
-      padding: 16px 20px;
+      padding: 18px 22px;
       display: flex;
       align-items: center;
       gap: 10px;
     }
-    #candidates .panel-top { background: rgba(0,0,0,.3); }
+    #candidates .panel-top { background: rgba(0,0,0,.25); }
     .panel-dots { display: flex; gap: 6px; }
     .panel-dot { width: 10px; height: 10px; border-radius: 50%; }
-    .panel-title { font-size: 12px; color: rgba(255,255,255,.6); font-weight: 500; }
-    .panel-body { padding: 24px 20px; }
+    .panel-title { font-size: 12px; color: rgba(255,255,255,.55); font-weight: 500; letter-spacing: .03em; }
+    .panel-body { padding: 28px 24px; }
     .report-row {
       display: flex;
       align-items: center;
-      gap: 14px;
-      padding: 12px;
-      background: white;
-      border-radius: 10px;
-      margin-bottom: 10px;
-      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+      gap: 16px;
+      padding: 14px;
+      background: var(--cream);
+      border-radius: 5px;
+      margin-bottom: 12px;
     }
-    #candidates .report-row { background: rgba(255,255,255,.08); }
+    #candidates .report-row { background: rgba(251,248,241,.06); }
     .report-avatar {
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
-      color: white;
+      color: var(--white);
       flex-shrink: 0;
+      font-family: var(--serif);
     }
     .report-info { flex: 1; }
-    .report-name { font-size: 13px; font-weight: 600; color: var(--navy); }
-    #candidates .report-name { color: white; }
-    .report-role { font-size: 12px; color: var(--gray400); }
+    .report-name { font-size: 14px; font-weight: 600; color: var(--navy); }
+    #candidates .report-name { color: var(--cream); }
+    .report-role { font-size: 12px; color: var(--gray400); margin-top: 1px; }
     .score-badge {
-      padding: 4px 10px;
-      border-radius: 20px;
+      padding: 5px 12px;
+      border-radius: 30px;
       font-size: 12px;
       font-weight: 700;
-      color: white;
+      font-family: var(--serif);
+      color: var(--white);
     }
-    .score-high { background: #10b981; }
+    .score-high { background: var(--teal); }
     .score-mid  { background: var(--amber); }
-    .score-low  { background: #64748b; }
+    .score-low  { background: #9c9388; }
 
     /* Chat bubble mockup */
     .chat-bubble {
-      padding: 14px 16px;
-      border-radius: 12px;
-      font-size: 13px;
-      line-height: 1.5;
-      margin-bottom: 10px;
-      max-width: 85%;
+      padding: 16px 18px;
+      border-radius: 6px;
+      font-size: 13.5px;
+      line-height: 1.6;
+      margin-bottom: 12px;
+      max-width: 88%;
     }
     .bubble-ai {
       background: var(--navy);
-      color: white;
-      border-bottom-left-radius: 4px;
+      color: var(--cream);
     }
-    #candidates .bubble-ai { background: rgba(255,255,255,.15); }
+    #candidates .bubble-ai { background: rgba(251,248,241,.08); }
     .bubble-user {
       background: var(--teal);
-      color: white;
-      border-bottom-right-radius: 4px;
+      color: var(--white);
       margin-left: auto;
     }
-    .bubble-meta { font-size: 11px; color: var(--gray400); margin-top: 4px; }
-    #candidates .bubble-meta { color: rgba(255,255,255,.4); }
+    .bubble-meta { font-size: 11px; color: var(--gray400); margin-top: 5px; letter-spacing: .03em; }
+    #candidates .bubble-meta { color: rgba(251,248,241,.35); }
 
-    /* ── DIFFERENTIATORS ── */
-    #why-kuma { background: var(--gray50); }
-    .diff-header { text-align: center; margin-bottom: 56px; }
-    .diff-header .section-sub { margin: 0 auto; }
-    .diff-grid {
+    /* ── DIFFERENTIATORS — editorial list ── */
+    #why-kuma { background: var(--white); border-top: 1px solid var(--line); }
+    .diff-header { max-width: 640px; margin-bottom: 70px; }
+    .diff-list {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
     }
-    .diff-card {
-      background: white;
-      border-radius: 14px;
-      padding: 32px 28px;
-      border: 1px solid var(--gray200);
-      transition: border-color .2s, box-shadow .2s, transform .2s;
+    .diff-item {
+      padding: 44px 40px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      transition: background .25s;
     }
-    .diff-card:hover {
-      border-color: var(--teal);
-      box-shadow: 0 0 0 4px rgba(13,148,136,.06), var(--shadow);
-      transform: translateY(-2px);
+    .diff-item:hover { background: var(--cream); }
+    .diff-num {
+      font-family: var(--serif);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--teal);
+      letter-spacing: .12em;
+      margin-bottom: 18px;
     }
-    .diff-emoji { font-size: 28px; margin-bottom: 14px; }
     .diff-title {
-      font-size: 17px;
+      font-family: var(--serif);
+      font-size: 21px;
       font-weight: 700;
       color: var(--navy);
-      margin-bottom: 8px;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
     }
     .diff-desc {
-      font-size: 14px;
+      font-size: 14.5px;
       color: var(--gray600);
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     /* ── CTA BAND ── */
     #get-started {
-      background: linear-gradient(135deg, var(--navy) 0%, #0d4470 100%);
-      color: white;
-      padding: 80px 24px;
+      background: var(--navy);
+      color: var(--cream);
+      padding: 130px 32px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+      clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 100%);
     }
-    #get-started .section-title { color: white; margin: 0 auto 16px; }
+    #get-started .section-label { color: var(--teal); text-align: center; }
+    #get-started .section-title { color: var(--cream); margin: 0 auto 20px; max-width: 680px; }
     #get-started p {
-      color: rgba(255,255,255,.72);
-      font-size: 17px;
+      color: rgba(251,248,241,.65);
+      font-size: 18px;
       max-width: 500px;
-      margin: 0 auto 40px;
+      margin: 0 auto 44px;
     }
-    .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    #get-started .btn-primary { background: var(--teal); }
+    #get-started .btn-primary:hover { background: var(--teal2); }
+    #get-started .btn-outline { color: var(--cream); border-color: rgba(251,248,241,.3); }
+    #get-started .btn-outline:hover { background: rgba(251,248,241,.08); border-color: rgba(251,248,241,.5); }
 
     /* ── FOOTER ── */
     footer {
-      background: var(--gray800);
-      color: rgba(255,255,255,.6);
-      padding: 48px 24px 32px;
+      background: var(--ink);
+      color: rgba(251,248,241,.55);
+      padding: 64px 32px 36px;
     }
     .footer-inner {
-      max-width: 1100px;
+      max-width: var(--max);
       margin: 0 auto;
     }
     .footer-top {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 32px;
-      margin-bottom: 40px;
+      gap: 40px;
+      margin-bottom: 56px;
       flex-wrap: wrap;
     }
-    .footer-brand { max-width: 280px; }
-    .footer-brand .logo { color: white; margin-bottom: 10px; }
-    .footer-tagline { font-size: 13px; line-height: 1.6; }
-    .footer-links { display: flex; gap: 48px; flex-wrap: wrap; }
+    .footer-brand { max-width: 300px; }
+    .footer-brand .logo { color: var(--cream); margin-bottom: 14px; }
+    .footer-brand .logo-mark { background: var(--cream); color: var(--ink); }
+    .footer-tagline { font-size: 14px; line-height: 1.7; }
+    .footer-links { display: flex; gap: 56px; flex-wrap: wrap; }
     .footer-col h4 {
-      font-size: 13px;
-      font-weight: 600;
-      color: white;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      margin-bottom: 14px;
+      font-family: var(--serif);
+      font-size: 14px;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--cream);
+      margin-bottom: 16px;
     }
     .footer-col a {
       display: block;
       font-size: 14px;
-      color: rgba(255,255,255,.5);
-      margin-bottom: 8px;
+      color: rgba(251,248,241,.5);
+      margin-bottom: 10px;
       transition: color .15s;
     }
-    .footer-col a:hover { color: white; }
+    .footer-col a:hover { color: var(--teal); }
     .footer-divider {
       border: none;
-      border-top: 1px solid rgba(255,255,255,.08);
-      margin-bottom: 24px;
+      border-top: 1px solid rgba(251,248,241,.08);
+      margin-bottom: 28px;
     }
     .footer-bottom {
       display: flex;
@@ -582,14 +709,26 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 20px;
-      padding: 4px 12px;
+      border: 1px solid rgba(251,248,241,.12);
+      border-radius: 30px;
+      padding: 5px 14px;
       font-size: 12px;
     }
 
     /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 64px; padding-bottom: 70px; }
+      .hero-visual { transform: none; }
+      .hero-visual-frame { display: none; }
+      .split-grid { grid-template-columns: 1fr; gap: 48px; }
+      .split-grid .visual-wrap { order: -1; }
+      .visual-panel { transform: none !important; }
+      .visual-frame { display: none; }
+      .diff-list { grid-template-columns: 1fr; }
+      .step-row { grid-template-columns: 1fr; gap: 16px; }
+      .step-num { font-size: 56px; }
+    }
+
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .nav-hamburger { display: flex; }
@@ -597,30 +736,27 @@
         display: flex;
         flex-direction: column;
         position: fixed;
-        top: 64px;
+        top: 72px;
         left: 0;
         right: 0;
-        background: white;
+        background: var(--cream);
         padding: 16px;
-        border-bottom: 1px solid var(--gray200);
+        border-bottom: 1px solid var(--line);
         box-shadow: var(--shadow);
         gap: 4px;
+        z-index: 99;
       }
-      .nav-links.open a { padding: 10px 14px; }
+      .nav-links.open a { padding: 12px 16px; }
+      .nav-links.open .nav-cta { margin-left: 0; text-align: center; }
 
-      .steps-grid { grid-template-columns: 1fr; }
-      .steps-grid::before { display: none; }
-      .split-grid { grid-template-columns: 1fr; }
-      .split-grid .visual-panel { order: -1; }
-      .diff-grid { grid-template-columns: 1fr; }
-      .stats-inner { gap: 32px; }
+      section { padding: 80px 20px; }
+      #employers, #candidates { padding: 80px 20px; }
+      #get-started { padding: 90px 20px; clip-path: polygon(0 2%, 100% 0, 100% 100%, 0 100%); }
+      .hero { padding: 48px 20px 0; }
+      .hero-grid { padding-bottom: 56px; }
+      .hero-meta { gap: 28px; }
       .footer-top { flex-direction: column; }
-      .footer-links { gap: 32px; }
-    }
-
-    @media (max-width: 480px) {
-      .hero { padding: 72px 20px 64px; }
-      section { padding: 60px 20px; }
+      .footer-links { gap: 36px; }
     }
   </style>
 </head>
@@ -648,63 +784,109 @@
 
 <!-- ── HERO ── -->
 <section class="hero">
-  <div class="hero-inner">
-    <div class="hero-badge">
-      <div class="hero-badge-dot"></div>
-      AI-powered talent screening
+  <div class="hero-bgword">Talent</div>
+  <div class="hero-grid">
+    <div class="hero-content reveal">
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        AI-Powered Talent Screening
+      </div>
+      <h1>Hire the right<br>person, <em>faster<br>than ever.</em></h1>
+      <p>Kuma Talent connects growing businesses with pre-screened, interview-ready professionals — so you spend time on decisions, not sorting through resumes.</p>
+      <div class="hero-ctas">
+        <a href="#employers" class="btn btn-primary">Find Talent &rarr;</a>
+        <a href="#candidates" class="btn btn-outline">Looking for Work?</a>
+      </div>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="hero-meta-num">3&times;</div>
+          <div class="hero-meta-label">Faster time-to-hire</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-num">85%</div>
+          <div class="hero-meta-label">Interview show rate</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-num">100%</div>
+          <div class="hero-meta-label">Candidates get a report</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-num">$0</div>
+          <div class="hero-meta-label">Recruiter commissions</div>
+        </div>
+      </div>
     </div>
-    <h1>Hire the right person.<br><span>Faster than ever.</span></h1>
-    <p>Kuma Talent connects growing businesses with pre-screened, interview-ready professionals — so you spend time on decisions, not sorting through resumes.</p>
-    <div class="hero-ctas">
-      <a href="#employers" class="btn btn-primary">Find Talent &rarr;</a>
-      <a href="#candidates" class="btn btn-outline">Looking for Work?</a>
+
+    <div class="hero-visual-wrap reveal" style="transition-delay:.15s">
+      <div class="hero-visual-frame"></div>
+      <div class="hero-visual">
+        <div class="grain grain-dark"></div>
+        <div class="hero-visual-top">
+          <div class="hero-visual-dots">
+            <div class="hero-visual-dot" style="background:#ef4444"></div>
+            <div class="hero-visual-dot" style="background:#c8842c"></div>
+            <div class="hero-visual-dot" style="background:#0d9488"></div>
+          </div>
+          <span class="hero-visual-title">Candidate Shortlist — Operations Manager</span>
+        </div>
+        <div class="hero-visual-body">
+          <div class="hv-row">
+            <div class="hv-avatar" style="background:#e8d9b8">MR</div>
+            <div class="hv-info">
+              <div class="hv-name">Maria R.</div>
+              <div class="hv-role">8 yrs experience &middot; Bilingual</div>
+            </div>
+            <span class="hv-score" style="background:#0d9488; color:#fff;">94</span>
+          </div>
+          <div class="hv-row">
+            <div class="hv-avatar" style="background:#cfe3df">JC</div>
+            <div class="hv-info">
+              <div class="hv-name">James C.</div>
+              <div class="hv-role">5 yrs experience &middot; English</div>
+            </div>
+            <span class="hv-score" style="background:#0d9488; color:#fff;">88</span>
+          </div>
+          <div class="hv-row">
+            <div class="hv-avatar" style="background:#e8d9b8">AL</div>
+            <div class="hv-info">
+              <div class="hv-name">Ana L.</div>
+              <div class="hv-role">6 yrs experience &middot; Bilingual</div>
+            </div>
+            <span class="hv-score" style="background:#c8842c; color:#fff;">72</span>
+          </div>
+          <div class="hv-foot">12 candidates screened &middot; 3 shortlisted</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ── STATS ── -->
-<div class="stats-bar">
-  <div class="stats-inner">
-    <div class="stat">
-      <div class="stat-num">3&times;</div>
-      <div class="stat-label">faster time-to-hire</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">85%</div>
-      <div class="stat-label">interview show rate</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">100%</div>
-      <div class="stat-label">candidates get a report</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">$0</div>
-      <div class="stat-label">recruiter commissions</div>
-    </div>
-  </div>
-</div>
-
 <!-- ── HOW IT WORKS ── -->
 <section id="how-it-works">
   <div class="section-inner">
-    <div class="steps-header">
+    <div class="steps-header reveal">
       <div class="section-label">The Process</div>
-      <h2 class="section-title">From job post to top candidates<br>in hours, not weeks.</h2>
+      <h2 class="section-title">From job post to top candidates <em>in hours</em>, not weeks.</h2>
       <p class="section-sub">Our AI conducts structured screening interviews so you receive a ranked shortlist — complete with evaluation reports — before your first call.</p>
     </div>
-    <div class="steps-grid">
-      <div class="step-card">
-        <div class="step-num">1</div>
+
+    <div class="step-row reveal">
+      <div class="step-num">01</div>
+      <div class="step-content">
         <div class="step-title">Post Your Role</div>
         <p class="step-desc">Share your job description and requirements. Our system configures a role-specific AI interviewer within minutes — no setup calls needed.</p>
       </div>
-      <div class="step-card">
-        <div class="step-num">2</div>
+    </div>
+    <div class="step-row reveal" style="transition-delay:.08s">
+      <div class="step-num">02</div>
+      <div class="step-content">
         <div class="step-title">AI Screens Every Applicant</div>
         <p class="step-desc">Each candidate receives a structured, adaptive interview. The AI assesses skills, experience depth, communication, and fit — consistently, at scale.</p>
       </div>
-      <div class="step-card">
-        <div class="step-num">3</div>
+    </div>
+    <div class="step-row reveal" style="transition-delay:.16s">
+      <div class="step-num">03</div>
+      <div class="step-content">
         <div class="step-title">Review Ranked Results</div>
         <p class="step-desc">Receive a ranked shortlist with detailed evaluation reports for each candidate. You interview only the people worth your time.</p>
       </div>
@@ -716,81 +898,84 @@
 <section id="employers">
   <div class="section-inner">
     <div class="split-grid">
-      <div class="split-content">
+      <div class="split-content reveal">
         <div class="section-label">For Employers</div>
-        <h2 class="section-title">Stop screening resumes.<br>Start meeting great people.</h2>
+        <h2 class="section-title">Stop screening resumes.<br>Start meeting <em>great people.</em></h2>
         <p class="section-sub">Every applicant gets a thorough AI-powered interview. You get structured reports, not gut feelings.</p>
         <div class="feature-list">
           <div class="feature-item">
-            <div class="feature-icon">&#127919;</div>
+            <div class="feature-num">01</div>
             <div class="feature-text">
               <strong>Role-specific interview design</strong>
               <span>Each job gets a tailored AI interviewer — not a generic chatbot.</span>
             </div>
           </div>
           <div class="feature-item">
-            <div class="feature-icon">&#128203;</div>
+            <div class="feature-num">02</div>
             <div class="feature-text">
               <strong>Detailed evaluation reports</strong>
               <span>Skills assessment, red flags, authenticity score, and hire/maybe/pass recommendation.</span>
             </div>
           </div>
           <div class="feature-item">
-            <div class="feature-icon">&#9889;</div>
+            <div class="feature-num">03</div>
             <div class="feature-text">
               <strong>Same-day shortlists</strong>
               <span>Post a role in the morning, review ranked candidates by end of day.</span>
             </div>
           </div>
           <div class="feature-item">
-            <div class="feature-icon">&#128176;</div>
+            <div class="feature-num">04</div>
             <div class="feature-text">
               <strong>No agency commissions</strong>
               <span>Transparent, flat pricing — not a percentage of salary. Ever.</span>
             </div>
           </div>
         </div>
-        <div style="margin-top:36px;">
-          <a href="#get-started" class="btn btn-dark">Post a Role &rarr;</a>
+        <div style="margin-top:40px;">
+          <a href="#get-started" class="btn btn-primary">Post a Role &rarr;</a>
         </div>
       </div>
 
-      <div class="visual-panel">
-        <div class="panel-top">
-          <div class="panel-dots">
-            <div class="panel-dot" style="background:#ef4444"></div>
-            <div class="panel-dot" style="background:#f59e0b"></div>
-            <div class="panel-dot" style="background:#10b981"></div>
-          </div>
-          <span class="panel-title">Candidate Shortlist — Operations Manager</span>
-        </div>
-        <div class="panel-body">
-          <div class="report-row">
-            <div class="report-avatar" style="background:#1e3a5f">MR</div>
-            <div class="report-info">
-              <div class="report-name">Maria R.</div>
-              <div class="report-role">8 yrs experience &middot; Bilingual</div>
+      <div class="visual-wrap reveal" style="transition-delay:.15s">
+        <div class="visual-frame"></div>
+        <div class="visual-panel">
+          <div class="panel-top">
+            <div class="panel-dots">
+              <div class="panel-dot" style="background:#ef4444"></div>
+              <div class="panel-dot" style="background:#c8842c"></div>
+              <div class="panel-dot" style="background:#0d9488"></div>
             </div>
-            <span class="score-badge score-high">94</span>
+            <span class="panel-title">Candidate Shortlist — Operations Manager</span>
           </div>
-          <div class="report-row">
-            <div class="report-avatar" style="background:#0d9488">JC</div>
-            <div class="report-info">
-              <div class="report-name">James C.</div>
-              <div class="report-role">5 yrs experience &middot; English</div>
+          <div class="panel-body">
+            <div class="report-row">
+              <div class="report-avatar" style="background:#1e3a5f">MR</div>
+              <div class="report-info">
+                <div class="report-name">Maria R.</div>
+                <div class="report-role">8 yrs experience &middot; Bilingual</div>
+              </div>
+              <span class="score-badge score-high">94</span>
             </div>
-            <span class="score-badge score-high">88</span>
-          </div>
-          <div class="report-row">
-            <div class="report-avatar" style="background:#7c3aed">AL</div>
-            <div class="report-info">
-              <div class="report-name">Ana L.</div>
-              <div class="report-role">6 yrs experience &middot; Bilingual</div>
+            <div class="report-row">
+              <div class="report-avatar" style="background:#0d9488">JC</div>
+              <div class="report-info">
+                <div class="report-name">James C.</div>
+                <div class="report-role">5 yrs experience &middot; English</div>
+              </div>
+              <span class="score-badge score-high">88</span>
             </div>
-            <span class="score-badge score-mid">72</span>
-          </div>
-          <div style="text-align:center;padding:12px 0 4px;">
-            <span style="font-size:12px;color:#94a3b8;font-weight:500;">12 candidates screened &middot; 3 shortlisted</span>
+            <div class="report-row">
+              <div class="report-avatar" style="background:#c8842c">AL</div>
+              <div class="report-info">
+                <div class="report-name">Ana L.</div>
+                <div class="report-role">6 yrs experience &middot; Bilingual</div>
+              </div>
+              <span class="score-badge score-mid">72</span>
+            </div>
+            <div style="text-align:center;padding:14px 0 4px;">
+              <span style="font-size:12px;color:#a39a8c;font-weight:500;letter-spacing:.03em;">12 candidates screened &middot; 3 shortlisted</span>
+            </div>
           </div>
         </div>
       </div>
@@ -800,68 +985,72 @@
 
 <!-- ── FOR CANDIDATES ── -->
 <section id="candidates">
+  <div class="grain grain-dark"></div>
   <div class="section-inner">
     <div class="split-grid">
-      <div class="visual-panel">
-        <div class="panel-top">
-          <div class="panel-dots">
-            <div class="panel-dot" style="background:rgba(255,255,255,.3)"></div>
-            <div class="panel-dot" style="background:rgba(255,255,255,.2)"></div>
-            <div class="panel-dot" style="background:rgba(255,255,255,.15)"></div>
+      <div class="visual-wrap reveal">
+        <div class="visual-frame"></div>
+        <div class="visual-panel">
+          <div class="panel-top">
+            <div class="panel-dots">
+              <div class="panel-dot" style="background:rgba(251,248,241,.3)"></div>
+              <div class="panel-dot" style="background:rgba(251,248,241,.2)"></div>
+              <div class="panel-dot" style="background:rgba(251,248,241,.15)"></div>
+            </div>
+            <span class="panel-title">AI Screening Interview</span>
           </div>
-          <span class="panel-title">AI Screening Interview</span>
-        </div>
-        <div class="panel-body">
-          <div class="chat-bubble bubble-ai">
-            Hi Sarah — thanks for applying. I'm the screening assistant for this operations role. Can you walk me through a time you improved a process that had a measurable impact on the team?
+          <div class="panel-body">
+            <div class="chat-bubble bubble-ai">
+              Hi Sarah — thanks for applying. I'm the screening assistant for this operations role. Can you walk me through a time you improved a process that had a measurable impact on the team?
+            </div>
+            <div class="bubble-meta">&mdash; Kuma AI</div>
+            <div class="chat-bubble bubble-user" style="margin-top:18px;">
+              Sure. At my last company, I rebuilt our onboarding workflow from scratch — cut new-hire ramp time from 6 weeks to 3 and reduced first-90-day turnover by 40%.
+            </div>
+            <div class="bubble-meta" style="text-align:right;">Sarah M.</div>
+            <div class="chat-bubble bubble-ai" style="margin-top:18px;">
+              That's a strong result. What specifically in the old process was breaking down — and how did you identify the root cause?
+            </div>
+            <div class="bubble-meta">&mdash; Kuma AI</div>
           </div>
-          <div class="bubble-meta">&mdash; Kuma AI</div>
-          <div class="chat-bubble bubble-user" style="margin-top:16px;">
-            Sure. At my last company, I rebuilt our onboarding workflow from scratch — cut new-hire ramp time from 6 weeks to 3 and reduced first-90-day turnover by 40%.
-          </div>
-          <div class="bubble-meta" style="text-align:right;">Sarah M.</div>
-          <div class="chat-bubble bubble-ai" style="margin-top:16px;">
-            That's a strong result. What specifically in the old process was breaking down — and how did you identify the root cause?
-          </div>
-          <div class="bubble-meta">&mdash; Kuma AI</div>
         </div>
       </div>
 
-      <div class="split-content">
+      <div class="split-content reveal" style="transition-delay:.15s">
         <div class="section-label">For Candidates</div>
-        <h2 class="section-title">A fair shot.<br>Every application.</h2>
+        <h2 class="section-title">A fair shot.<br><em>Every</em> application.</h2>
         <p class="section-sub">No waiting weeks to hear back. No ghost applications. Every candidate gets a proper screening and a real evaluation.</p>
         <div class="feature-list">
           <div class="feature-item">
-            <div class="feature-icon">&#127775;</div>
+            <div class="feature-num">01</div>
             <div class="feature-text">
               <strong>Structured, unbiased evaluation</strong>
               <span>Every candidate answers the same quality of questions — no favoritism, no shortcuts.</span>
             </div>
           </div>
           <div class="feature-item">
-            <div class="feature-icon">&#128336;</div>
+            <div class="feature-num">02</div>
             <div class="feature-text">
               <strong>Interview on your schedule</strong>
               <span>Complete your screening anytime. No calendar ping-pong with a recruiter.</span>
             </div>
           </div>
           <div class="feature-item">
-            <div class="feature-icon">&#128274;</div>
+            <div class="feature-num">03</div>
             <div class="feature-text">
               <strong>Confidential by default</strong>
               <span>Your responses go directly to the hiring team — nobody else. Ever.</span>
             </div>
           </div>
           <div class="feature-item">
-            <div class="feature-icon">&#128200;</div>
+            <div class="feature-num">04</div>
             <div class="feature-text">
               <strong>Your skills, accurately represented</strong>
               <span>The AI looks for depth of experience — not just keywords on a resume.</span>
             </div>
           </div>
         </div>
-        <div style="margin-top:36px;">
+        <div style="margin-top:40px;">
           <a href="#get-started" class="btn btn-light">Browse Open Roles &rarr;</a>
         </div>
       </div>
@@ -872,41 +1061,41 @@
 <!-- ── WHY KUMA ── -->
 <section id="why-kuma">
   <div class="section-inner">
-    <div class="diff-header">
+    <div class="diff-header reveal">
       <div class="section-label">Why Kuma</div>
-      <h2 class="section-title">Built different. On purpose.</h2>
+      <h2 class="section-title">Built different. <em>On purpose.</em></h2>
       <p class="section-sub">We built Kuma Talent because the old way of hiring was broken for everyone — employers and candidates alike.</p>
     </div>
-    <div class="diff-grid">
-      <div class="diff-card">
-        <div class="diff-emoji">&#129504;</div>
+    <div class="diff-list reveal">
+      <div class="diff-item">
+        <div class="diff-num">01</div>
         <div class="diff-title">AI that actually thinks</div>
         <p class="diff-desc">Our interview engine adapts in real time — harder follow-ups when answers are strong, probing questions when things feel rehearsed. No scripts, no checkboxes.</p>
       </div>
-      <div class="diff-card">
-        <div class="diff-emoji">&#128202;</div>
+      <div class="diff-item">
+        <div class="diff-num">02</div>
         <div class="diff-title">Every interview becomes data</div>
         <p class="diff-desc">Authenticity scores, contradiction detection, AI-assist flags — every screening gives you a quantified signal, not a gut feeling from a 15-minute call.</p>
       </div>
-      <div class="diff-card">
-        <div class="diff-emoji">&#128176;</div>
+      <div class="diff-item">
+        <div class="diff-num">03</div>
         <div class="diff-title">Transparent pricing. No surprises.</div>
         <p class="diff-desc">No commission on hire. No retainer. No hidden fees. You pay for what you use — post a job, screen applicants, hire the right person.</p>
       </div>
-      <div class="diff-card">
-        <div class="diff-emoji">&#127481;&#127462;</div>
+      <div class="diff-item">
+        <div class="diff-num">04</div>
         <div class="diff-title">Canadian company. North American reach.</div>
         <p class="diff-desc">Based in Ontario. Built for Canadian businesses. Trusted across North America. PIPEDA-compliant data handling from day one.</p>
       </div>
-      <div class="diff-card">
-        <div class="diff-emoji">&#128274;</div>
+      <div class="diff-item">
+        <div class="diff-num">05</div>
         <div class="diff-title">Privacy-first architecture</div>
         <p class="diff-desc">Candidate data is never sold, never shared with third parties, and handled in compliance with Canadian federal privacy standards.</p>
       </div>
-      <div class="diff-card">
-        <div class="diff-emoji">&#9889;</div>
+      <div class="diff-item">
+        <div class="diff-num">06</div>
         <div class="diff-title">Hire in days, not months</div>
-        <p class="diff-desc">Traditional agency hiring takes 6–10 weeks. Kuma Talent shortlists qualified candidates within 24 hours of posting — no back-and-forth required.</p>
+        <p class="diff-desc">Traditional agency hiring takes 6&ndash;10 weeks. Kuma Talent shortlists qualified candidates within 24 hours of posting &mdash; no back-and-forth required.</p>
       </div>
     </div>
   </div>
@@ -914,9 +1103,10 @@
 
 <!-- ── CTA BAND ── -->
 <section id="get-started">
-  <div class="section-inner">
-    <div class="section-label" style="color:var(--teal);text-align:center;">Ready to start?</div>
-    <h2 class="section-title" style="text-align:center;">Great hires start here.</h2>
+  <div class="grain grain-dark"></div>
+  <div class="section-inner reveal">
+    <div class="section-label">Ready to start?</div>
+    <h2 class="section-title">Great hires start <em>here.</em></h2>
     <p>Whether you're building a team or looking for your next role — let's talk.</p>
     <div class="cta-buttons">
       <a href="mailto:hello@kumatalent.com?subject=Post%20a%20Job" class="btn btn-primary">Post a Job &rarr;</a>
@@ -975,7 +1165,7 @@
 
   // Smooth scroll + nav highlight
   const sections = document.querySelectorAll('section[id]');
-  const observer = new IntersectionObserver((entries) => {
+  const navObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       const link = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
       if (!link) return;
@@ -983,7 +1173,18 @@
       else link.style.color = '';
     });
   }, { threshold: 0.4 });
-  sections.forEach(s => observer.observe(s));
+  sections.forEach(s => navObserver.observe(s));
+
+  // Scroll reveal
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in-view');
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 </script>
 
 </body>
