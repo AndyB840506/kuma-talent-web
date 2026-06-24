@@ -1,5 +1,8 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "ignoreCommand": "exit 0"
+  "ignoreCommand": "exit 0",
+  "redirects": [
+    { "source": "/index.php", "destination": "https://app.kumatalent.com/index.php", "permanent": false }
+  ]
 }
