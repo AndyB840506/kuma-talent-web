@@ -1,0 +1,9 @@
+Kuma Talent: premium editorial overhaul (de-boxed, K logo mark)
+
+- Replace boxed card grids with editorial split layouts (border dividers, not nested boxes).
+- Audiences (Employers/Candidates): no-box split, text links instead of buttons; fixes overlap bug.
+- Why Kuma: borderless feature grid with divider lines.
+- Brand K mark in nav (teal box) in place of paw SVG.
+- All Apply / Post a Job CTAs point to app.kumatalent.com (HireSignal app subdomain).
+
+Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>
