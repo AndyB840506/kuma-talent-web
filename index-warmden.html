@@ -279,8 +279,7 @@
       <h1>Hire the right person,<br><span class="it">faster than ever</span></h1>
       <p class="hero-sub">Kuma Talent connects growing businesses with professionals who are already screened and ready to interview. You spend your time meeting finalists instead of sorting through résumés.</p>
       <div class="hero-actions">
-        <a href="https://app.kumatalent.com" class="btn btn-primary btn-lg">Post a Job →</a>
-        <a href="https://app.kumatalent.com" class="btn btn-ghost btn-lg">Apply as Candidate</a>
+        <a href="#join" class="btn btn-primary btn-lg">Join Kuma →</a>
       </div>
       <div class="trust">
         <div class="ti"><span class="tn">3×</span><span class="tl">Faster hiring</span></div>
@@ -374,7 +373,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4 10-11"/></svg>Authenticity scores and hire recommendations</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4 10-11"/></svg>Flat pricing, no recruiter commissions</li>
         </ul>
-        <a href="https://app.kumatalent.com" class="lnk">Post a Job →</a>
+        <a href="#join" class="lnk">Join Kuma →</a>
       </div>
       <div class="aud candidates">
         <span class="tag">For Candidates</span>
@@ -385,7 +384,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4 10-11"/></svg>Judged on ability, not just a résumé</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4 10-11"/></svg>Always free for candidates</li>
         </ul>
-        <a href="https://app.kumatalent.com" class="lnk">Apply as Candidate →</a>
+        <a href="#join" class="lnk">Join Kuma →</a>
       </div>
     </div>
   </div>
@@ -440,8 +439,7 @@
       <h2>Ready to hire <span class="it">smarter?</span></h2>
       <p>Post your first role and see a ranked shortlist of candidates ready to interview, usually the same day.</p>
       <div class="cta-actions">
-        <a href="https://app.kumatalent.com" class="btn btn-light btn-lg">Post a Job →</a>
-        <a href="#join" class="btn btn-out btn-lg">Talk to us</a>
+        <a href="#join" class="btn btn-light btn-lg">Join Kuma →</a>
       </div>
     </div>
   </div>
@@ -449,37 +447,16 @@
 
 <!-- ── JOIN / CONTACT ── -->
 <section id="join">
-  <div class="wrap join-grid">
-    <div class="reveal">
+  <div class="wrap">
+    <div class="sec-head center reveal">
       <span class="eyebrow">Join Kuma</span>
       <h2>Let's find your next great hire</h2>
-      <p>Tell us about your team and what you're hiring for. We'll get you set up with Kuma and your first ranked shortlist.</p>
-      <p class="join-contact">Prefer email? <a href="mailto:kumatalent49@gmail.com">kumatalent49@gmail.com</a></p>
+      <p>Send us an email and we'll take it from there. <strong>Candidates</strong>, attach your CV. <strong>Employers</strong>, tell us what you're hiring for.</p>
     </div>
-    <form class="join-form reveal" id="joinForm" action="https://api.web3forms.com/submit" method="POST">
-      <input type="hidden" name="access_key" value="1e854d66-1cab-46e0-bb74-c2d9d6b94007" />
-      <input type="hidden" name="subject" value="New Kuma Talent inquiry" />
-      <input type="hidden" name="from_name" value="Kuma Talent Website" />
-      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" />
-      <div class="field">
-        <label for="jf-name">Name</label>
-        <input id="jf-name" type="text" name="name" required placeholder="Your name" />
-      </div>
-      <div class="field">
-        <label for="jf-email">Email</label>
-        <input id="jf-email" type="email" name="email" required placeholder="you@company.com" />
-      </div>
-      <div class="field">
-        <label for="jf-company">Company</label>
-        <input id="jf-company" type="text" name="company" placeholder="Company name (optional)" />
-      </div>
-      <div class="field">
-        <label for="jf-msg">What are you hiring for?</label>
-        <textarea id="jf-msg" name="message" rows="4" required placeholder="Tell us about the role or what you need."></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary btn-lg">Join Kuma →</button>
-      <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-    </form>
+    <div class="center reveal" style="text-align:center">
+      <a href="#" id="emailCta" class="btn btn-primary btn-lg">Email your CV →</a>
+      <p style="margin-top:14px;font-size:13px;color:var(--muted)">We usually reply within one business day.</p>
+    </div>
   </div>
 </section>
 
@@ -495,8 +472,7 @@
         <h4>Product</h4>
         <a href="#process">How it works</a>
         <a href="#why">Why Kuma</a>
-        <a href="https://app.kumatalent.com">Post a Job</a>
-        <a href="https://app.kumatalent.com">Apply as Candidate</a>
+        <a href="#join">Join Kuma</a>
       </div>
       <div class="foot-col">
         <h4>Company</h4>
@@ -541,32 +517,18 @@
     so.observe(shortlist);
   }
 
-  // Contact form (Web3Forms) — AJAX submit with graceful fallback
-  const joinForm = document.getElementById('joinForm');
-  const formStatus = document.getElementById('formStatus');
-  if (joinForm) {
-    joinForm.addEventListener('submit', async (e) => {
+  // Join Kuma — build the mailto in JS so the address never sits in the static HTML
+  // (hidden from the page and from scrapers). Candidates attach their CV in the email.
+  const emailCta = document.getElementById('emailCta');
+  if (emailCta) {
+    const user = 'kumatalent49', domain = 'gmail.com';
+    const subject = encodeURIComponent('Join Kuma');
+    const body = encodeURIComponent(
+      "Hi Kuma Talent team,\n\nI would like to join.\n\nCandidates: please attach your CV to this email.\nEmployers: tell us what you are hiring for.\n\nName:\nRole / what you are hiring for:\n"
+    );
+    emailCta.addEventListener('click', (e) => {
       e.preventDefault();
-      const btn = joinForm.querySelector('button[type=submit]');
-      const label = btn.textContent;
-      btn.disabled = true; btn.textContent = 'Sending…';
-      formStatus.className = 'form-status'; formStatus.textContent = '';
-      try {
-        const res = await fetch(joinForm.action, { method: 'POST', body: new FormData(joinForm), headers: { 'Accept': 'application/json' } });
-        const data = await res.json();
-        if (res.ok && data.success) {
-          formStatus.className = 'form-status ok';
-          formStatus.textContent = 'Thanks! We got your message and will be in touch shortly.';
-          joinForm.reset();
-        } else {
-          throw new Error(data.message || 'error');
-        }
-      } catch (err) {
-        formStatus.className = 'form-status err';
-        formStatus.textContent = 'Something went wrong. Email us directly at kumatalent49@gmail.com.';
-      } finally {
-        btn.disabled = false; btn.textContent = label;
-      }
+      window.location.href = 'mailto:' + user + '@' + domain + '?subject=' + subject + '&body=' + body;
     });
   }
 </script>
