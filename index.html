@@ -84,7 +84,8 @@
     .hero { position: relative; padding: 88px 0 70px; overflow: hidden; }
     .hero-grid { display: grid; grid-template-columns: 1.06fr 0.94fr; gap: 60px; align-items: center; position: relative; }
     .hero h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(40px, 5.6vw, 70px); line-height: 1.03; letter-spacing: -0.015em; color: var(--ink); margin: 22px 0 24px; }
-    .hero .ca-flag { font-size: 12px; font-weight: 600; letter-spacing: .04em; color: var(--muted); }
+    .hero .ca-flag { font-size: 12px; font-weight: 600; letter-spacing: .04em; color: var(--muted); display: inline-flex; align-items: center; gap: 7px; }
+    .flag-ca { width: 19px; height: 9.5px; border-radius: 2px; flex-shrink: 0; box-shadow: 0 0 0 1px rgba(0,0,0,.08); }
     .hero-sub { font-size: 19px; color: var(--muted); max-width: 500px; line-height: 1.7; margin-bottom: 34px; }
     .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
     .trust { display: flex; gap: 36px; flex-wrap: wrap; }
@@ -283,7 +284,7 @@
 <section class="hero" id="top">
   <div class="wrap hero-grid">
     <div class="reveal in">
-      <span class="ca-flag">🇨🇦 Proudly Canadian</span>
+      <span class="ca-flag"><svg class="flag-ca" viewBox="0 0 96 48" role="img" aria-label="Canada"><rect width="96" height="48" fill="#fff"/><rect width="26" height="48" fill="#D80621"/><rect x="70" width="26" height="48" fill="#D80621"/><path fill="#D80621" transform="translate(48 24) scale(0.40) translate(-50 -52)" d="M50 3 C50 3 53 18 54 20 C55 22 58 21 60 20 L57 28 C56 30 57 31 59 31 L70 29 L67 36 C66 38 67 39 69 40 L80 46 L70 50 C68 51 68 53 69 54 L72 62 L61 60 C59 60 58 61 58 63 L58 75 L52 68 C51 67 49 67 48 68 L42 75 L42 63 C42 61 41 60 39 60 L28 62 L31 54 C32 53 32 51 30 50 L20 46 L31 40 C33 39 34 38 33 36 L30 29 L41 31 C43 31 44 30 43 28 L40 20 C42 21 45 22 46 20 C47 18 50 3 50 3 Z"/></svg>Proudly Canadian</span>
       <h1>Hire the right person,<br><span class="it">faster than ever</span></h1>
       <p class="hero-sub">Kuma Talent connects growing businesses with professionals who are already screened and ready to interview. You spend your time meeting finalists instead of sorting through résumés.</p>
       <div class="hero-actions">
@@ -516,7 +517,7 @@
     </div>
     <div class="foot-base">
       <span>© 2026 Kuma Talent. All rights reserved.</span>
-      <span class="flag">🇨🇦 Proudly Canadian, built with care</span>
+      <span class="flag"><svg class="flag-ca" viewBox="0 0 96 48" role="img" aria-label="Canada"><rect width="96" height="48" fill="#fff"/><rect width="26" height="48" fill="#D80621"/><rect x="70" width="26" height="48" fill="#D80621"/><path fill="#D80621" transform="translate(48 24) scale(0.40) translate(-50 -52)" d="M50 3 C50 3 53 18 54 20 C55 22 58 21 60 20 L57 28 C56 30 57 31 59 31 L70 29 L67 36 C66 38 67 39 69 40 L80 46 L70 50 C68 51 68 53 69 54 L72 62 L61 60 C59 60 58 61 58 63 L58 75 L52 68 C51 67 49 67 48 68 L42 75 L42 63 C42 61 41 60 39 60 L28 62 L31 54 C32 53 32 51 30 50 L20 46 L31 40 C33 39 34 38 33 36 L30 29 L41 31 C43 31 44 30 43 28 L40 20 C42 21 45 22 46 20 C47 18 50 3 50 3 Z"/></svg>Proudly Canadian, built with care</span>
     </div>
   </div>
 </footer>
