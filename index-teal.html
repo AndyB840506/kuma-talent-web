@@ -12,67 +12,62 @@
   <meta property="og:description" content="Professionals who are screened and ready to interview. Ranked shortlists in hours, flat pricing with no recruiter commissions. Proudly Canadian." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://kumatalent.com" />
-  <link rel="icon" type="image/png" href="assets/logo/isotipo-light.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,500;1,9..144,600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cream:    #F7F1E6;
-      --cream2:   #EFE3D0;
-      --sand:     #E4CFAE;
-      --terra:    #B5694A;
-      --terra-d:  #94512F;
-      --terra-dim:rgba(181,105,74,.10);
-      --ochre:    #C2913F;
-      --ochre-dim:rgba(194,145,63,.14);
-      --sage:     #8A917A;
-      --brown:    #5C4634;
-      --ink:      #2E231C;
-      --muted:    #7C6C5A;
-      --mauve:    #7C5A57;
-      --line:     rgba(46,35,28,.14);
-      --serif:    'Fraunces', Georgia, serif;
+      --cream:    #FBF8F1;
+      --cream2:   #F2EAD8;
+      --sand:     #E8D9B8;
+      --teal:     #0D9488;
+      --teal-d:   #0A6D63;
+      --teal-dim: rgba(13,148,136,.10);
+      --amber:    #C8842C;
+      --amber-dim:rgba(200,132,44,.12);
+      --navy:     #1E3A5F;
+      --ink:      #0F2644;
+      --muted:    #6B6358;
+      --line:     rgba(30,58,95,.14);
+      --serif:    'Playfair Display', Georgia, serif;
       --sans:     'Outfit', system-ui, sans-serif;
       --max:      1180px;
     }
 
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-    body {
-      font-family: var(--sans); background: var(--cream); color: var(--ink); line-height: 1.65; overflow-x: hidden;
-      background-image:
-        radial-gradient(900px 500px at 88% -8%, var(--ochre-dim), transparent 60%),
-        radial-gradient(700px 480px at -6% 18%, var(--terra-dim), transparent 60%);
-    }
+    body { font-family: var(--sans); background: var(--cream); color: var(--ink); line-height: 1.65; overflow-x: hidden; }
     a { color: inherit; }
     .wrap { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
     .reveal.in { opacity: 1; transform: none; }
 
-    .eyebrow { font-family: var(--sans); font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--terra); display: inline-flex; align-items: center; gap: 10px; }
-    .eyebrow::before { content: ''; width: 26px; height: 1px; background: var(--ochre); }
-    .it { font-family: var(--serif); font-style: italic; font-weight: 500; color: var(--terra); }
+    .eyebrow { font-family: var(--sans); font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--teal); display: inline-flex; align-items: center; gap: 10px; }
+    .eyebrow::before { content: ''; width: 26px; height: 1px; background: var(--amber); }
+    .serif { font-family: var(--serif); }
+    .it { font-family: var(--serif); font-style: italic; font-weight: 500; color: var(--teal); }
+
+    /* paw glyph */
+    .paw { display: inline-block; vertical-align: middle; }
 
     /* ── NAV ── */
-    nav { position: sticky; top: 0; z-index: 100; background: rgba(247,241,230,.82); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
-    .nav-in { max-width: var(--max); margin: 0 auto; padding: 0 28px; height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .brand-mark { height: 30px; width: auto; display: block; clip-path: inset(0 100% 0 0); animation: drawmark 1.3s cubic-bezier(.6,.05,.2,1) .25s forwards; }
-    @keyframes drawmark { to { clip-path: inset(0 0 0 0); } }
-    .brand .wm { font-family: var(--serif); font-weight: 600; font-size: 21px; color: var(--ink); letter-spacing: -0.01em; }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(251,248,241,.82); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    .nav-in { max-width: var(--max); margin: 0 auto; padding: 0 28px; height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; }
+    .brand .mark { width: 34px; height: 34px; border-radius: 9px; background: var(--teal); display: grid; place-items: center; flex-shrink: 0; font-family: var(--serif); font-weight: 800; font-size: 18px; color: #fff; line-height: 1; }
+    .brand .wm { font-family: var(--serif); font-weight: 700; font-size: 20px; color: var(--ink); letter-spacing: -0.01em; }
     .nav-links { display: flex; align-items: center; gap: 30px; }
-    .nav-links a { text-decoration: none; color: var(--brown); font-size: 14.5px; font-weight: 500; transition: color .18s; }
-    .nav-links a:hover { color: var(--terra); }
+    .nav-links a { text-decoration: none; color: var(--navy); font-size: 14.5px; font-weight: 500; transition: color .18s; }
+    .nav-links a:hover { color: var(--teal); }
     .nav-cta { display: flex; align-items: center; gap: 12px; }
-    .btn { font-family: var(--sans); font-weight: 600; font-size: 14px; border-radius: 999px; cursor: pointer; text-decoration: none; transition: .2s; display: inline-flex; align-items: center; gap: 8px; border: 1px solid transparent; }
-    .btn-primary { background: var(--terra); color: #fff; padding: 11px 22px; }
-    .btn-primary:hover { background: var(--terra-d); transform: translateY(-1px); box-shadow: 0 12px 26px -10px var(--terra); }
-    .btn-ghost { background: transparent; color: var(--brown); padding: 11px 18px; border-color: var(--line); }
-    .btn-ghost:hover { border-color: var(--terra); color: var(--terra); }
+    .btn { font-family: var(--sans); font-weight: 600; font-size: 14px; border-radius: 9px; cursor: pointer; text-decoration: none; transition: .18s; display: inline-flex; align-items: center; gap: 8px; border: 1px solid transparent; }
+    .btn-primary { background: var(--teal); color: #fff; padding: 11px 22px; }
+    .btn-primary:hover { background: var(--teal-d); transform: translateY(-1px); box-shadow: 0 10px 24px -8px var(--teal); }
+    .btn-ghost { background: transparent; color: var(--navy); padding: 11px 18px; border-color: var(--line); }
+    .btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
     .btn-lg { padding: 15px 30px; font-size: 15px; }
     .nav-burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
     .nav-burger span { width: 23px; height: 2px; background: var(--ink); display: block; transition: .25s; }
@@ -81,52 +76,50 @@
     .nav-burger.open span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
 
     /* ── HERO ── */
-    .hero { position: relative; padding: 88px 0 70px; overflow: hidden; }
+    .hero { position: relative; padding: 84px 0 96px; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -180px; right: -160px; width: 620px; height: 620px; border-radius: 50%; background: radial-gradient(circle, var(--teal-dim), transparent 68%); pointer-events: none; }
     .hero-grid { display: grid; grid-template-columns: 1.06fr 0.94fr; gap: 60px; align-items: center; position: relative; }
-    .hero h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(40px, 5.6vw, 70px); line-height: 1.03; letter-spacing: -0.015em; color: var(--ink); margin: 22px 0 24px; }
+    .hero h1 { font-family: var(--serif); font-weight: 800; font-size: clamp(40px, 5.6vw, 70px); line-height: 1.04; letter-spacing: -0.02em; color: var(--ink); margin: 22px 0 24px; }
     .hero .ca-flag { font-size: 12px; font-weight: 600; letter-spacing: .04em; color: var(--muted); }
     .hero-sub { font-size: 19px; color: var(--muted); max-width: 500px; line-height: 1.7; margin-bottom: 34px; }
     .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
     .trust { display: flex; gap: 36px; flex-wrap: wrap; }
     .trust .ti { display: flex; flex-direction: column; }
-    .trust .tn { font-family: var(--serif); font-weight: 600; font-size: 32px; color: var(--terra); line-height: 1; }
+    .trust .tn { font-family: var(--serif); font-weight: 700; font-size: 30px; color: var(--teal); line-height: 1; }
     .trust .tl { font-size: 13px; color: var(--muted); margin-top: 6px; }
 
-    /* signal wave that draws itself (echo of the logo) */
-    .wave-wrap { position: relative; margin-top: 4px; }
-    .wave { width: 100%; height: 64px; display: block; overflow: visible; }
-    .wave path { fill: none; stroke: var(--terra); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2600; stroke-dashoffset: 2600; animation: wavedraw 2.8s cubic-bezier(.5,.1,.2,1) .5s forwards; }
-
-    @keyframes wavedraw { to { stroke-dashoffset: 0; } }
-
     /* hero visual — ranked shortlist card */
-    .panel { background: #fffdf8; border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 34px 70px -34px rgba(46,35,28,.34); overflow: hidden; }
+    .panel { background: #fff; border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 30px 70px -34px rgba(30,58,95,.4); overflow: hidden; }
     .panel-top { display: flex; align-items: center; gap: 10px; padding: 16px 20px; border-bottom: 1px solid var(--line); background: var(--cream); }
-    .panel-top .live { margin-left: auto; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--terra); display: inline-flex; align-items: center; gap: 7px; }
-    .panel-top .live .d { width: 7px; height: 7px; border-radius: 50%; background: var(--terra); box-shadow: 0 0 0 0 var(--terra); animation: ping 2s ease-out infinite; }
-    @keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(181,105,74,.5); } 100% { box-shadow: 0 0 0 9px rgba(181,105,74,0); } }
-    .panel-top .ttl { font-size: 13px; font-weight: 600; color: var(--brown); }
+    .panel-top .live { margin-left: auto; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--teal); display: inline-flex; align-items: center; gap: 7px; }
+    .panel-top .live .d { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 0 var(--teal); animation: ping 2s ease-out infinite; }
+    @keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(13,148,136,.5); } 100% { box-shadow: 0 0 0 9px rgba(13,148,136,0); } }
+    .panel-top .ttl { font-size: 13px; font-weight: 600; color: var(--navy); }
     .panel-body { padding: 14px; }
-    .cand { display: grid; grid-template-columns: 38px 1fr auto; gap: 13px; align-items: center; padding: 16px 6px; }
-    .cand + .cand { border-top: 1px solid var(--line); }
-    .cand .av { width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center; font-weight: 700; font-size: 14px; color: #fff; font-family: var(--serif); }
-    .cand:nth-child(1) .av { background: var(--terra); }
-    .cand:nth-child(2) .av { background: var(--ochre); }
-    .cand:nth-child(3) .av { background: var(--sage); }
+    .cand { display: grid; grid-template-columns: 38px 1fr auto; gap: 13px; align-items: center; padding: 13px; border-radius: 12px; transition: background .2s; }
+    .cand + .cand { margin-top: 4px; }
+    .cand:hover { background: var(--cream); }
+    .cand .av { width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; font-weight: 700; font-size: 14px; color: #fff; font-family: var(--serif); }
+    .cand:nth-child(1) .av { background: var(--teal); }
+    .cand:nth-child(2) .av { background: var(--amber); }
+    .cand:nth-child(3) .av { background: var(--navy); }
     .cand .nm { font-weight: 600; font-size: 14.5px; color: var(--ink); }
     .cand .ro { font-size: 12.5px; color: var(--muted); }
     .cand .score { text-align: right; }
-    .cand .pct { font-family: var(--serif); font-weight: 600; font-size: 18px; color: var(--terra); }
+    .cand .pct { font-family: var(--serif); font-weight: 700; font-size: 18px; color: var(--teal); }
     .cand .bar { width: 84px; height: 5px; border-radius: 3px; background: var(--cream2); margin-top: 5px; overflow: hidden; }
-    .cand .bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--terra), var(--ochre)); width: 0; border-radius: 3px; transition: width 1.1s cubic-bezier(.3,.8,.3,1); }
-    .panel-foot { padding: 15px 20px; border-top: 1px solid var(--line); display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--muted); }
-    .panel-foot b { color: var(--terra); font-weight: 700; }
+    .cand .bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--teal), var(--amber)); width: 0; border-radius: 3px; transition: width 1.1s cubic-bezier(.3,.8,.3,1); }
+    .panel-foot { padding: 13px 20px; border-top: 1px solid var(--line); display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--muted); }
+    .panel-foot b { color: var(--teal); font-weight: 700; }
+    .float-chip { position: absolute; left: -22px; bottom: 56px; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 11px 15px; box-shadow: 0 18px 40px -18px rgba(30,58,95,.4); font-size: 13px; display: flex; align-items: center; gap: 10px; }
+    .float-chip .ic { width: 26px; height: 26px; border-radius: 7px; background: var(--amber-dim); display: grid; place-items: center; }
+    .float-chip .ic svg { width: 15px; height: 15px; }
     .hero-visual { position: relative; }
 
     /* ── SECTION COMMON ── */
     section { padding: 104px 0; position: relative; }
     .sec-head { max-width: 640px; margin-bottom: 56px; }
-    .sec-head h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(30px, 4vw, 46px); line-height: 1.1; letter-spacing: -0.018em; color: var(--ink); margin: 16px 0 14px; }
+    .sec-head h2 { font-family: var(--serif); font-weight: 700; font-size: clamp(30px, 4vw, 46px); line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin: 16px 0 14px; }
     .sec-head p { font-size: 17px; color: var(--muted); line-height: 1.7; }
     .center { margin-left: auto; margin-right: auto; text-align: center; }
     .center .eyebrow { justify-content: center; }
@@ -135,12 +128,12 @@
     #process { background: linear-gradient(180deg, var(--cream), var(--cream2)); }
     .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; position: relative; }
     .step { position: relative; padding: 4px; }
-    .step .sn { font-family: var(--serif); font-style: italic; font-size: 16px; color: var(--ochre); font-weight: 600; }
-    .step h3 { font-family: var(--serif); font-weight: 600; font-size: 23px; color: var(--ink); margin: 12px 0 10px; }
+    .step .sn { font-family: var(--serif); font-style: italic; font-size: 16px; color: var(--amber); font-weight: 600; }
+    .step h3 { font-family: var(--serif); font-weight: 700; font-size: 23px; color: var(--ink); margin: 12px 0 10px; }
     .step p { font-size: 15px; color: var(--muted); line-height: 1.65; max-width: 300px; }
-    .step .num-ic { width: 52px; height: 52px; border-radius: 50%; background: #fffdf8; border: 1px solid var(--line); display: grid; place-items: center; margin-bottom: 18px; box-shadow: 0 10px 26px -16px rgba(46,35,28,.4); }
+    .step .num-ic { width: 50px; height: 50px; border-radius: 13px; background: #fff; border: 1px solid var(--line); display: grid; place-items: center; margin-bottom: 18px; box-shadow: 0 10px 26px -16px rgba(30,58,95,.4); }
     .step .num-ic svg { width: 25px; height: 25px; }
-    .step::after { content: ''; position: absolute; top: 26px; left: calc(52px + 18px); right: -9px; height: 1px; border-top: 1.5px dashed var(--line); }
+    .step::after { content: ''; position: absolute; top: 25px; left: calc(50px + 18px); right: -9px; height: 1px; border-top: 1.5px dashed var(--line); }
     .step:last-child::after { display: none; }
 
     /* ── AUDIENCES (editorial split, no boxes) ── */
@@ -149,15 +142,15 @@
     .aud { padding: 50px 48px 46px; position: relative; }
     .aud + .aud { border-left: 1px solid var(--line); }
     .aud .tag { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-    .aud.emp .tag { color: var(--ochre); }
-    .aud.candidates .tag { color: var(--terra); }
-    .aud h3 { font-family: var(--serif); font-weight: 600; font-size: 28px; color: var(--ink); margin: 14px 0 16px; line-height: 1.15; }
+    .aud.emp .tag { color: var(--amber); }
+    .aud.candidates .tag { color: var(--teal); }
+    .aud h3 { font-family: var(--serif); font-weight: 700; font-size: 28px; color: var(--ink); margin: 14px 0 16px; line-height: 1.15; }
     .aud p { font-size: 15.5px; line-height: 1.7; color: var(--muted); margin-bottom: 26px; max-width: 430px; }
     .aud ul { list-style: none; display: flex; flex-direction: column; gap: 13px; margin-bottom: 30px; }
-    .aud li { display: flex; align-items: flex-start; gap: 12px; font-size: 14.5px; color: var(--brown); }
-    .aud li svg { width: 19px; height: 19px; flex-shrink: 0; margin-top: 1px; stroke: var(--terra); }
-    .aud .lnk { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; text-decoration: none; color: var(--terra); transition: gap .15s; }
-    .aud.emp .lnk { color: var(--ochre); }
+    .aud li { display: flex; align-items: flex-start; gap: 12px; font-size: 14.5px; color: var(--navy); }
+    .aud li svg { width: 19px; height: 19px; flex-shrink: 0; margin-top: 1px; stroke: var(--teal); }
+    .aud .lnk { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; text-decoration: none; color: var(--teal); transition: gap .15s; }
+    .aud.emp .lnk { color: var(--amber); }
     .aud .lnk:hover { gap: 12px; }
 
     /* ── WHY KUMA ── */
@@ -166,50 +159,31 @@
     .feat { background: transparent; border: none; border-radius: 0; border-bottom: 1px solid var(--line); padding: 34px 32px 32px; }
     .feat:nth-child(-n+3) { border-bottom: 1px solid var(--line); }
     .feat:not(:nth-child(3n+1)) { border-left: 1px solid var(--line); }
-    .feat .fi { width: 48px; height: 48px; border-radius: 50%; background: var(--terra-dim); display: grid; place-items: center; margin-bottom: 18px; }
+    .feat .fi { width: 46px; height: 46px; border-radius: 12px; background: var(--teal-dim); display: grid; place-items: center; margin-bottom: 18px; }
     .feat .fi svg { width: 23px; height: 23px; }
-    .feat h3 { font-family: var(--serif); font-weight: 600; font-size: 19px; color: var(--ink); margin-bottom: 9px; }
+    .feat h3 { font-family: var(--serif); font-weight: 700; font-size: 19px; color: var(--ink); margin-bottom: 9px; }
     .feat p { font-size: 14px; color: var(--muted); line-height: 1.6; }
 
     /* ── CTA ── */
-    .cta-band { background: var(--ink); border-radius: 28px; padding: 64px 56px; position: relative; overflow: hidden; text-align: center; }
-    .cta-band::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 82% -12%, rgba(194,145,63,.42), transparent 52%), radial-gradient(circle at 12% 120%, rgba(181,105,74,.40), transparent 50%); }
-    .cta-band h2 { font-family: var(--serif); font-weight: 700; font-size: clamp(30px, 4vw, 46px); color: #fbf3e6; line-height: 1.08; margin-bottom: 16px; position: relative; }
+    .cta-band { background: var(--teal); border-radius: 24px; padding: 64px 56px; position: relative; overflow: hidden; text-align: center; }
+    .cta-band::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 80% -10%, rgba(200,132,44,.35), transparent 50%); }
+    .cta-band h2 { font-family: var(--serif); font-weight: 800; font-size: clamp(30px, 4vw, 46px); color: #fff; line-height: 1.08; margin-bottom: 16px; position: relative; }
     .cta-band h2 .it { color: var(--sand); }
-    .cta-band p { color: rgba(251,243,230,.82); font-size: 17px; max-width: 520px; margin: 0 auto 32px; position: relative; }
+    .cta-band p { color: rgba(255,255,255,.85); font-size: 17px; max-width: 520px; margin: 0 auto 32px; position: relative; }
     .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; }
-    .cta-band .btn-light { background: #fbf3e6; color: var(--terra-d); padding: 15px 30px; }
-    .cta-band .btn-light:hover { transform: translateY(-1px); box-shadow: 0 14px 30px -10px rgba(0,0,0,.4); }
-    .cta-band .btn-out { background: transparent; color: #fbf3e6; border-color: rgba(251,243,230,.45); padding: 15px 28px; }
-    .cta-band .btn-out:hover { background: rgba(251,243,230,.12); }
-
-    /* ── JOIN / CONTACT ── */
-    #join { background: var(--cream); }
-    .join-grid { display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 56px; align-items: start; }
-    .join-grid h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(30px, 4vw, 44px); line-height: 1.1; letter-spacing: -0.018em; color: var(--ink); margin: 16px 0 16px; }
-    .join-grid > div > p { font-size: 17px; color: var(--muted); line-height: 1.7; max-width: 420px; }
-    .join-contact { margin-top: 22px; font-size: 15px; color: var(--brown); }
-    .join-contact a { color: var(--terra); font-weight: 600; text-decoration: none; }
-    .join-contact a:hover { text-decoration: underline; }
-    .join-form { display: grid; gap: 16px; background: #fffdf8; border: 1px solid var(--line); border-radius: 20px; padding: 32px; box-shadow: 0 30px 64px -38px rgba(46,35,28,.34); }
-    .field { display: flex; flex-direction: column; gap: 7px; }
-    .field label { font-size: 13px; font-weight: 600; color: var(--brown); letter-spacing: .01em; }
-    .field input, .field textarea { font-family: var(--sans); font-size: 15px; color: var(--ink); background: var(--cream); border: 1px solid var(--line); border-radius: 11px; padding: 12px 14px; outline: none; transition: border-color .15s, box-shadow .15s; resize: vertical; }
-    .field input:focus, .field textarea:focus { border-color: var(--terra); box-shadow: 0 0 0 3px var(--terra-dim); }
-    .join-form .btn-primary { justify-content: center; width: 100%; padding: 15px; }
-    .form-status { font-size: 14px; margin: 0; min-height: 1px; }
-    .form-status.ok { color: var(--terra-d); }
-    .form-status.err { color: #b4452f; }
-    .hp { position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; }
+    .cta-band .btn-light { background: #fff; color: var(--teal-d); padding: 15px 30px; }
+    .cta-band .btn-light:hover { transform: translateY(-1px); box-shadow: 0 14px 30px -10px rgba(0,0,0,.35); }
+    .cta-band .btn-out { background: transparent; color: #fff; border-color: rgba(255,255,255,.5); padding: 15px 28px; }
+    .cta-band .btn-out:hover { background: rgba(255,255,255,.12); }
 
     /* ── FOOTER ── */
-    footer { background: var(--ink); color: rgba(251,243,230,.66); padding: 60px 0 34px; }
-    .foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(251,243,230,.12); }
-    .foot-brand .foot-logo { height: 34px; width: auto; display: block; margin-bottom: 14px; }
-    .foot-brand p { font-size: 14px; max-width: 320px; line-height: 1.7; }
+    footer { background: var(--ink); color: rgba(255,255,255,.7); padding: 60px 0 34px; }
+    .foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .foot-brand .wm { font-family: var(--serif); font-weight: 700; font-size: 22px; color: #fff; }
+    .foot-brand p { font-size: 14px; margin-top: 14px; max-width: 320px; line-height: 1.7; }
     .foot-col h4 { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--sand); margin-bottom: 16px; }
-    .foot-col a { display: block; text-decoration: none; color: rgba(251,243,230,.66); font-size: 14.5px; margin-bottom: 11px; transition: color .15s; }
-    .foot-col a:hover { color: #fbf3e6; }
+    .foot-col a { display: block; text-decoration: none; color: rgba(255,255,255,.7); font-size: 14.5px; margin-bottom: 11px; transition: color .15s; }
+    .foot-col a:hover { color: #fff; }
     .foot-base { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; padding-top: 26px; font-size: 13px; }
     .foot-base .flag { display: inline-flex; align-items: center; gap: 8px; }
 
@@ -224,11 +198,10 @@
       .why-grid { grid-template-columns: 1fr 1fr; }
       .feat:not(:nth-child(3n+1)) { border-left: none; }
       .feat:not(:nth-child(2n+1)) { border-left: 1px solid var(--line); }
-      .join-grid { grid-template-columns: 1fr; gap: 36px; }
       .foot-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 680px) {
-      .nav-links { display: none; position: absolute; top: 72px; left: 0; right: 0; background: var(--cream); border-bottom: 1px solid var(--line); flex-direction: column; align-items: flex-start; gap: 0; padding: 10px 28px 18px; }
+      .nav-links { display: none; position: absolute; top: 70px; left: 0; right: 0; background: var(--cream); border-bottom: 1px solid var(--line); flex-direction: column; align-items: flex-start; gap: 0; padding: 10px 28px 18px; }
       .nav-links.open { display: flex; }
       .nav-links a { padding: 12px 0; width: 100%; }
       .nav-cta .btn-ghost { display: none; }
@@ -242,8 +215,6 @@
     }
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1 !important; transform: none !important; }
-      .brand-mark { clip-path: none; animation: none; }
-      .wave path { stroke-dashoffset: 0; animation: none; }
       .panel-top .live .d { animation: none; }
       .cand .bar i { transition: none; }
     }
@@ -255,7 +226,7 @@
 <nav>
   <div class="nav-in">
     <a href="#top" class="brand">
-      <img class="brand-mark" src="assets/logo/isotipo-light.png" alt="Kuma Talent bear mark" />
+      <span class="mark">K</span>
       <span class="wm">Kuma Talent</span>
     </a>
     <div class="nav-links" id="navLinks">
@@ -265,7 +236,8 @@
       <a href="#why">Why Kuma</a>
     </div>
     <div class="nav-cta">
-      <a href="#join" class="btn btn-primary">Join Kuma</a>
+      <a href="https://app.kumatalent.com" class="btn btn-ghost">Apply as Candidate</a>
+      <a href="https://app.kumatalent.com" class="btn btn-primary">Post a Job</a>
     </div>
     <button class="nav-burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
@@ -316,13 +288,11 @@
           Scored on role fit and <b>authenticity</b>, recommended to hire
         </div>
       </div>
+      <div class="float-chip">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C8842C" stroke-width="2"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M6 18l2-2M16 8l2-2"/><circle cx="12" cy="12" r="3.2"/></svg></span>
+        <span><b>AI screening</b>, no ghost applications</span>
+      </div>
     </div>
-  </div>
-
-  <div class="wrap wave-wrap" aria-hidden="true">
-    <svg class="wave" viewBox="0 0 1440 64" preserveAspectRatio="none">
-      <path d="M0,32 L470,32 C500,32 506,30 528,18 C548,7 556,6 566,16 C576,26 580,58 600,58 C622,58 628,7 648,7 C668,7 676,46 694,46 C712,46 720,32 744,32 L1010,32 C1040,32 1048,30 1066,22 C1086,13 1094,12 1104,22 C1114,32 1120,50 1136,50 C1154,50 1162,32 1186,32 L1440,32" />
-    </svg>
   </div>
 </section>
 
@@ -336,19 +306,19 @@
     </div>
     <div class="steps">
       <div class="step reveal">
-        <div class="num-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#B5694A" stroke-width="1.8"><path d="M9 6h10M9 12h10M9 18h6"/><circle cx="4.5" cy="6" r="1.4" fill="#B5694A" stroke="none"/><circle cx="4.5" cy="12" r="1.4" fill="#B5694A" stroke="none"/><circle cx="4.5" cy="18" r="1.4" fill="#B5694A" stroke="none"/></svg></div>
+        <div class="num-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="1.8"><path d="M9 6h10M9 12h10M9 18h6"/><circle cx="4.5" cy="6" r="1.4" fill="#0D9488" stroke="none"/><circle cx="4.5" cy="12" r="1.4" fill="#0D9488" stroke="none"/><circle cx="4.5" cy="18" r="1.4" fill="#0D9488" stroke="none"/></svg></div>
         <span class="sn">Step 01</span>
         <h3>Post your role</h3>
         <p>Tell Kuma what the job needs. We turn it into a structured screening built for that role in minutes.</p>
       </div>
       <div class="step reveal">
-        <div class="num-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#B5694A" stroke-width="1.8"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="4"/><path d="M6.5 6.5l1.8 1.8M15.7 15.7l1.8 1.8"/></svg></div>
+        <div class="num-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="1.8"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="4"/><path d="M6.5 6.5l1.8 1.8M15.7 15.7l1.8 1.8"/></svg></div>
         <span class="sn">Step 02</span>
-        <h3>AI screens and interviews</h3>
+        <h3>AI screens &amp; interviews</h3>
         <p>Every applicant takes an interview run by AI and tailored to the role, scored for fit and authenticity.</p>
       </div>
       <div class="step reveal">
-        <div class="num-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#B5694A" stroke-width="1.8"><path d="M5 13l4 4 10-11"/></svg></div>
+        <div class="num-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="1.8"><path d="M5 13l4 4 10-11"/></svg></div>
         <span class="sn">Step 03</span>
         <h3>Get a ranked shortlist</h3>
         <p>Receive a ranked shortlist with assessment reports and hire recommendations, often the same day.</p>
@@ -400,32 +370,32 @@
     </div>
     <div class="why-grid">
       <div class="feat reveal">
-        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="#B5694A" stroke-width="1.8"><path d="M13 2L3 14h7l-1 8 11-12h-7l0-8Z"/></svg></div>
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="1.8"><path d="M13 2L3 14h7l-1 8 11-12h-7l0-8Z"/></svg></div>
         <h3>Shortlists the same day</h3>
         <p>Go from a job post to a ranked list of candidates ready to interview within hours.</p>
       </div>
       <div class="feat reveal">
-        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="#B5694A" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg></div>
         <h3>Authenticity scores</h3>
         <p>Every candidate is scored for genuine fit, so you trust the ranking instead of the résumé alone.</p>
       </div>
       <div class="feat reveal">
-        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="#B5694A" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 12h8M12 8v8"/></svg></div>
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 12h8M12 8v8"/></svg></div>
         <h3>Flat, honest pricing</h3>
         <p>One transparent rate. No commissions tied to salary, no surprise invoices.</p>
       </div>
       <div class="feat reveal">
-        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="#B5694A" stroke-width="1.8"><path d="M12 3a4 4 0 0 1 4 4c0 3-4 6-4 6s-4-3-4-6a4 4 0 0 1 4-4Z"/><path d="M5 21c0-3 3-5 7-5s7 2 7 5"/></svg></div>
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="1.8"><path d="M12 3a4 4 0 0 1 4 4c0 3-4 6-4 6s-4-3-4-6a4 4 0 0 1 4-4Z"/><path d="M5 21c0-3 3-5 7-5s7 2 7 5"/></svg></div>
         <h3>Interviews run by AI</h3>
         <p>Structured screening interviews built for each role that every applicant actually completes.</p>
       </div>
       <div class="feat reveal">
-        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="#B5694A" stroke-width="1.8"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0Z"/><path d="M8 9l8 6M16 9l-8 6"/></svg></div>
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="1.8"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0Z"/><path d="M8 9l8 6M16 9l-8 6"/></svg></div>
         <h3>No ghost applications</h3>
         <p>Candidates engage and complete the screening, so your pipeline is full of real people instead of dead leads.</p>
       </div>
       <div class="feat reveal">
-        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="#B5694A" stroke-width="1.8"><path d="M3 17l6-6 4 4 7-8"/><path d="M17 7h4v4"/></svg></div>
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="1.8"><path d="M3 17l6-6 4 4 7-8"/><path d="M17 7h4v4"/></svg></div>
         <h3>3× faster hiring</h3>
         <p>Teams using Kuma fill roles in a fraction of the time of traditional recruiting.</p>
       </div>
@@ -441,45 +411,9 @@
       <p>Post your first role and see a ranked shortlist of candidates ready to interview, usually the same day.</p>
       <div class="cta-actions">
         <a href="https://app.kumatalent.com" class="btn btn-light btn-lg">Post a Job →</a>
-        <a href="#join" class="btn btn-out btn-lg">Talk to us</a>
+        <a href="mailto:hello@kumatalent.com" class="btn btn-out btn-lg">Talk to us</a>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ── JOIN / CONTACT ── -->
-<section id="join">
-  <div class="wrap join-grid">
-    <div class="reveal">
-      <span class="eyebrow">Join Kuma</span>
-      <h2>Let's find your next great hire</h2>
-      <p>Tell us about your team and what you're hiring for. We'll get you set up with Kuma and your first ranked shortlist.</p>
-      <p class="join-contact">Prefer email? <a href="mailto:kumatalent49@gmail.com">kumatalent49@gmail.com</a></p>
-    </div>
-    <form class="join-form reveal" id="joinForm" action="https://api.web3forms.com/submit" method="POST">
-      <input type="hidden" name="access_key" value="1e854d66-1cab-46e0-bb74-c2d9d6b94007" />
-      <input type="hidden" name="subject" value="New Kuma Talent inquiry" />
-      <input type="hidden" name="from_name" value="Kuma Talent Website" />
-      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" />
-      <div class="field">
-        <label for="jf-name">Name</label>
-        <input id="jf-name" type="text" name="name" required placeholder="Your name" />
-      </div>
-      <div class="field">
-        <label for="jf-email">Email</label>
-        <input id="jf-email" type="email" name="email" required placeholder="you@company.com" />
-      </div>
-      <div class="field">
-        <label for="jf-company">Company</label>
-        <input id="jf-company" type="text" name="company" placeholder="Company name (optional)" />
-      </div>
-      <div class="field">
-        <label for="jf-msg">What are you hiring for?</label>
-        <textarea id="jf-msg" name="message" rows="4" required placeholder="Tell us about the role or what you need."></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary btn-lg">Join Kuma →</button>
-      <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-    </form>
   </div>
 </section>
 
@@ -488,7 +422,7 @@
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <img class="foot-logo" src="assets/logo/isotipo-dark.png" alt="Kuma Talent" />
+        <span class="wm">Kuma Talent</span>
         <p>AI talent screening that connects growing businesses with professionals who are screened and ready to interview. Hire smarter. Grow faster.</p>
       </div>
       <div class="foot-col">
@@ -500,7 +434,7 @@
       </div>
       <div class="foot-col">
         <h4>Company</h4>
-        <a href="#join">Contact</a>
+        <a href="mailto:hello@kumatalent.com">Contact</a>
         <a href="#audiences">For Employers</a>
         <a href="#audiences">For Candidates</a>
       </div>
@@ -539,35 +473,6 @@
       });
     }, { threshold: 0.4 });
     so.observe(shortlist);
-  }
-
-  // Contact form (Web3Forms) — AJAX submit with graceful fallback
-  const joinForm = document.getElementById('joinForm');
-  const formStatus = document.getElementById('formStatus');
-  if (joinForm) {
-    joinForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const btn = joinForm.querySelector('button[type=submit]');
-      const label = btn.textContent;
-      btn.disabled = true; btn.textContent = 'Sending…';
-      formStatus.className = 'form-status'; formStatus.textContent = '';
-      try {
-        const res = await fetch(joinForm.action, { method: 'POST', body: new FormData(joinForm), headers: { 'Accept': 'application/json' } });
-        const data = await res.json();
-        if (res.ok && data.success) {
-          formStatus.className = 'form-status ok';
-          formStatus.textContent = 'Thanks! We got your message and will be in touch shortly.';
-          joinForm.reset();
-        } else {
-          throw new Error(data.message || 'error');
-        }
-      } catch (err) {
-        formStatus.className = 'form-status err';
-        formStatus.textContent = 'Something went wrong. Email us directly at kumatalent49@gmail.com.';
-      } finally {
-        btn.disabled = false; btn.textContent = label;
-      }
-    });
   }
 </script>
 
