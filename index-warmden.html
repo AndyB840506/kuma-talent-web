@@ -194,8 +194,16 @@
     .join-form { display: grid; gap: 16px; background: #fffdf8; border: 1px solid var(--line); border-radius: 20px; padding: 32px; box-shadow: 0 30px 64px -38px rgba(46,35,28,.34); }
     .field { display: flex; flex-direction: column; gap: 7px; }
     .field label { font-size: 13px; font-weight: 600; color: var(--brown); letter-spacing: .01em; }
-    .field input, .field textarea { font-family: var(--sans); font-size: 15px; color: var(--ink); background: var(--cream); border: 1px solid var(--line); border-radius: 11px; padding: 12px 14px; outline: none; transition: border-color .15s, box-shadow .15s; resize: vertical; }
-    .field input:focus, .field textarea:focus { border-color: var(--terra); box-shadow: 0 0 0 3px var(--terra-dim); }
+    .field input, .field textarea, .field select { font-family: var(--sans); font-size: 15px; color: var(--ink); background: var(--cream); border: 1px solid var(--line); border-radius: 11px; padding: 12px 14px; outline: none; transition: border-color .15s, box-shadow .15s; resize: vertical; width: 100%; }
+    .field input:focus, .field textarea:focus, .field select:focus { border-color: var(--terra); box-shadow: 0 0 0 3px var(--terra-dim); }
+    .field input[type=file] { padding: 10px 14px; background: #fffdf8; cursor: pointer; font-size: 13.5px; }
+    .field .opt { font-weight: 400; color: var(--muted); font-size: 12px; }
+    .tabs { display: flex; gap: 6px; background: var(--cream); border: 1px solid var(--line); border-radius: 12px; padding: 5px; margin-bottom: 4px; }
+    .tab { flex: 1; font-family: var(--sans); font-weight: 600; font-size: 14px; color: var(--brown); background: transparent; border: none; border-radius: 9px; padding: 11px 10px; cursor: pointer; transition: .18s; }
+    .tab:hover { color: var(--terra); }
+    .tab.active { background: var(--terra); color: #fff; box-shadow: 0 6px 16px -8px var(--terra); }
+    .tab.active:hover { color: #fff; }
+    .is-hidden { display: none !important; }
     .join-form .btn-primary { justify-content: center; width: 100%; padding: 15px; }
     .form-status { font-size: 14px; margin: 0; min-height: 1px; }
     .form-status.ok { color: var(--terra-d); }
@@ -265,7 +273,7 @@
       <a href="#why">Why Kuma</a>
     </div>
     <div class="nav-cta">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJ7x9eKbGPZl6c7ZgT6-ceGM4_PjS8_CtqmRU6hqTeQ0HoZw/viewform" target="_blank" rel="noopener" class="btn btn-primary">Join Kuma</a>
+      <a href="#join" class="btn btn-primary">Join Kuma</a>
     </div>
     <button class="nav-burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
@@ -279,7 +287,7 @@
       <h1>Hire the right person,<br><span class="it">faster than ever</span></h1>
       <p class="hero-sub">Kuma Talent connects growing businesses with professionals who are already screened and ready to interview. You spend your time meeting finalists instead of sorting through résumés.</p>
       <div class="hero-actions">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJ7x9eKbGPZl6c7ZgT6-ceGM4_PjS8_CtqmRU6hqTeQ0HoZw/viewform" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Join Kuma →</a>
+        <a href="#join" class="btn btn-primary btn-lg">Join Kuma →</a>
       </div>
       <div class="trust">
         <div class="ti"><span class="tn">3×</span><span class="tl">Faster hiring</span></div>
@@ -373,7 +381,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4 10-11"/></svg>Authenticity scores and hire recommendations</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4 10-11"/></svg>Flat pricing, no recruiter commissions</li>
         </ul>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJ7x9eKbGPZl6c7ZgT6-ceGM4_PjS8_CtqmRU6hqTeQ0HoZw/viewform" target="_blank" rel="noopener" class="lnk">Join Kuma →</a>
+        <a href="#join" class="lnk">Join Kuma →</a>
       </div>
       <div class="aud candidates">
         <span class="tag">For Candidates</span>
@@ -384,7 +392,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4 10-11"/></svg>Judged on ability, not just a résumé</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4 10-11"/></svg>Always free for candidates</li>
         </ul>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJ7x9eKbGPZl6c7ZgT6-ceGM4_PjS8_CtqmRU6hqTeQ0HoZw/viewform" target="_blank" rel="noopener" class="lnk">Join Kuma →</a>
+        <a href="#join" class="lnk">Join Kuma →</a>
       </div>
     </div>
   </div>
@@ -439,7 +447,7 @@
       <h2>Ready to hire <span class="it">smarter?</span></h2>
       <p>Post your first role and see a ranked shortlist of candidates ready to interview, usually the same day.</p>
       <div class="cta-actions">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJ7x9eKbGPZl6c7ZgT6-ceGM4_PjS8_CtqmRU6hqTeQ0HoZw/viewform" target="_blank" rel="noopener" class="btn btn-light btn-lg">Join Kuma →</a>
+        <a href="#join" class="btn btn-light btn-lg">Join Kuma →</a>
       </div>
     </div>
   </div>
@@ -447,16 +455,41 @@
 
 <!-- ── JOIN / CONTACT ── -->
 <section id="join">
-  <div class="wrap">
-    <div class="sec-head center reveal">
+  <div class="wrap join-grid">
+    <div class="reveal">
       <span class="eyebrow">Join Kuma</span>
       <h2>Let's find your next great hire</h2>
-      <p>Fill out a quick form and we'll take it from there. <strong>Candidates</strong>, attach your CV. <strong>Employers</strong>, tell us what you're hiring for.</p>
+      <p><strong>Candidates</strong>, attach your CV. <strong>Employers</strong>, tell us what you're hiring for. No account needed.</p>
+      <p style="margin-top:18px;font-size:14px;color:var(--brown)">We usually reply within one business day.</p>
     </div>
-    <div class="center reveal" style="text-align:center">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJ7x9eKbGPZl6c7ZgT6-ceGM4_PjS8_CtqmRU6hqTeQ0HoZw/viewform" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Join Kuma →</a>
-      <p style="margin-top:14px;font-size:13px;color:var(--muted)">Takes a minute. We usually reply within one business day.</p>
-    </div>
+    <form class="join-form reveal" id="joinForm">
+      <div class="tabs" role="tablist">
+        <button type="button" class="tab active" data-role="Candidate">I'm a Candidate</button>
+        <button type="button" class="tab" data-role="Employer">I'm an Employer</button>
+      </div>
+      <div class="field">
+        <label for="jf-name">Name</label>
+        <input id="jf-name" type="text" required placeholder="Your name" />
+      </div>
+      <div class="field">
+        <label for="jf-email">Email</label>
+        <input id="jf-email" type="email" required placeholder="you@email.com" />
+      </div>
+      <div class="field only-emp is-hidden">
+        <label for="jf-company">Company</label>
+        <input id="jf-company" type="text" placeholder="Company name" />
+      </div>
+      <div class="field">
+        <label for="jf-msg">Tell us more</label>
+        <textarea id="jf-msg" rows="3" placeholder="The role you're after and your experience."></textarea>
+      </div>
+      <div class="field only-cand">
+        <label for="jf-cv">CV / Resume <span class="opt">(PDF or DOC, max 8 MB)</span></label>
+        <input id="jf-cv" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg" id="jf-submit">Join Kuma →</button>
+      <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+    </form>
   </div>
 </section>
 
@@ -472,11 +505,11 @@
         <h4>Product</h4>
         <a href="#process">How it works</a>
         <a href="#why">Why Kuma</a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJ7x9eKbGPZl6c7ZgT6-ceGM4_PjS8_CtqmRU6hqTeQ0HoZw/viewform" target="_blank" rel="noopener">Join Kuma</a>
+        <a href="#join">Join Kuma</a>
       </div>
       <div class="foot-col">
         <h4>Company</h4>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJ7x9eKbGPZl6c7ZgT6-ceGM4_PjS8_CtqmRU6hqTeQ0HoZw/viewform" target="_blank" rel="noopener">Contact</a>
+        <a href="#join">Contact</a>
         <a href="#audiences">For Employers</a>
         <a href="#audiences">For Candidates</a>
       </div>
@@ -517,6 +550,77 @@
     so.observe(shortlist);
   }
 
+  // Join Kuma — custom form posts to a Google Apps Script that saves the CV to
+  // kumatalent49's Drive + a Sheet. No respondent login, no email exposed, free.
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzj2R2JvW3ruaSWOe67sN-TjpoKdYjxvzMEySbhDiYYOpL2XhyzJPMFfi9xIlMfaInj/exec';
+  const joinForm = document.getElementById('joinForm');
+  const formStatus = document.getElementById('formStatus');
+  function toBase64(file) {
+    return new Promise((res, rej) => {
+      const r = new FileReader();
+      r.onload = () => res(String(r.result).split(',')[1]);
+      r.onerror = rej;
+      r.readAsDataURL(file);
+    });
+  }
+  if (joinForm) {
+    // Tabs — Candidate vs Employer
+    const tabs = joinForm.querySelectorAll('.tab');
+    const onlyCand = joinForm.querySelectorAll('.only-cand');
+    const onlyEmp = joinForm.querySelectorAll('.only-emp');
+    const msg = document.getElementById('jf-msg');
+    let role = 'Candidate';
+    function setRole(r) {
+      role = r;
+      tabs.forEach(t => t.classList.toggle('active', t.dataset.role === r));
+      onlyCand.forEach(el => el.classList.toggle('is-hidden', r !== 'Candidate'));
+      onlyEmp.forEach(el => el.classList.toggle('is-hidden', r !== 'Employer'));
+      msg.placeholder = (r === 'Candidate')
+        ? "The role you're after and your experience."
+        : "The role you're hiring for.";
+    }
+    tabs.forEach(t => t.addEventListener('click', () => setRole(t.dataset.role)));
+    setRole('Candidate');
+
+    joinForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('jf-submit');
+      const label = btn.textContent;
+      formStatus.className = 'form-status'; formStatus.textContent = '';
+      const file = (role === 'Candidate') ? document.getElementById('jf-cv').files[0] : null;
+      if (file && file.size > 8 * 1024 * 1024) {
+        formStatus.className = 'form-status err';
+        formStatus.textContent = 'Your CV is too large — please keep it under 8 MB.';
+        return;
+      }
+      btn.disabled = true; btn.textContent = 'Sending…';
+      const payload = {
+        name: document.getElementById('jf-name').value,
+        email: document.getElementById('jf-email').value,
+        role: role,
+        company: (role === 'Employer') ? document.getElementById('jf-company').value : '',
+        message: msg.value,
+        fileName: '', fileMime: '', fileData: ''
+      };
+      try {
+        if (file) {
+          payload.fileName = file.name;
+          payload.fileMime = file.type || 'application/octet-stream';
+          payload.fileData = await toBase64(file);
+        }
+        await fetch(APPS_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) });
+        formStatus.className = 'form-status ok';
+        formStatus.textContent = 'Thanks! We got your details and will be in touch shortly.';
+        joinForm.reset();
+        setRole(role);
+      } catch (err) {
+        formStatus.className = 'form-status err';
+        formStatus.textContent = 'Something went wrong. Please try again in a moment.';
+      } finally {
+        btn.disabled = false; btn.textContent = label;
+      }
+    });
+  }
 </script>
 
 </body>
