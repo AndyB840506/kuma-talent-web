@@ -480,6 +480,12 @@
         <label for="jf-company">Company</label>
         <input id="jf-company" type="text" placeholder="Company name" />
       </div>
+      <div class="field only-cand" id="jf-vacancy-field" style="display:none">
+        <label for="jf-vacancy">Position <span class="opt">(pick one to interview right away)</span></label>
+        <select id="jf-vacancy">
+          <option value="">General application — just send my CV</option>
+        </select>
+      </div>
       <div class="field">
         <label for="jf-msg">Tell us more</label>
         <textarea id="jf-msg" rows="3" placeholder="The role you're after and your experience."></textarea>
@@ -554,8 +560,30 @@
   // Join Kuma — custom form posts to a Google Apps Script that saves the CV to
   // our Google Drive + a Sheet. No respondent login, no email exposed, free.
   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzj2R2JvW3ruaSWOe67sN-TjpoKdYjxvzMEySbhDiYYOpL2XhyzJPMFfi9xIlMfaInj/exec';
+  // HireSignal (app.kumatalent.com) issues a single-use interview invite when
+  // a candidate applies to a specific vacancy. If it's unreachable the form
+  // silently falls back to the plain Apps Script flow — never lose the lead.
+  const HIRESIGNAL_API = 'https://app.kumatalent.com/api';
   const joinForm = document.getElementById('joinForm');
   const formStatus = document.getElementById('formStatus');
+  const vacancyField = document.getElementById('jf-vacancy-field');
+  const vacancySelect = document.getElementById('jf-vacancy');
+  fetch(HIRESIGNAL_API + '/jobs.php')
+    .then(r => r.ok ? r.json() : null)
+    .then(d => {
+      const jobs = (d && d.jobs) || [];
+      if (!jobs.length) return;
+      jobs.forEach(j => {
+        const o = document.createElement('option');
+        o.value = j.code; o.textContent = j.title;
+        vacancySelect.appendChild(o);
+      });
+      vacancyField.style.display = '';
+    })
+    .catch(() => {});
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
   function toBase64(file) {
     return new Promise((res, rej) => {
       const r = new FileReader();
@@ -609,9 +637,35 @@
           payload.fileMime = file.type || 'application/octet-stream';
           payload.fileData = await toBase64(file);
         }
+        // Vacancy selected → get a single-use interview invite from HireSignal
+        // first, so the Apps Script can log the link and email it. Fail-soft:
+        // if this call fails, the application still goes through as before.
+        let interview = null;
+        if (role === 'Candidate' && vacancySelect.value) {
+          try {
+            const r = await fetch(HIRESIGNAL_API + '/apply.php', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ name: payload.name, email: payload.email, job_code: vacancySelect.value })
+            });
+            if (r.ok) interview = await r.json();
+          } catch (e2) { /* fall back to the plain flow */ }
+        }
+        if (interview && interview.success) {
+          payload.vacancyCode = vacancySelect.value;
+          payload.vacancy = interview.job_title;
+          payload.interviewLink = interview.interview_url;
+        }
         await fetch(APPS_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) });
-        formStatus.className = 'form-status ok';
-        formStatus.textContent = 'Thanks! We got your details and will be in touch shortly.';
+        if (interview && interview.success) {
+          formStatus.className = 'form-status ok';
+          formStatus.innerHTML = 'Application received! Your interview for <strong>' + escapeHtml(interview.job_title) + '</strong> is ready — a ~15-minute chat, no scheduling needed.<br>' +
+            '<a class="btn btn-primary" style="margin-top:12px" href="' + escapeHtml(interview.interview_url) + '">Start your interview now →</a><br>' +
+            '<span style="font-size:13px">Not right now? We also emailed you the link — it stays valid for 7 days.</span>';
+        } else {
+          formStatus.className = 'form-status ok';
+          formStatus.textContent = 'Thanks! We got your details and will be in touch shortly.';
+        }
         joinForm.reset();
         setRole(role);
       } catch (err) {
