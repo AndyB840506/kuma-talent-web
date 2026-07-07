@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kuma Talent. Hire Smarter. Grow Faster.</title>
+  <meta name="description" content="Kuma Talent connects growing businesses with professionals who are screened and ready to interview. AI screening, ranked shortlists in hours, flat pricing with no recruiter commissions." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://kumatalent.com/" />
+
+  <meta property="og:title" content="Kuma Talent. Hire Smarter. Grow Faster." />
+  <meta property="og:description" content="Professionals who are screened and ready to interview. Ranked shortlists in hours, flat pricing with no recruiter commissions. Proudly Canadian." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kumatalent.com" />
+  <link rel="icon" type="image/png" href="assets/logo/isotipo-light.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,500;1,9..144,600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:    #F7F1E6;
+      --cream2:   #EFE3D0;
+      --sand:     #E4CFAE;
+      --terra:    #B5694A;
+      --terra-d:  #94512F;
+      --terra-dim:rgba(181,105,74,.10);
+      --ochre:    #C2913F;
+      --ochre-dim:rgba(194,145,63,.14);
+      --sage:     #8A917A;
+      --brown:    #5C4634;
+      --ink:      #2E231C;
+      --muted:    #7C6C5A;
+      --mauve:    #7C5A57;
+      --line:     rgba(46,35,28,.14);
+      --serif:    'Fraunces', Georgia, serif;
+      --sans:     'Outfit', system-ui, sans-serif;
+      --max:      1180px;
+    }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--sans); background: var(--cream); color: var(--ink); line-height: 1.65; overflow-x: hidden;
+      background-image:
+        radial-gradient(900px 500px at 88% -8%, var(--ochre-dim), transparent 60%),
+        radial-gradient(700px 480px at -6% 18%, var(--terra-dim), transparent 60%);
+    }
+    a { color: inherit; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+    .reveal.in { opacity: 1; transform: none; }
+
+    .eyebrow { font-family: var(--sans); font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--terra); display: inline-flex; align-items: center; gap: 10px; }
+    .eyebrow::before { content: ''; width: 26px; height: 1px; background: var(--ochre); }
+    .it { font-family: var(--serif); font-style: italic; font-weight: 500; color: var(--terra); }
+
+    /* ── NAV ── */
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(247,241,230,.82); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    .nav-in { max-width: var(--max); margin: 0 auto; padding: 0 28px; height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-mark { height: 30px; width: auto; display: block; clip-path: inset(0 100% 0 0); animation: drawmark 1.3s cubic-bezier(.6,.05,.2,1) .25s forwards; }
+    @keyframes drawmark { to { clip-path: inset(0 0 0 0); } }
+    .brand .wm { font-family: var(--serif); font-weight: 600; font-size: 21px; color: var(--ink); letter-spacing: -0.01em; }
+    .nav-links { display: flex; align-items: center; gap: 30px; }
+    .nav-links a { text-decoration: none; color: var(--brown); font-size: 14.5px; font-weight: 500; transition: color .18s; }
+    .nav-links a:hover { color: var(--terra); }
+    .nav-cta { display: flex; align-items: center; gap: 12px; }
+    .btn { font-family: var(--sans); font-weight: 600; font-size: 14px; border-radius: 999px; cursor: pointer; text-decoration: none; transition: .2s; display: inline-flex; align-items: center; gap: 8px; border: 1px solid transparent; }
+    .btn-primary { background: var(--terra); color: #fff; padding: 11px 22px; }
+    .btn-primary:hover { background: var(--terra-d); transform: translateY(-1px); box-shadow: 0 12px 26px -10px var(--terra); }
+    .btn-ghost { background: transparent; color: var(--brown); padding: 11px 18px; border-color: var(--line); }
+    .btn-ghost:hover { border-color: var(--terra); color: var(--terra); }
+    .btn-lg { padding: 15px 30px; font-size: 15px; }
+    .nav-burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+    .nav-burger span { width: 23px; height: 2px; background: var(--ink); display: block; transition: .25s; }
+    .nav-burger.open span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2){ opacity: 0; }
+    .nav-burger.open span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── HERO ── */
+    .hero { position: relative; padding: 88px 0 70px; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.06fr 0.94fr; gap: 60px; align-items: center; position: relative; }
+    .hero h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(40px, 5.6vw, 70px); line-height: 1.03; letter-spacing: -0.015em; color: var(--ink); margin: 22px 0 24px; }
+    .hero .ca-flag { font-size: 12px; font-weight: 600; letter-spacing: .04em; color: var(--muted); display: inline-flex; align-items: center; gap: 7px; }
+    .flag-ca { width: 19px; height: 9.5px; border-radius: 2px; flex-shrink: 0; box-shadow: 0 0 0 1px rgba(0,0,0,.08); }
+    .hero-sub { font-size: 19px; color: var(--muted); max-width: 500px; line-height: 1.7; margin-bottom: 34px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
+    .trust { display: flex; gap: 36px; flex-wrap: wrap; }
+    .trust .ti { display: flex; flex-direction: column; }
+    .trust .tn { font-family: var(--serif); font-weight: 600; font-size: 32px; color: var(--terra); line-height: 1; }
+    .trust .tl { font-size: 13px; color: var(--muted); margin-top: 6px; }
+
+    /* signal wave that draws itself (echo of the logo) */
+    .wave-wrap { position: relative; margin-top: 4px; }
+    .wave { width: 100%; height: 64px; display: block; overflow: visible; }
+    .wave path { fill: none; stroke: var(--terra); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2600; stroke-dashoffset: 2600; animation: wavedraw 2.8s cubic-bezier(.5,.1,.2,1) .5s forwards; }
+
+    @keyframes wavedraw { to { stroke-dashoffset: 0; } }
+
+    /* hero visual — ranked shortlist card */
+    .panel { background: #fffdf8; border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 34px 70px -34px rgba(46,35,28,.34); overflow: hidden; }
+    .panel-top { display: flex; align-items: center; gap: 10px; padding: 16px 20px; border-bottom: 1px solid var(--line); background: var(--cream); }
+    .panel-top .live { margin-left: auto; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--terra); display: inline-flex; align-items: center; gap: 7px; }
+    .panel-top .live .d { width: 7px; height: 7px; border-radius: 50%; background: var(--terra); box-shadow: 0 0 0 0 var(--terra); animation: ping 2s ease-out infinite; }
+    @keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(181,105,74,.5); } 100% { box-shadow: 0 0 0 9px rgba(181,105,74,0); } }
+    .panel-top .ttl { font-size: 13px; font-weight: 600; color: var(--brown); }
+    .panel-body { padding: 14px; }
+    .cand { display: grid; grid-template-columns: 38px 1fr auto; gap: 13px; align-items: center; padding: 16px 6px; }
+    .cand + .cand { border-top: 1px solid var(--line); }
+    .cand .av { width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center; font-weight: 700; font-size: 14px; color: #fff; font-family: var(--serif); }
+    .cand:nth-child(1) .av { background: var(--terra); }
+    .cand:nth-child(2) .av { background: var(--ochre); }
+    .cand:nth-child(3) .av { background: var(--sage); }
+    .cand .nm { font-weight: 600; font-size: 14.5px; color: var(--ink); }
+    .cand .ro { font-size: 12.5px; color: var(--muted); }
+    .cand .score { text-align: right; }
+    .cand .pct { font-family: var(--serif); font-weight: 600; font-size: 18px; color: var(--terra); }
+    .cand .bar { width: 84px; height: 5px; border-radius: 3px; background: var(--cream2); margin-top: 5px; overflow: hidden; }
+    .cand .bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--terra), var(--ochre)); width: 0; border-radius: 3px; transition: width 1.1s cubic-bezier(.3,.8,.3,1); }
+    .panel-foot { padding: 15px 20px; border-top: 1px solid var(--line); display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--muted); }
+    .panel-foot b { color: var(--terra); font-weight: 700; }
+    .hero-visual { position: relative; }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 104px 0; position: relative; }
+    .sec-head { max-width: 640px; margin-bottom: 56px; }
+    .sec-head h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(30px, 4vw, 46px); line-height: 1.1; letter-spacing: -0.018em; color: var(--ink); margin: 16px 0 14px; }
+    .sec-head p { font-size: 17px; color: var(--muted); line-height: 1.7; }
+    .center { margin-left: auto; margin-right: auto; text-align: center; }
+    .center .eyebrow { justify-content: center; }
+
+    /* ── PROCESS ── */
+    #process { background: linear-gradient(180deg, var(--cream), var(--cream2)); }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; position: relative; }
+    .step { position: relative; padding: 4px; }
+    .step .sn { font-family: var(--serif); font-style: italic; font-size: 16px; color: var(--ochre); font-weight: 600; }
+    .step h3 { font-family: var(--serif); font-weight: 600; font-size: 23px; color: var(--ink); margin: 12px 0 10px; }
+    .step p { font-size: 15px; color: var(--muted); line-height: 1.65; max-width: 300px; }
+    .step .num-ic { width: 52px; height: 52px; border-radius: 50%; background: #fffdf8; border: 1px solid var(--line); display: grid; place-items: center; margin-bottom: 18px; box-shadow: 0 10px 26px -16px rgba(46,35,28,.4); }
+    .step .num-ic svg { width: 25px; height: 25px; }
+    .step::after { content: ''; position: absolute; top: 26px; left: calc(52px + 18px); right: -9px; height: 1px; border-top: 1.5px dashed var(--line); }
+    .step:last-child::after { display: none; }
+
+    /* ── AUDIENCES (editorial split, no boxes) ── */
+    #audiences { background: var(--cream); }
+    .aud-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--line); }
+    .aud { padding: 50px 48px 46px; position: relative; }
+    .aud + .aud { border-left: 1px solid var(--line); }
+    .aud .tag { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .aud.emp .tag { color: var(--ochre); }
+    .aud.candidates .tag { color: var(--terra); }
+    .aud h3 { font-family: var(--serif); font-weight: 600; font-size: 28px; color: var(--ink); margin: 14px 0 16px; line-height: 1.15; }
+    .aud p { font-size: 15.5px; line-height: 1.7; color: var(--muted); margin-bottom: 26px; max-width: 430px; }
+    .aud ul { list-style: none; display: flex; flex-direction: column; gap: 13px; margin-bottom: 30px; }
+    .aud li { display: flex; align-items: flex-start; gap: 12px; font-size: 14.5px; color: var(--brown); }
+    .aud li svg { width: 19px; height: 19px; flex-shrink: 0; margin-top: 1px; stroke: var(--terra); }
+    .aud .lnk { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; text-decoration: none; color: var(--terra); transition: gap .15s; }
+    .aud.emp .lnk { color: var(--ochre); }
+    .aud .lnk:hover { gap: 12px; }
+
+    /* ── WHY KUMA ── */
+    #why { background: var(--cream2); }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line); }
+    .feat { background: transparent; border: none; border-radius: 0; border-bottom: 1px solid var(--line); padding: 34px 32px 32px; }
+    .feat:nth-child(-n+3) { border-bottom: 1px solid var(--line); }
+    .feat:not(:nth-child(3n+1)) { border-left: 1px solid var(--line); }
+    .feat .fi { width: 48px; height: 48px; border-radius: 50%; background: var(--terra-dim); display: grid; place-items: center; margin-bottom: 18px; }
+    .feat .fi svg { width: 23px; height: 23px; }
+    .feat h3 { font-family: var(--serif); font-weight: 600; font-size: 19px; color: var(--ink); margin-bottom: 9px; }
+    .feat p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+    /* ── CTA ── */
+    .cta-band { background: var(--ink); border-radius: 28px; padding: 64px 56px; position: relative; overflow: hidden; text-align: center; }
+    .cta-band::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 82% -12%, rgba(194,145,63,.42), transparent 52%), radial-gradient(circle at 12% 120%, rgba(181,105,74,.40), transparent 50%); }
+    .cta-band h2 { font-family: var(--serif); font-weight: 700; font-size: clamp(30px, 4vw, 46px); color: #fbf3e6; line-height: 1.08; margin-bottom: 16px; position: relative; }
+    .cta-band h2 .it { color: var(--sand); }
+    .cta-band p { color: rgba(251,243,230,.82); font-size: 17px; max-width: 520px; margin: 0 auto 32px; position: relative; }
+    .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; }
+    .cta-band .btn-light { background: #fbf3e6; color: var(--terra-d); padding: 15px 30px; }
+    .cta-band .btn-light:hover { transform: translateY(-1px); box-shadow: 0 14px 30px -10px rgba(0,0,0,.4); }
+    .cta-band .btn-out { background: transparent; color: #fbf3e6; border-color: rgba(251,243,230,.45); padding: 15px 28px; }
+    .cta-band .btn-out:hover { background: rgba(251,243,230,.12); }
+
+    /* ── JOIN / CONTACT ── */
+    #join { background: var(--cream); }
+    .join-grid { display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 56px; align-items: start; }
+    .join-grid h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(30px, 4vw, 44px); line-height: 1.1; letter-spacing: -0.018em; color: var(--ink); margin: 16px 0 16px; }
+    .join-grid > div > p { font-size: 17px; color: var(--muted); line-height: 1.7; max-width: 420px; }
+    .join-contact { margin-top: 22px; font-size: 15px; color: var(--brown); }
+    .join-contact a { color: var(--terra); font-weight: 600; text-decoration: none; }
+    .join-contact a:hover { text-decoration: underline; }
+    .join-form { display: grid; gap: 16px; background: #fffdf8; border: 1px solid var(--line); border-radius: 20px; padding: 32px; box-shadow: 0 30px 64px -38px rgba(46,35,28,.34); }
+    .field { display: flex; flex-direction: column; gap: 7px; }
+    .field label { font-size: 13px; font-weight: 600; color: var(--brown); letter-spacing: .01em; }
+    .field input, .field textarea, .field select { font-family: var(--sans); font-size: 15px; color: var(--ink); background: var(--cream); border: 1px solid var(--line); border-radius: 11px; padding: 12px 14px; outline: none; transition: border-color .15s, box-shadow .15s; resize: vertical; width: 100%; }
+    .field input:focus, .field textarea:focus, .field select:focus { border-color: var(--terra); box-shadow: 0 0 0 3px var(--terra-dim); }
+    .field input[type=file] { padding: 10px 14px; background: #fffdf8; cursor: pointer; font-size: 13.5px; }
+    .field .opt { font-weight: 400; color: var(--muted); font-size: 12px; }
+    .tabs { display: flex; gap: 6px; background: var(--cream); border: 1px solid var(--line); border-radius: 12px; padding: 5px; margin-bottom: 4px; }
+    .tab { flex: 1; font-family: var(--sans); font-weight: 600; font-size: 14px; color: var(--brown); background: transparent; border: none; border-radius: 9px; padding: 11px 10px; cursor: pointer; transition: .18s; }
+    .tab:hover { color: var(--terra); }
+    .tab.active { background: var(--terra); color: #fff; box-shadow: 0 6px 16px -8px var(--terra); }
+    .tab.active:hover { color: #fff; }
+    .is-hidden { display: none !important; }
+    .join-form .btn-primary { justify-content: center; width: 100%; padding: 15px; }
+    .form-status { font-size: 14px; margin: 0; min-height: 1px; }
+    .form-status.ok { color: var(--terra-d); }
+    .form-status.err { color: #b4452f; }
+    .hp { position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--ink); color: rgba(251,243,230,.66); padding: 60px 0 34px; }
+    .foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(251,243,230,.12); }
+    .foot-brand .foot-logo { height: 34px; width: auto; display: block; margin-bottom: 14px; }
+    .foot-brand p { font-size: 14px; max-width: 320px; line-height: 1.7; }
+    .foot-col h4 { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--sand); margin-bottom: 16px; }
+    .foot-col a { display: block; text-decoration: none; color: rgba(251,243,230,.66); font-size: 14.5px; margin-bottom: 11px; transition: color .15s; }
+    .foot-col a:hover { color: #fbf3e6; }
+    .foot-base { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; padding-top: 26px; font-size: 13px; }
+    .foot-base .flag { display: inline-flex; align-items: center; gap: 8px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 940px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+      .hero-visual { max-width: 460px; }
+      .steps { grid-template-columns: 1fr; gap: 36px; }
+      .step::after { display: none; }
+      .aud-grid { grid-template-columns: 1fr; }
+      .aud + .aud { border-left: none; border-top: 1px solid var(--line); }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .feat:not(:nth-child(3n+1)) { border-left: none; }
+      .feat:not(:nth-child(2n+1)) { border-left: 1px solid var(--line); }
+      .join-grid { grid-template-columns: 1fr; gap: 36px; }
+      .foot-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 680px) {
+      .nav-links { display: none; position: absolute; top: 72px; left: 0; right: 0; background: var(--cream); border-bottom: 1px solid var(--line); flex-direction: column; align-items: flex-start; gap: 0; padding: 10px 28px 18px; }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px 0; width: 100%; }
+      .nav-cta .btn-ghost { display: none; }
+      .nav-burger { display: flex; }
+      section { padding: 76px 0; }
+      .why-grid { grid-template-columns: 1fr; }
+      .feat { border-left: none !important; }
+      .foot-grid { grid-template-columns: 1fr; gap: 30px; }
+      .cta-band { padding: 48px 28px; }
+      .aud { padding: 34px 26px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1 !important; transform: none !important; }
+      .brand-mark { clip-path: none; animation: none; }
+      .wave path { stroke-dashoffset: 0; animation: none; }
+      .panel-top .live .d { animation: none; }
+      .cand .bar i { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-in">
+    <a href="#top" class="brand">
+      <img class="brand-mark" src="assets/logo/isotipo-light.png" alt="Kuma Talent bear mark" />
+      <span class="wm">Kuma Talent</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#process">How it works</a>
+      <a href="#audiences">For Employers</a>
+      <a href="#audiences">For Candidates</a>
+      <a href="#why">Why Kuma</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#join" class="btn btn-primary">Join Kuma</a>
+    </div>
+    <button class="nav-burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="reveal in">
+      <span class="ca-flag"><svg class="flag-ca" viewBox="0 0 96 48" role="img" aria-label="Canada"><rect width="96" height="48" fill="#fff"/><rect width="26" height="48" fill="#D80621"/><rect x="70" width="26" height="48" fill="#D80621"/><path fill="#D80621" transform="translate(48 24) scale(0.40) translate(-50 -52)" d="M50 3 C50 3 53 18 54 20 C55 22 58 21 60 20 L57 28 C56 30 57 31 59 31 L70 29 L67 36 C66 38 67 39 69 40 L80 46 L70 50 C68 51 68 53 69 54 L72 62 L61 60 C59 60 58 61 58 63 L58 75 L52 68 C51 67 49 67 48 68 L42 75 L42 63 C42 61 41 60 39 60 L28 62 L31 54 C32 53 32 51 30 50 L20 46 L31 40 C33 39 34 38 33 36 L30 29 L41 31 C43 31 44 30 43 28 L40 20 C42 21 45 22 46 20 C47 18 50 3 50 3 Z"/></svg>Proudly Canadian</span>
+      <h1>Hire the right person,<br><span class="it">faster than ever</span></h1>
+      <p class="hero-sub">Kuma Talent connects growing businesses with professionals who are already screened and ready to interview. You spend your time meeting finalists instead of sorting through résumés.</p>
+      <div class="hero-actions">
+        <a href="#join" class="btn btn-primary btn-lg">Join Kuma →</a>
+      </div>
+      <div class="trust">
+        <div class="ti"><span class="tn">3×</span><span class="tl">Faster hiring</span></div>
+        <div class="ti"><span class="tn">85%</span><span class="tl">Interview show rate</span></div>
+        <div class="ti"><span class="tn">$0</span><span class="tl">Recruiter commissions</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal in">
+      <div class="panel">
+        <div class="panel-top">
+          <span class="ttl">Ranked shortlist for Senior Support Lead</span>
+          <span class="live"><span class="d"></span>Ready in hours</span>
+        </div>
+        <div class="panel-body" id="shortlist">
+          <div class="cand">
+            <span class="av">A</span>
+            <div><div class="nm">Candidate A</div><div class="ro">8 yrs, bilingual, remote</div></div>
+            <div class="score"><div class="pct">96%</div><div class="bar"><i data-w="96"></i></div></div>
+          </div>
+          <div class="cand">
+            <span class="av">M</span>
+            <div><div class="nm">Candidate M</div><div class="ro">6 yrs, CX ops, hybrid</div></div>
+            <div class="score"><div class="pct">91%</div><div class="bar"><i data-w="91"></i></div></div>
+          </div>
+          <div class="cand">
+            <span class="av">J</span>
+            <div><div class="nm">Candidate J</div><div class="ro">5 yrs, team lead, onsite</div></div>
+            <div class="score"><div class="pct">88%</div><div class="bar"><i data-w="88"></i></div></div>
+          </div>
+        </div>
+        <div class="panel-foot">
+          Scored on role fit and <b>authenticity</b>, recommended to hire
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap wave-wrap" aria-hidden="true">
+    <svg class="wave" viewBox="0 0 1440 64" preserveAspectRatio="none">
+      <path d="M0,32 L470,32 C500,32 506,30 528,18 C548,7 556,6 566,16 C576,26 580,58 600,58 C622,58 628,7 648,7 C668,7 676,46 694,46 C712,46 720,32 744,32 L1010,32 C1040,32 1048,30 1066,22 C1086,13 1094,12 1104,22 C1114,32 1120,50 1136,50 C1154,50 1162,32 1186,32 L1440,32" />
+    </svg>
+  </div>
+</section>
+
+<!-- ── PROCESS ── -->
+<section id="process">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">How it works</span>
+      <h2>From open role to ranked shortlist in hours, not weeks</h2>
+      <p>Kuma runs the heavy lifting of the first hiring rounds so your team only meets the people worth meeting.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="num-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#B5694A" stroke-width="1.8"><path d="M9 6h10M9 12h10M9 18h6"/><circle cx="4.5" cy="6" r="1.4" fill="#B5694A" stroke="none"/><circle cx="4.5" cy="12" r="1.4" fill="#B5694A" stroke="none"/><circle cx="4.5" cy="18" r="1.4" fill="#B5694A" stroke="none"/></svg></div>
+        <span class="sn">Step 01</span>
+        <h3>Post your role</h3>
+        <p>Tell Kuma what the job needs. We turn it into a structured screening built for that role in minutes.</p>
+      </div>
+      <div class="step reveal">
+        <div class="num-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#B5694A" stroke-width="1.8"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="4"/><path d="M6.5 6.5l1.8 1.8M15.7 15.7l1.8 1.8"/></svg></div>
+        <span class="sn">Step 02</span>
+        <h3>AI screens and interviews</h3>
+        <p>Every applicant takes an interview run by AI and tailored to the role, scored for fit and authenticity.</p>
+      </div>
+      <div class="step reveal">
+        <div class="num-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#B5694A" stroke-width="1.8"><path d="M5 13l4 4 10-11"/></svg></div>
+        <span class="sn">Step 03</span>
+        <h3>Get a ranked shortlist</h3>
+        <p>Receive a ranked shortlist with assessment reports and hire recommendations, often the same day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── AUDIENCES ── -->
+<section id="audiences">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Built for both sides</span>
+      <h2>Better hiring for employers. A fair shot for candidates.</h2>
+    </div>
+    <div class="aud-grid reveal">
+      <div class="aud emp">
+        <span class="tag">For Employers</span>
+        <h3>Meet finalists, skip the filtering</h3>
+        <p>Stop drowning in résumés and interviews where no one shows. Kuma delivers a ranked shortlist of people who already proved they fit.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4 10-11"/></svg>A shortlist the same day from a single job post</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4 10-11"/></svg>Authenticity scores and hire recommendations</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4 10-11"/></svg>Flat pricing, no recruiter commissions</li>
+        </ul>
+        <a href="#join" class="lnk">Join Kuma →</a>
+      </div>
+      <div class="aud candidates">
+        <span class="tag">For Candidates</span>
+        <h3>Get seen for what you can do</h3>
+        <p>No more applications vanishing into a black hole. Take one structured interview and let your skills speak, directly to employers who are hiring.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4 10-11"/></svg>One interview, seen by real employers</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4 10-11"/></svg>Judged on ability, not just a résumé</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4 10-11"/></svg>Always free for candidates</li>
+        </ul>
+        <a href="#join" class="lnk">Join Kuma →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY KUMA ── -->
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Why Kuma</span>
+      <h2>Recruiting that's faster, fairer, and refreshingly honest</h2>
+    </div>
+    <div class="why-grid">
+      <div class="feat reveal">
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="#B5694A" stroke-width="1.8"><path d="M13 2L3 14h7l-1 8 11-12h-7l0-8Z"/></svg></div>
+        <h3>Shortlists the same day</h3>
+        <p>Go from a job post to a ranked list of candidates ready to interview within hours.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="#B5694A" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Authenticity scores</h3>
+        <p>Every candidate is scored for genuine fit, so you trust the ranking instead of the résumé alone.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="#B5694A" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 12h8M12 8v8"/></svg></div>
+        <h3>Flat, honest pricing</h3>
+        <p>One transparent rate. No commissions tied to salary, no surprise invoices.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="#B5694A" stroke-width="1.8"><path d="M12 3a4 4 0 0 1 4 4c0 3-4 6-4 6s-4-3-4-6a4 4 0 0 1 4-4Z"/><path d="M5 21c0-3 3-5 7-5s7 2 7 5"/></svg></div>
+        <h3>Interviews run by AI</h3>
+        <p>Structured screening interviews built for each role that every applicant actually completes.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="#B5694A" stroke-width="1.8"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0Z"/><path d="M8 9l8 6M16 9l-8 6"/></svg></div>
+        <h3>No ghost applications</h3>
+        <p>Candidates engage and complete the screening, so your pipeline is full of real people instead of dead leads.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="#B5694A" stroke-width="1.8"><path d="M3 17l6-6 4 4 7-8"/><path d="M17 7h4v4"/></svg></div>
+        <h3>3× faster hiring</h3>
+        <p>Teams using Kuma fill roles in a fraction of the time of traditional recruiting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2>Ready to hire <span class="it">smarter?</span></h2>
+      <p>Post your first role and see a ranked shortlist of candidates ready to interview, usually the same day.</p>
+      <div class="cta-actions">
+        <a href="#join" class="btn btn-light btn-lg">Join Kuma →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── JOIN / CONTACT ── -->
+<section id="join">
+  <div class="wrap join-grid">
+    <div class="reveal">
+      <span class="eyebrow">Join Kuma</span>
+      <h2>Let's find your next great hire</h2>
+      <p><strong>Candidates</strong>, attach your CV. <strong>Employers</strong>, tell us what you're hiring for. No account needed.</p>
+      <p style="margin-top:18px;font-size:14px;color:var(--brown)">We usually reply within one business day.</p>
+    </div>
+    <form class="join-form reveal" id="joinForm">
+      <div class="tabs" role="tablist">
+        <button type="button" class="tab active" data-role="Candidate">I'm a Candidate</button>
+        <button type="button" class="tab" data-role="Employer">I'm an Employer</button>
+      </div>
+      <div class="field">
+        <label for="jf-name">Name</label>
+        <input id="jf-name" type="text" required placeholder="Your name" />
+      </div>
+      <div class="field">
+        <label for="jf-email">Email</label>
+        <input id="jf-email" type="email" required placeholder="you@email.com" />
+      </div>
+      <div class="field only-emp is-hidden">
+        <label for="jf-company">Company</label>
+        <input id="jf-company" type="text" placeholder="Company name" />
+      </div>
+      <div class="field only-cand" id="jf-vacancy-field" style="display:none">
+        <label for="jf-vacancy">Position <span class="opt">(pick one to interview right away)</span></label>
+        <select id="jf-vacancy">
+          <option value="">General application — just send my CV</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="jf-msg">Tell us more</label>
+        <textarea id="jf-msg" rows="3" placeholder="The role you're after and your experience."></textarea>
+      </div>
+      <div class="field only-cand">
+        <label for="jf-cv">CV / Resume <span class="opt">(PDF or DOC, max 8 MB)</span></label>
+        <input id="jf-cv" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg" id="jf-submit">Join Kuma →</button>
+      <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img class="foot-logo" src="assets/logo/isotipo-dark.png" alt="Kuma Talent" />
+        <p>AI talent screening that connects growing businesses with professionals who are screened and ready to interview. Hire smarter. Grow faster.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <a href="#process">How it works</a>
+        <a href="#why">Why Kuma</a>
+        <a href="#join">Join Kuma</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="#join">Contact</a>
+        <a href="#audiences">For Employers</a>
+        <a href="#audiences">For Candidates</a>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 Kuma Talent. All rights reserved.</span>
+      <span class="flag"><svg class="flag-ca" viewBox="0 0 96 48" role="img" aria-label="Canada"><rect width="96" height="48" fill="#fff"/><rect width="26" height="48" fill="#D80621"/><rect x="70" width="26" height="48" fill="#D80621"/><path fill="#D80621" transform="translate(48 24) scale(0.40) translate(-50 -52)" d="M50 3 C50 3 53 18 54 20 C55 22 58 21 60 20 L57 28 C56 30 57 31 59 31 L70 29 L67 36 C66 38 67 39 69 40 L80 46 L70 50 C68 51 68 53 69 54 L72 62 L61 60 C59 60 58 61 58 63 L58 75 L52 68 C51 67 49 67 48 68 L42 75 L42 63 C42 61 41 60 39 60 L28 62 L31 54 C32 53 32 51 30 50 L20 46 L31 40 C33 39 34 38 33 36 L30 29 L41 31 C43 31 44 30 43 28 L40 20 C42 21 45 22 46 20 C47 18 50 3 50 3 Z"/></svg>Proudly Canadian, built with care</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav
+  const burger = document.getElementById('navBurger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => { burger.classList.toggle('open'); navLinks.classList.toggle('open'); });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { burger.classList.remove('open'); navLinks.classList.remove('open'); }));
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Animate shortlist score bars when visible
+  const shortlist = document.getElementById('shortlist');
+  if (shortlist) {
+    const so = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          shortlist.querySelectorAll('.bar i').forEach((bar, idx) => {
+            setTimeout(() => { bar.style.width = bar.getAttribute('data-w') + '%'; }, idx * 180);
+          });
+          so.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    so.observe(shortlist);
+  }
+
+  // Join Kuma — custom form posts to a Google Apps Script that saves the CV to
+  // our Google Drive + a Sheet. No respondent login, no email exposed, free.
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxutVyb4mWXaE_svN-99GGbx1G17Jc1PH8vWSljVIj0xK9iB34JksM12s_6zVOUb8lk/exec';
+  // HireSignal (app.kumatalent.com) issues a single-use interview invite when
+  // a candidate applies to a specific vacancy. If it's unreachable the form
+  // silently falls back to the plain Apps Script flow — never lose the lead.
+  const HIRESIGNAL_API = 'https://app.kumatalent.com/api';
+  const joinForm = document.getElementById('joinForm');
+  const formStatus = document.getElementById('formStatus');
+  const vacancyField = document.getElementById('jf-vacancy-field');
+  const vacancySelect = document.getElementById('jf-vacancy');
+  fetch(HIRESIGNAL_API + '/jobs.php')
+    .then(r => r.ok ? r.json() : null)
+    .then(d => {
+      const jobs = (d && d.jobs) || [];
+      if (!jobs.length) return;
+      jobs.forEach(j => {
+        const o = document.createElement('option');
+        o.value = j.code; o.textContent = j.title;
+        vacancySelect.appendChild(o);
+      });
+      vacancyField.style.display = '';
+    })
+    .catch(() => {});
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+  function toBase64(file) {
+    return new Promise((res, rej) => {
+      const r = new FileReader();
+      r.onload = () => res(String(r.result).split(',')[1]);
+      r.onerror = rej;
+      r.readAsDataURL(file);
+    });
+  }
+  if (joinForm) {
+    // Tabs — Candidate vs Employer
+    const tabs = joinForm.querySelectorAll('.tab');
+    const onlyCand = joinForm.querySelectorAll('.only-cand');
+    const onlyEmp = joinForm.querySelectorAll('.only-emp');
+    const msg = document.getElementById('jf-msg');
+    let role = 'Candidate';
+    function setRole(r) {
+      role = r;
+      tabs.forEach(t => t.classList.toggle('active', t.dataset.role === r));
+      onlyCand.forEach(el => el.classList.toggle('is-hidden', r !== 'Candidate'));
+      onlyEmp.forEach(el => el.classList.toggle('is-hidden', r !== 'Employer'));
+      msg.placeholder = (r === 'Candidate')
+        ? "The role you're after and your experience."
+        : "The role you're hiring for.";
+    }
+    tabs.forEach(t => t.addEventListener('click', () => setRole(t.dataset.role)));
+    setRole('Candidate');
+
+    joinForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('jf-submit');
+      const label = btn.textContent;
+      formStatus.className = 'form-status'; formStatus.textContent = '';
+      const file = (role === 'Candidate') ? document.getElementById('jf-cv').files[0] : null;
+      if (file && file.size > 8 * 1024 * 1024) {
+        formStatus.className = 'form-status err';
+        formStatus.textContent = 'Your CV is too large — please keep it under 8 MB.';
+        return;
+      }
+      btn.disabled = true; btn.textContent = 'Sending…';
+      const payload = {
+        name: document.getElementById('jf-name').value,
+        email: document.getElementById('jf-email').value,
+        role: role,
+        company: (role === 'Employer') ? document.getElementById('jf-company').value : '',
+        message: msg.value,
+        fileName: '', fileMime: '', fileData: ''
+      };
+      try {
+        if (file) {
+          payload.fileName = file.name;
+          payload.fileMime = file.type || 'application/octet-stream';
+          payload.fileData = await toBase64(file);
+        }
+        // Vacancy selected → get a single-use interview invite from HireSignal
+        // first, so the Apps Script can log the link and email it. Fail-soft:
+        // if this call fails, the application still goes through as before.
+        let interview = null;
+        if (role === 'Candidate' && vacancySelect.value) {
+          try {
+            const r = await fetch(HIRESIGNAL_API + '/apply.php', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ name: payload.name, email: payload.email, job_code: vacancySelect.value })
+            });
+            if (r.ok) interview = await r.json();
+          } catch (e2) { /* fall back to the plain flow */ }
+        }
+        if (interview && interview.success) {
+          payload.vacancyCode = vacancySelect.value;
+          payload.vacancy = interview.job_title;
+          payload.interviewLink = interview.interview_url;
+        }
+        await fetch(APPS_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) });
+        if (interview && interview.success) {
+          formStatus.className = 'form-status ok';
+          formStatus.innerHTML = 'Application received! Your interview for <strong>' + escapeHtml(interview.job_title) + '</strong> is ready — a ~15-minute chat, no scheduling needed.<br>' +
+            '<a class="btn btn-primary" style="margin-top:12px" href="' + escapeHtml(interview.interview_url) + '">Start your interview now →</a><br>' +
+            '<span style="font-size:13px">Not right now? We also emailed you the link — it stays valid for 7 days.</span>';
+        } else {
+          formStatus.className = 'form-status ok';
+          formStatus.textContent = 'Thanks! We got your details and will be in touch shortly.';
+        }
+        joinForm.reset();
+        setRole(role);
+      } catch (err) {
+        formStatus.className = 'form-status err';
+        formStatus.textContent = 'Something went wrong. Please try again in a moment.';
+      } finally {
+        btn.disabled = false; btn.textContent = label;
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
