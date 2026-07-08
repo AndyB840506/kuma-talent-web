@@ -71,6 +71,22 @@
     body[data-mode="candidate"] .ng.ng-cand { display: flex; }
     body[data-mode="signal"]    .ng.ng-sig  { display: flex; }
 
+    /* smooth mode transitions: fade-out via .mode-out, fade-up on show
+       (CSS animations re-run when an element goes display:none -> shown) */
+    @keyframes modeIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+    body[data-mode="entry"] #entry { animation: modeIn 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+    body[data-mode="employer"]  div.m-emp,
+    body[data-mode="candidate"] div.m-cand,
+    body[data-mode="signal"]    div.m-sig,
+    body[data-mode="employer"]  .form-card.m-biz,
+    body[data-mode="signal"]    .form-card.m-biz,
+    body[data-mode="candidate"] .form-card.m-cand { animation: modeIn 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+    #entry, #site { transition: opacity 0.18s ease; }
+    body.mode-out #entry, body.mode-out #site { opacity: 0; }
+    @media (prefers-reduced-motion: reduce) {
+      #entry, #site, div.m-emp, div.m-cand, div.m-sig, .form-card { animation: none !important; transition: none !important; }
+    }
+
     /* ---------- shared atoms ---------- */
     .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.26em; color: var(--brown); }
     .flag { border-radius: 1.5px; box-shadow: 0 0 0 1px rgba(25,25,25,0.08); flex-shrink: 0; }
@@ -877,7 +893,7 @@
 
         <div class="founder teal">
           <div class="avatar">
-            <img src="assets/founders/andres.jpg" alt="Andres Bermudez" onerror="this.parentNode.classList.add('noimg')" />
+            <img src="assets/founders/andres.jpg" alt="Andres Bermudez" style="object-position: 50% 0" onerror="this.parentNode.classList.add('noimg')" />
             <span>AB</span>
           </div>
           <h3>Andres Bermudez</h3>
@@ -987,8 +1003,20 @@
     window.scrollTo(0, 0);
   }
 
+  // fade the current view out briefly before swapping modes (skip when
+  // the user prefers reduced motion or the mode isn't actually changing)
+  const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function goMode(mode) {
+    if (REDUCED_MOTION || document.body.dataset.mode === mode) { setMode(mode); return; }
+    document.body.classList.add('mode-out');
+    setTimeout(() => {
+      setMode(mode);
+      document.body.classList.remove('mode-out');
+    }, 180);
+  }
+
   document.querySelectorAll('[data-go]').forEach(el => {
-    el.addEventListener('click', () => setMode(el.dataset.go));
+    el.addEventListener('click', () => goMode(el.dataset.go));
   });
 
   // initial mode from hash (deep links)
