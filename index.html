@@ -169,7 +169,7 @@
     .ng a, .ng .nav-lnk { font-size: 13.5px; font-weight: 600; color: var(--muted); text-decoration: none; background: none; border: none; padding: 0; }
     .ng a:hover, .ng .nav-lnk:hover { color: var(--brown); }
     .ng .nav-hs { font-size: 13.5px; background: none; border: none; padding: 0; }
-    .ng a.nav-cta, .nav-cta { border-radius: 12px; padding: 12px 22px; font-size: 13.5px; font-weight: 700; text-decoration: none; }
+    .ng a.nav-cta, .nav-cta { border-radius: 12px; padding: 12px 22px; font-size: 13.5px; font-weight: 700; text-decoration: none; white-space: nowrap; }
     .nav-cta.dark  { background: var(--ink); color: #FFFFFF; }
     .nav-cta.dark:hover  { color: #FFFFFF; }
     .nav-cta.brown { background: var(--brown); color: var(--cream); }
@@ -417,6 +417,13 @@
     }
     @media (max-width: 720px) {
       .wrap { padding-left: 20px; padding-right: 20px; }
+      /* compact nav: keep logo + CTA side by side without overlap */
+      .nav-inner { gap: 10px; }
+      .nav-logo { flex-shrink: 0; }
+      .nav-logo img { width: 34px; height: 34px; }
+      .nav-logo .wordmark { font-size: 17px; }
+      .nav-logo .wordsub span { font-size: 8px; }
+      .ng a.nav-cta, .nav-cta { padding: 10px 14px; font-size: 12.5px; }
       .entry-cards { grid-template-columns: 1fr; }
       #entry { padding: 40px 20px; }
       .hero h1 { font-size: 33px; }
@@ -432,6 +439,10 @@
       .cand-panel { padding: 32px 22px; }
       .entry-pill { flex-wrap: wrap; justify-content: center; text-align: center; }
       .footer-inner { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 400px) {
+      .wrap { padding-left: 14px; padding-right: 14px; }
+      .nav-logo .wordsub { display: none; }
     }
   </style>
 </head>
