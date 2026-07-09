@@ -1030,8 +1030,10 @@
     el.addEventListener('click', () => goMode(el.dataset.go));
   });
 
-  // initial mode from hash (deep links)
-  setMode(HASH_TO_MODE[location.hash] || 'entry', true);
+  // initial mode from hash (deep links). ?job=KT-00X (job QR / shared link)
+  // implies the candidate flow and preselects the vacancy once jobs load.
+  const PRESELECT_JOB = (new URLSearchParams(location.search).get('job') || '').trim().toUpperCase();
+  setMode(PRESELECT_JOB ? 'candidate' : (HASH_TO_MODE[location.hash] || 'entry'), true);
 
   // ---------- backends (same flow as the live site) ----------
   // Custom form posts to a Google Apps Script that saves the CV to our
@@ -1068,6 +1070,14 @@
         vacancySelect.appendChild(o);
       });
       vacancyField.style.display = '';
+      // deep link (?job=KT-00X) → preselect and land on the form; an unknown
+      // code just stays on "General application" — never block the apply.
+      if (PRESELECT_JOB) {
+        const match = jobs.find(j => String(j.code).toUpperCase() === PRESELECT_JOB);
+        if (match) vacancySelect.value = match.code;
+        const contact = document.getElementById('contact');
+        if (contact) contact.scrollIntoView({ behavior: REDUCED_MOTION ? 'auto' : 'smooth' });
+      }
     })
     .catch(() => {});
 
