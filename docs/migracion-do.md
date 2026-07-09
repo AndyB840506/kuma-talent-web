@@ -1,5 +1,13 @@
 # Runbook — migrar kumatalent.com de Vercel a DigitalOcean
 
+**MIGRACIÓN EJECUTADA — DO es producción (verificado 2026-07-09).** El sitio se
+sirve desde DO App Platform (header `x-do-app-origin`), static site conectado a
+GitHub `AndyB840506/kuma-talent-web` branch `master` con deploy-on-push (~20s en
+publicar). Para deployar: `git push origin master` — nada de Vercel CLI. Queda
+pendiente solo el paso 6 (limpiar dominios del proyecto Vercel) si no se hizo.
+
+Los pasos de abajo se conservan como referencia de cómo se hizo / rollback.
+
 Estado al 2026-07-07: el landing nuevo ya es producción en Vercel (proyecto
 `kuma-talent-web`, flujo prebuilt). Este runbook es para el paso opcional de
 consolidar el hosting en DO. Requiere acceso al panel de DigitalOcean (o un
