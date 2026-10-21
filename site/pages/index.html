@@ -1,0 +1,296 @@
+{{doc_open}}
+<title>{{meta_title}}</title>
+{{head_extra}}
+<meta name="description" content="{{meta_description}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+{{zodiak}}
+<style>
+{{include:partials/base.css}}
+</style>
+{{doc_body}}
+<a class="skip" href="#how">{{skip}}</a>
+<canvas id="field" aria-hidden="true"></canvas>
+<div class="glow" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+{{include:partials/header.html}}
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-mid">
+      <div>
+        <h1 id="hero-title" class="wordmark"><span class="w1">Hire</span><span class="it w2">Signal</span></h1>
+        <p class="tagline mono">{{hero_tagline}} <b>{{hero_tagline_b}}</b></p>
+      </div>
+    </div>
+    <div class="wrap hero-foot">
+      <a class="corner" href="#sample">{{hero_left}} <span class="arr">&rarr;</span></a>
+      <span class="scrollcue mono">{{hero_scroll}}</span>
+      <a class="corner" href="#try">{{hero_right}} <span class="arr">&rarr;</span></a>
+    </div>
+  </section>
+
+  <section class="sec" id="how" aria-labelledby="how-title">
+    <div class="wrap">
+      <div class="sec-head mono"><span>{{how_label}}</span><span>I</span></div>
+      <h2 class="big" id="how-title">{{how_title}}</h2>
+      <p class="lede">{{how_lede}}</p>
+      <div class="flow">
+        <div class="group applicant">
+          <span class="group-label mono">{{how_group_a}}</span>
+          <div class="steps">
+            <article class="step">
+              <h3><span class="n">1</span>{{how_s1_t}}</h3>
+              <p>{{how_s1_p}}</p>
+              <div class="phone" aria-hidden="true"><div class="screen">
+                <div class="notch"><span>9:12</span><span>&bull;&bull;&bull;</span></div>
+                <div class="sc-pad">
+                  <span class="sc-title">{{m_inbox}}</span>
+                  <div class="mail">
+                    <div class="from">{{m_company}}</div>
+                    <div class="muted">{{m_subject}}</div>
+                    <div style="margin-top:6px">{{m_mail_body}}</div>
+                    <span class="btn-mini">{{m_mail_btn}}</span>
+                  </div>
+                  <div class="mail muted" style="opacity:.55">{{m_digest}}</div>
+                </div>
+              </div></div>
+            </article>
+            <article class="step">
+              <h3><span class="n">2</span>{{how_s2_t}}</h3>
+              <p>{{how_s2_p}}</p>
+              <div class="phone" aria-hidden="true"><div class="screen">
+                <div class="notch"><span>9:14</span><span>&bull;&bull;&bull;</span></div>
+                <div class="sc-pad">
+                  <div class="bubble ai">{{m_q1}}</div>
+                  <div class="bubble me">{{m_a1}}</div>
+                  <div class="bubble ai">{{m_q2}}</div>
+                  <div class="typing"><i></i><i></i><i></i></div>
+                </div>
+              </div></div>
+            </article>
+          </div>
+        </div>
+        <div class="group team">
+          <span class="group-label mono">{{how_group_b}}</span>
+          <div class="steps">
+            <article class="step">
+              <h3><span class="n">3</span>{{how_s3_t}}</h3>
+              <p>{{how_s3_p}}</p>
+              <div class="phone dark" aria-hidden="true"><div class="screen">
+                <div class="notch"><span>9:31</span><span>{{m_noticed}}</span></div>
+                <div class="sc-pad">
+                  <div class="sig"><span class="dot d-warn"></span><div>{{m_sig1_t}}<q>{{m_sig1_q}}</q></div></div>
+                  <div class="sig"><span class="dot d-ok"></span><div>{{m_sig2_t}}<q>{{m_sig2_q}}</q></div></div>
+                  <div class="sig"><span class="dot d-ok"></span><div>{{m_sig3}}</div></div>
+                  <div class="sig"><span class="dot d-crit"></span><div>{{m_sig4}}</div></div>
+                </div>
+              </div></div>
+            </article>
+            <article class="step">
+              <h3><span class="n">4</span>{{how_s4_t}}</h3>
+              <p>{{how_s4_p}}</p>
+              <div class="phone" aria-hidden="true"><div class="screen">
+                <div class="rep-head">Maria Gomez<small>{{m_role}}</small></div>
+                <div class="sc-pad">
+                  <div class="verdict"><span class="pill p-ok">SUGGESTED: ADVANCE</span><span class="score">78/100</span></div>
+                  <div class="bars">
+                    <div class="bar">Technical depth<b>8.0</b></div><div class="bar"><span style="--v:80%"></span></div>
+                    <div class="bar">Authenticity<b>8.5</b></div><div class="bar"><span style="--v:85%"></span></div>
+                    <div class="bar">English proficiency<b>7.5</b></div><div class="bar"><span style="--v:75%"></span></div>
+                    <div class="bar">Pressure resilience<b>7.0</b></div><div class="bar"><span style="--v:70%"></span></div>
+                  </div>
+                  <div class="muted" style="font-size:8.5px">{{m_full_transcript}}</div>
+                </div>
+              </div></div>
+            </article>
+            <article class="step">
+              <h3><span class="n">5</span>{{how_s5_t}}</h3>
+              <p>{{how_s5_p}}</p>
+              <div class="phone" aria-hidden="true"><div class="screen">
+                <div class="notch"><span>9:40</span><span>{{m_ranking}}</span></div>
+                <div class="sc-pad">
+                  <span class="sc-title">{{m_rank_role}}</span>
+                  <div class="rank">
+                    <div class="rrow"><span class="no">1</span><div><div class="nm">Maria Gomez</div><div class="pills"><span class="pill p-ok">ADVANCE</span></div></div><span class="sc" style="color:#16a34a">78</span></div>
+                    <div class="rrow"><span class="no">2</span><div><div class="nm">Daniel Ruiz</div><div class="pills"><span class="pill p-maybe">WORTH A REVIEW</span><span class="pill p-amber">CV ALERT</span></div></div><span class="sc" style="color:#d97706">71</span></div>
+                    <div class="rrow"><span class="no">3</span><div><div class="nm">Ana Torres</div><div class="pills"><span class="pill p-maybe">WORTH A REVIEW</span></div></div><span class="sc" style="color:#d97706">64</span></div>
+                    <div class="rrow" style="opacity:.75"><span class="no"></span><div><div class="nm">Luis Pardo</div><div class="pills"><span class="pill p-crit">DOES NOT MEET REQUIREMENTS</span></div></div><span class="sc" style="color:#9c918a">69</span></div>
+                  </div>
+                </div>
+              </div></div>
+            </article>
+          </div>
+        </div>
+      </div>
+      <p class="foot-note mono">{{how_note}}</p>
+    </div>
+  </section>
+
+  <section class="sec" id="change" aria-labelledby="change-title">
+    <div class="wrap">
+      <div class="sec-head mono"><span>{{change_label}}</span><span>II</span></div>
+      <h2 class="big" id="change-title">{{change_title}}</h2>
+      <div class="compare" role="table" aria-label="{{change_title_plain}}">
+        <div class="crow head mono" role="row"><span role="columnheader"></span><span role="columnheader">{{change_col_today}}</span><span class="b" role="columnheader">{{change_col_with}}</span></div>
+        {{change_rows}}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="sample" aria-labelledby="sample-title">
+    <div class="wrap">
+      <div class="sec-head mono"><span>{{sample_label}}</span><span>III</span></div>
+      <h2 class="big" id="sample-title">{{sample_title}}</h2>
+      <p class="lede">{{sample_lede}}</p>
+      <div class="sample">
+        <figure class="paper">
+          <img src="{{asset:hiresignal/sample-report-p1.jpg}}" alt="{{sample_alt}}" width="1240" height="1754" loading="lazy">
+          <figcaption class="tag mono">{{sample_tag}}</figcaption>
+        </figure>
+        <div class="callouts">
+          <div><span><h3>{{sample_c1_t}}</h3><p>{{sample_c1_p}}</p></span></div>
+          <div><span><h3>{{sample_c2_t}}</h3><p>{{sample_c2_p}}</p></span></div>
+          <div><span><h3>{{sample_c3_t}}</h3><p>{{sample_c3_p}}</p></span></div>
+          <div><span><h3>{{sample_c4_t}}</h3><p>{{sample_c4_p}}</p></span></div>
+          <div><span><h3>{{sample_c5_t}}</h3><p>{{sample_c5_p}}</p></span></div>
+          <a class="corner dl" href="{{href:hiresignal/sample-report.pdf}}">{{sample_download}} <span class="arr">&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="try" aria-labelledby="try-title">
+    <div class="wrap">
+      <div class="sec-head mono"><span>{{try_label}}</span><span>IV</span></div>
+      <h2 class="big" id="try-title">{{try_title}}</h2>
+      <p class="lede">{{try_lede}}</p>
+      <div class="try">
+        <span class="mono flabel">{{try_level}}</span>
+        <div class="levels">
+          <a class="lvl" href="{{path:try}}#entry"><span class="k mono">{{try_l1_k}}</span><span class="r">{{try_l1_r}}</span><span class="p">{{try_l1_p}}</span></a>
+          <a class="lvl" href="{{path:try}}#technical"><span class="k mono">{{try_l2_k}}</span><span class="r">{{try_l2_r}}</span><span class="p">{{try_l2_p}}</span></a>
+          <a class="lvl" href="{{path:try}}#senior"><span class="k mono">{{try_l3_k}}</span><span class="r">{{try_l3_r}}</span><span class="p">{{try_l3_p}}</span></a>
+        </div>
+        <div class="actions">
+          <a class="btn" href="{{path:try}}">{{try_cta}} <span aria-hidden="true">&rarr;</span></a>
+          <span class="note mono">{{try_teaser_note}}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="team" aria-labelledby="team-title">
+    <div class="wrap">
+      <div class="sec-head mono"><span>{{team_label}}</span><span>V</span></div>
+      <h2 class="big" id="team-title">{{team_title}}</h2>
+      <p class="lede">{{team_lede}}</p>
+      <div class="team-grid">
+        <article class="person">
+          <div class="ph"><img src="{{asset:founders/hugo.jpg}}" alt="{{team_h_name}}" width="585" height="1024" loading="lazy" style="object-position: 50% 12%"></div>
+          <div><h3>{{team_h_name}}</h3><p class="role mono">{{team_h_role}}</p><p>{{team_h_bio}}</p>
+            <div class="chips mono"><span>{{team_h_c1}}</span><span>{{team_h_c2}}</span><span>{{team_h_c3}}</span></div></div>
+        </article>
+        <article class="person">
+          <div class="ph"><img src="{{asset:founders/andres.jpg}}" alt="{{team_a_name}}" width="928" height="1136" loading="lazy" style="object-position: 50% 0"></div>
+          <div><h3>{{team_a_name}}</h3><p class="role mono">{{team_a_role}}</p><p>{{team_a_bio}}</p>
+            <div class="chips mono"><span>{{team_a_c1}}</span><span>{{team_a_c2}}</span><span>{{team_a_c3}}</span></div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="demo" aria-labelledby="demo-title">
+    <div class="wrap">
+      <div class="sec-head mono"><span>{{demo_label}}</span><span>VI</span></div>
+      <div class="demo">
+        <div><h2 class="big" id="demo-title">{{demo_title}}</h2><p class="lede">{{demo_lede}}</p></div>
+        <form id="demo-form" novalidate>
+          <div class="fields">
+            <div class="f"><label class="mono" for="bz-name">{{demo_name}}</label><input id="bz-name" autocomplete="name" required></div>
+            <div class="f"><label class="mono" for="bz-company">{{demo_company}}</label><input id="bz-company" autocomplete="organization"></div>
+          </div>
+          <div class="f"><label class="mono" for="bz-email">{{demo_email}}</label><input id="bz-email" type="email" autocomplete="email" required></div>
+          <div class="f"><label class="mono" for="bz-msg">{{demo_role}}</label><textarea id="bz-msg" rows="3" placeholder="{{demo_role_ph}}"></textarea></div>
+          <div class="actions"><button class="btn" type="submit" id="bz-submit">{{demo_submit}} <span aria-hidden="true">&rarr;</span></button></div>
+          <p class="status" id="bz-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+{{include:partials/footer.html}}
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+<script>
+var HS = { preview: {{preview}}, appsScript: 'https://script.google.com/macros/s/AKfycbxutVyb4mWXaE_svN-99GGbx1G17Jc1PH8vWSljVIj0xK9iB34JksM12s_6zVOUb8lk/exec',
+  t: { need: {{js:demo_need}}, sending: {{js:demo_sending}}, ok: {{js:demo_ok}}, err: {{js:demo_err}}, tryPending: {{js:try_pending}} } };
+
+{{include:partials/field.js}}
+
+// Book a demo: same payload the existing Google Sheet already receives.
+(function () {
+  var form = document.getElementById('demo-form'), status = document.getElementById('bz-status'), btn = document.getElementById('bz-submit');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = document.getElementById('bz-name').value.trim(), email = document.getElementById('bz-email').value.trim();
+    if (!name || !email || email.indexOf('@') < 1) { status.className = 'status err'; status.textContent = HS.t.need; return; }
+    if (HS.preview) { status.className = 'status ok'; status.textContent = HS.t.ok + ' (Preview: nothing was sent.)'; return; }
+    var label = btn.innerHTML; btn.disabled = true; btn.textContent = HS.t.sending;
+    var payload = { name: name, email: email, role: 'Employer', company: document.getElementById('bz-company').value,
+      message: '[HireSignal demo] ' + document.getElementById('bz-msg').value, fileName: '', fileMime: '', fileData: '' };
+    fetch(HS.appsScript, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) })
+      .then(function () { status.className = 'status ok'; status.textContent = HS.t.ok; form.reset(); })
+      .catch(function () { status.className = 'status err'; status.textContent = HS.t.err; })
+      .finally(function () { btn.disabled = false; btn.innerHTML = label; });
+  });
+})();
+
+// Motion: Lenis + GSAP. Content is visible by default; every tween animates FROM a state.
+window.addEventListener('load', function () {
+  try {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!window.gsap || !window.ScrollTrigger) return;
+    gsap.registerPlugin(ScrollTrigger);
+    if (window.Lenis) {
+      var lenis = new Lenis({ duration: 1.25, smoothWheel: true, syncTouch: true });
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
+      gsap.ticker.lagSmoothing(0);
+      document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          var id = a.getAttribute('href');
+          if (id.length > 1 && document.querySelector(id)) { e.preventDefault(); lenis.scrollTo(id, { offset: -60 }); }
+        });
+      });
+    }
+    var ease = 'expo.out';
+    gsap.from('.wordmark .w1', { yPercent: 40, opacity: 0, duration: 1.6, ease: ease, delay: .1 });
+    gsap.from('.wordmark .w2', { yPercent: 40, opacity: 0, duration: 1.6, ease: ease, delay: .28 });
+    gsap.from('.tagline, .hero-foot > *', { y: 18, opacity: 0, duration: 1.2, ease: ease, delay: .7, stagger: .08 });
+    gsap.to('.wordmark', { letterSpacing: '0.02em', opacity: .18, ease: 'none',
+      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+    gsap.utils.toArray('.sec').forEach(function (s) {
+      gsap.from(s.querySelectorAll('.sec-head, h2.big, .lede'), { y: 30, opacity: 0, duration: 1.2, ease: ease, stagger: .1,
+        scrollTrigger: { trigger: s, start: 'top 78%' } });
+    });
+    gsap.from('.group', { y: 50, opacity: 0, duration: 1.3, ease: ease, stagger: .15, scrollTrigger: { trigger: '.flow', start: 'top 82%' } });
+    gsap.utils.toArray('.step').forEach(function (s, i) {
+      gsap.from(s.querySelector('.phone'), { y: 40, rotate: i % 2 ? 1.5 : -1.5, duration: 1.4, ease: ease, scrollTrigger: { trigger: s, start: 'top 88%' } });
+    });
+    gsap.from('.sig', { x: -14, opacity: 0, duration: .9, ease: ease, stagger: .18, scrollTrigger: { trigger: '.group.team', start: 'top 70%' } });
+    gsap.from('.crow:not(.head)', { y: 16, opacity: 0, duration: 1, ease: ease, stagger: .08, scrollTrigger: { trigger: '.compare', start: 'top 80%' } });
+    gsap.from('.paper', { y: 60, rotate: -6, opacity: 0, duration: 1.6, ease: ease, scrollTrigger: { trigger: '.sample', start: 'top 80%' } });
+    gsap.from('.callouts > *', { x: 20, opacity: 0, duration: 1, ease: ease, stagger: .1, scrollTrigger: { trigger: '.callouts', start: 'top 82%' } });
+    gsap.from('.lvl', { y: 24, opacity: 0, duration: 1.1, ease: ease, stagger: .1, scrollTrigger: { trigger: '.levels', start: 'top 85%' } });
+    gsap.from('.person', { y: 40, opacity: 0, duration: 1.3, ease: ease, stagger: .15, scrollTrigger: { trigger: '.team-grid', start: 'top 82%' } });
+    gsap.from('.bigmark', { yPercent: 30, opacity: 0, duration: 1.8, ease: ease, scrollTrigger: { trigger: 'footer.site', start: 'top 90%' } });
+  } catch (err) { /* the page stays fully readable without motion */ }
+});
+</script>
+{{doc_close}}

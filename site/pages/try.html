@@ -1,0 +1,202 @@
+{{doc_open}}
+<title>{{cfg_meta_title}}</title>
+{{head_extra}}
+<meta name="description" content="{{cfg_meta_description}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+{{zodiak}}
+<style>
+{{include:partials/base.css}}
+/* Configurator: steps on the left, a sticky summary of the interview on the right. */
+.cfg { padding-block: 130px 40px; }
+.cfg-grid { margin-top: clamp(40px, 6vw, 64px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 340px); gap: clamp(28px, 5vw, 72px); align-items: start; }
+.cstep { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 18px; padding-block: 30px; border-top: 1px solid var(--line); }
+.cstep:first-child { border-top: 0; padding-top: 0; }
+.cstep .num { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 34px; line-height: 1; color: var(--signal); }
+.cstep h2 { font-weight: 400; font-size: clamp(22px, 2.2vw, 30px); letter-spacing: -.02em; }
+.cstep .why { color: var(--bone-2); margin-top: 8px; max-width: 62ch; font-size: 15.5px; }
+.cstep .body { margin-top: 20px; display: grid; gap: 16px; }
+.lvl .more { display: block; color: var(--bone-3); font-size: 13px; margin-top: 10px; line-height: 1.45; }
+.choice-more { color: var(--bone-3); font-size: 13.5px; max-width: 62ch; }
+.summary { position: sticky; top: 96px; border: 1px solid rgba(143,209,158,.3); border-radius: 22px; padding: 22px;
+  background: linear-gradient(180deg, rgba(143,209,158,.07), rgba(22,17,14,.72) 45%); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.summary h3 { color: var(--signal); }
+.summary dl { margin-top: 14px; display: grid; gap: 12px; }
+.summary dt { color: var(--bone-3); }
+.summary dd { font-size: 17px; letter-spacing: -.01em; margin-top: 2px; }
+.summary .meta { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); display: grid; gap: 6px; color: var(--bone-2); font-size: 14px; }
+.summary .btn { margin-top: 18px; width: 100%; justify-content: center; }
+.limits { color: var(--bone-3); font-size: 13px; margin-top: 12px; }
+.back { display: inline-flex; gap: 10px; align-items: center; color: var(--bone-2); }
+.back:hover { color: var(--bone); }
+@media (max-width: 960px) {
+  .cfg-grid { grid-template-columns: minmax(0, 1fr); }
+  .summary { position: static; }
+}
+@media (max-width: 760px) {
+  .cfg { padding-block: 100px 30px; }
+  .cstep { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+}
+</style>
+{{doc_body}}
+<a class="skip" href="#setup">{{skip}}</a>
+<canvas id="field" aria-hidden="true"></canvas>
+<div class="glow" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+{{include:partials/header.html}}
+
+<main id="top">
+  <section class="cfg" aria-labelledby="cfg-title">
+    <div class="wrap">
+      <a class="back mono" href="{{path:home}}"><span aria-hidden="true">&larr;</span> {{cfg_back}}</a>
+      <div class="sec-head mono" style="margin-top:34px"><span>{{cfg_label}}</span><span>IV</span></div>
+      <h1 class="big" id="cfg-title" style="font-weight:300;font-size:clamp(38px,5.2vw,78px);line-height:1.02;letter-spacing:-.035em;max-width:16ch">{{cfg_title}}</h1>
+      <p class="lede">{{cfg_lede}}</p>
+
+      <form id="setup" class="cfg-grid" novalidate>
+        <div>
+          <section class="cstep" aria-labelledby="s1">
+            <span class="num" aria-hidden="true">1</span>
+            <div>
+              <h2 id="s1">{{cfg_s1}}</h2>
+              <p class="why">{{cfg_s1_why}}</p>
+              <div class="body">
+                <div class="levels" role="radiogroup" aria-labelledby="s1">
+                  <label class="lvl" id="entry"><input type="radio" name="level" id="lvl-entry" value="entry" checked><span class="k mono">{{try_l1_k}}</span><span class="r">{{try_l1_r}}</span><span class="p">{{try_l1_p}}</span><span class="more">{{cfg_l1_more}}</span></label>
+                  <label class="lvl" id="technical"><input type="radio" name="level" id="lvl-technical" value="technical"><span class="k mono">{{try_l2_k}}</span><span class="r">{{try_l2_r}}</span><span class="p">{{try_l2_p}}</span><span class="more">{{cfg_l2_more}}</span></label>
+                  <label class="lvl" id="senior"><input type="radio" name="level" id="lvl-senior" value="senior"><span class="k mono">{{try_l3_k}}</span><span class="r">{{try_l3_r}}</span><span class="p">{{try_l3_p}}</span><span class="more">{{cfg_l3_more}}</span></label>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="cstep" aria-labelledby="s2">
+            <span class="num" aria-hidden="true">2</span>
+            <div>
+              <h2 id="s2">{{cfg_s2}}</h2>
+              <p class="why">{{cfg_s2_why}}</p>
+              <div class="body"><div class="seg" role="radiogroup" aria-labelledby="s2">{{lang_radios}}</div></div>
+            </div>
+          </section>
+
+          <section class="cstep" aria-labelledby="s3">
+            <span class="num" aria-hidden="true">3</span>
+            <div>
+              <h2 id="s3">{{cfg_s3}}</h2>
+              <p class="why">{{cfg_s3_why}}</p>
+              <div class="body">
+                <div class="seg" role="radiogroup" aria-labelledby="s3">
+                  <label><input type="radio" name="assess" id="assess-no" value="no" checked>{{try_assess_no}}</label>
+                  <label><input type="radio" name="assess" id="assess-yes" value="yes">{{try_assess_yes}}</label>
+                </div>
+                <div class="assess-langs" id="assess-langs" hidden>
+                  <span class="mono flabel">{{try_assess_which}}</span>
+                  <div class="checks">{{try_assess_options}}</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="cstep" aria-labelledby="s4">
+            <span class="num" aria-hidden="true">4</span>
+            <div>
+              <h2 id="s4">{{cfg_s4}}</h2>
+              <p class="why">{{cfg_s4_why}}</p>
+              <div class="body">
+                <div class="seg" role="radiogroup" aria-labelledby="s4">
+                  <label><input type="radio" name="cv" id="cv-sample" value="sample" checked>{{try_cv_sample}}</label>
+                  <label><input type="radio" name="cv" id="cv-own" value="own">{{try_cv_own}}</label>
+                </div>
+                <p class="choice-more" id="cv-more-sample">{{cfg_cv_sample_more}}</p>
+                <p class="choice-more" id="cv-more-own" hidden>{{cfg_cv_own_more}}</p>
+                <div class="cvfile" id="cv-file-wrap" hidden><input type="file" id="cv-file" name="cv_file" accept=".pdf,.doc,.docx,.txt,.rtf,.odt" aria-label="{{try_cv_own}}"></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="cstep" aria-labelledby="s5">
+            <span class="num" aria-hidden="true">5</span>
+            <div>
+              <h2 id="s5">{{cfg_s5}}</h2>
+              <p class="why">{{cfg_s5_why}}</p>
+              <div class="body">
+                <div class="fields">
+                  <div class="f"><label class="mono" for="try-name">{{try_name}}</label><input id="try-name" name="name" autocomplete="name" required></div>
+                  <div class="f"><label class="mono" for="try-email">{{try_email}}</label><input id="try-email" name="email" type="email" autocomplete="email" required></div>
+                </div>
+                <label class="consent" for="try-consent"><input type="checkbox" id="try-consent" required><span>{{try_consent}}</span></label>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <aside class="summary" aria-labelledby="sum-title">
+          <h3 class="mono" id="sum-title">{{cfg_summary}}</h3>
+          <dl>
+            <div><dt class="mono">{{cfg_sum_level}}</dt><dd id="sum-level"></dd></div>
+            <div><dt class="mono">{{cfg_sum_lang}}</dt><dd id="sum-lang"></dd></div>
+            <div><dt class="mono">{{cfg_sum_check}}</dt><dd id="sum-check"></dd></div>
+            <div><dt class="mono">{{cfg_sum_cv}}</dt><dd id="sum-cv"></dd></div>
+          </dl>
+          <div class="meta"><span>{{cfg_sum_time}}</span><span>{{cfg_sum_report}}</span></div>
+          <button class="btn" type="submit" id="try-submit">{{try_submit}} <span aria-hidden="true">&rarr;</span></button>
+          <p class="status" id="try-status" role="status" aria-live="polite"></p>
+          <p class="limits">{{cfg_limits}}</p>
+        </aside>
+      </form>
+    </div>
+  </section>
+</main>
+
+{{include:partials/footer.html}}
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+<script>
+var HS = { preview: {{preview}}, t: { tryPending: {{js:try_pending}}, off: {{js:cfg_sum_off}}, need: {{js:demo_need}} } };
+{{include:partials/field.js}}
+
+// The configurator: keeps the summary in step with the choices, shows the explanation for the
+// chosen CV option, and preselects a level from the link (#entry, #technical, #senior).
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var form = $('#setup'), status = $('#try-status');
+  var hash = (location.hash || '').slice(1);
+  if (['entry', 'technical', 'senior'].indexOf(hash) >= 0) { $('#lvl-' + hash).checked = true; }
+  function text(el) { return el ? el.textContent.trim() : ''; }
+  function sync() {
+    var lvl = form.querySelector('input[name="level"]:checked');
+    var card = lvl.closest('.lvl');
+    $('#sum-level').textContent = text(card.querySelector('.r')) + ', ' + text(card.querySelector('.k')).toLowerCase();
+    $('#sum-lang').textContent = text(form.querySelector('input[name="language"]:checked').parentNode);
+    var on = $('#assess-yes').checked;
+    $('#assess-langs').hidden = !on;
+    var picked = [].slice.call(form.querySelectorAll('input[name="assess_lang"]:checked')).map(function (c) { return text(c.parentNode); });
+    $('#sum-check').textContent = on && picked.length ? picked.join(', ') : HS.t.off;
+    var own = $('#cv-own').checked;
+    $('#cv-file-wrap').hidden = !own; $('#cv-more-own').hidden = !own; $('#cv-more-sample').hidden = own;
+    $('#sum-cv').textContent = text((own ? $('#cv-own') : $('#cv-sample')).parentNode);
+  }
+  form.addEventListener('change', sync); sync();
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = $('#try-name').value.trim(), email = $('#try-email').value.trim();
+    if (!name || email.indexOf('@') < 1 || !$('#try-consent').checked) { status.className = 'status err'; status.textContent = HS.t.need; return; }
+    status.className = 'status'; status.textContent = HS.t.tryPending;
+  });
+})();
+
+window.addEventListener('load', function () {
+  try {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!window.gsap) return;
+    var ease = 'expo.out';
+    gsap.from('.cfg .back, .cfg .sec-head, #cfg-title, .cfg .lede', { y: 24, opacity: 0, duration: 1.2, ease: ease, stagger: .08 });
+    gsap.from('.cstep', { y: 30, opacity: 0, duration: 1.1, ease: ease, stagger: .08, delay: .3 });
+    gsap.from('.summary', { y: 30, opacity: 0, duration: 1.3, ease: ease, delay: .45 });
+  } catch (err) { /* readable without motion */ }
+});
+</script>
+{{doc_close}}
