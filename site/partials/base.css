@@ -36,6 +36,9 @@ img { display: block; max-width: 100%; height: auto; }
 .glow { position: fixed; z-index: 0; pointer-events: none; width: 90vmax; height: 90vmax; left: -20vmax; top: -10vmax;
   background: radial-gradient(closest-side, rgba(122,94,87,.38), rgba(122,94,87,0)); filter: blur(10px); }
 main, header, footer { position: relative; z-index: 2; }
+/* Clip sideways only: tilted figures and tweens that start off to the side must never widen the
+   page on a phone (the layout viewport grows to fit them). clip, unlike hidden, keeps sticky working. */
+html, body, main, footer.site { overflow-x: clip; }
 
 .mono { font-family: var(--mono); font-weight: 400; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
 .it { font-family: var(--serif); font-style: italic; font-weight: 300; letter-spacing: -.01em; }
@@ -230,12 +233,18 @@ a.lvl:hover .k { color: var(--signal); }
 .demo { margin-top: clamp(44px, 6vw, 70px); display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(32px, 6vw, 90px); align-items: start; }
 .demo form { display: grid; gap: 22px; }
 
-footer.site { margin-top: clamp(90px, 12vw, 160px); padding-block: 40px 30px; color: var(--bone-3); border-top: 1px solid var(--line); overflow: hidden; }
-footer.site .row { display: flex; justify-content: space-between; gap: 18px 28px; flex-wrap: wrap; }
+footer.site { margin-top: clamp(90px, 12vw, 160px); padding-block: 40px 30px; color: var(--bone-3); border-top: 1px solid var(--line); }
+footer.site .row { display: flex; justify-content: space-between; align-items: center; gap: 18px 28px; flex-wrap: wrap; }
+footer.site .own { display: inline-flex; align-items: center; gap: 12px; }
+footer.site a, .direct a { color: var(--bone); border-bottom: 1px solid rgba(241,235,227,.3); transition: border-color .4s var(--ease), color .4s var(--ease); }
+footer.site a:hover, .direct a:hover { color: var(--signal); border-bottom-color: var(--signal); }
+.direct { margin-top: 26px; color: var(--bone-2); font-size: 16px; user-select: text; }
+footer.site .own img { width: 30px; opacity: .85; }
 footer.site .ai { margin-top: 14px; max-width: 70ch; font-size: 13px; }
-.bigmark { font-weight: 400; font-size: clamp(64px, 19vw, 300px); line-height: .8; letter-spacing: -.06em; margin-top: 40px; color: transparent;
-  -webkit-text-stroke: 1px rgba(241,235,227,.16); white-space: nowrap; user-select: none; }
-.bigmark .it { -webkit-text-stroke: 1px rgba(143,209,158,.28); }
+/* Solid, like the KUMA mark that closes Hugo's page: the closing signature, not a watermark. */
+.bigmark { font-weight: 400; font-size: clamp(64px, 18.5vw, 290px); line-height: .82; letter-spacing: -.06em; margin-top: 48px;
+  color: var(--bone); white-space: nowrap; user-select: none; padding-bottom: .16em; }
+.bigmark .it { font-weight: 300; letter-spacing: -.035em; color: var(--bone); }
 
 .ripple { position: fixed; z-index: 30; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%; border: 1px solid var(--signal);
   pointer-events: none; animation: rp .9s var(--ease) forwards; }

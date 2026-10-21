@@ -206,7 +206,8 @@
     <div class="wrap">
       <div class="sec-head mono"><span>{{demo_label}}</span><span>VI</span></div>
       <div class="demo">
-        <div><h2 class="big" id="demo-title">{{demo_title}}</h2><p class="lede">{{demo_lede}}</p></div>
+        <div><h2 class="big" id="demo-title">{{demo_title}}</h2><p class="lede">{{demo_lede}}</p>
+          <p class="direct">{{demo_direct}} <a href="mailto:{{contact_email}}">{{contact_email}}</a></p></div>
         <form id="demo-form" novalidate>
           <div class="fields">
             <div class="f"><label class="mono" for="bz-name">{{demo_name}}</label><input id="bz-name" autocomplete="name" required></div>
@@ -286,7 +287,7 @@ window.addEventListener('load', function () {
     gsap.from('.sig', { x: -14, opacity: 0, duration: .9, ease: ease, stagger: .18, scrollTrigger: { trigger: '.group.team', start: 'top 70%' } });
     gsap.from('.crow:not(.head)', { y: 16, opacity: 0, duration: 1, ease: ease, stagger: .08, scrollTrigger: { trigger: '.compare', start: 'top 80%' } });
     gsap.from('.paper', { y: 60, rotate: -6, opacity: 0, duration: 1.6, ease: ease, scrollTrigger: { trigger: '.sample', start: 'top 80%' } });
-    gsap.from('.callouts > *', { x: 20, opacity: 0, duration: 1, ease: ease, stagger: .1, scrollTrigger: { trigger: '.callouts', start: 'top 82%' } });
+    gsap.from('.callouts > *', { y: 16, opacity: 0, duration: 1, ease: ease, stagger: .1, scrollTrigger: { trigger: '.callouts', start: 'top 82%' } });
     gsap.from('.lvl', { y: 24, opacity: 0, duration: 1.1, ease: ease, stagger: .1, scrollTrigger: { trigger: '.levels', start: 'top 85%' } });
     gsap.from('.person', { y: 40, opacity: 0, duration: 1.3, ease: ease, stagger: .15, scrollTrigger: { trigger: '.team-grid', start: 'top 82%' } });
     gsap.from('.bigmark', { yPercent: 30, opacity: 0, duration: 1.8, ease: ease, scrollTrigger: { trigger: 'footer.site', start: 'top 90%' } });

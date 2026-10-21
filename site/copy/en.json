@@ -184,6 +184,7 @@
   "demo_email": "Work email",
   "demo_role": "Which role would you test first?",
   "demo_role_ph": "For example: customer support, sales, IT. A sentence is plenty.",
+  "demo_direct": "Prefer email? Write to us at",
   "demo_submit": "Book a demo",
   "demo_need": "Please add your name and work email so we can reply.",
   "demo_sending": "Sending",
@@ -191,6 +192,8 @@
   "demo_err": "Something went wrong. Please try again in a moment.",
 
   "foot_part": "HireSignal, part of Kuma Group",
+  "foot_contact": "Contact",
+  "contact_email": "hello@kumatalent.com",
   "foot_languages": "Interviews in {languages}.",
   "foot_ai": "HireSignal uses AI to interview and assess applicants. The hiring team makes every hiring decision.",
 
