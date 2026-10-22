@@ -18,6 +18,7 @@ import base64
 import html
 import io
 import json
+import os
 import re
 import sys
 import urllib.request
@@ -30,7 +31,10 @@ PAGES = SITE / "pages"
 OUT = SITE / "out"
 
 # Interview languages the PRODUCT supports today. The page must not promise more than this.
-INTERVIEW_LANGS = ["english", "french"]
+# ES and PT since HireSignal 1.6.0 (candidate side) and 1.10.0 (report and admin).
+INTERVIEW_LANGS = ["english", "french", "spanish", "portuguese"]
+# Where the /try form posts (HireSignal sprint 4). HS_APP_URL points a local build at a local app.
+APP_URL = os.environ.get("HS_APP_URL", "https://app.kumatalent.com").rstrip("/")
 SITE_LANGS = ["en", "fr", "es", "pt"]
 LANG_PATH = {"en": "/", "fr": "/fr/", "es": "/es/", "pt": "/pt/"}
 PAGE_PATH = {"index": "", "try": "try/"}
@@ -145,6 +149,7 @@ def render(template, page, lang, copy, copies, inline):
                                         f'href="https://kumatalent.com{LANG_PATH[l]}{PAGE_PATH[page]}">' for l in built),
                    zodiak=f'<link href="{ZODIAK_CSS}" rel="stylesheet">', preview="false")
     sub["nav_base"] = "" if page == "index" else page_href(lang, "index", inline)
+    sub["demo_api"] = json.dumps(APP_URL + "/api/demo-request.php")
     links = []
     for l in built:
         cur = ' aria-current="true"' if l == lang else ""

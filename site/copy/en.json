@@ -157,6 +157,8 @@
   "try_cv_sample": "Use a sample CV",
   "try_consent": "Send me the interview link and my report by email. My answers are used only for this demo.",
   "try_submit": "Email me the interview link",
+  "try_sending": "Sending your link",
+  "try_fail": "We could not send it. Try again in a minute, or book a demo.",
   "try_note": "About 15 minutes. One try per level.",
   "try_pending": "The live demo opens soon. Until then, book a demo and we'll run one with you.",
 
@@ -199,6 +201,8 @@
 
   "lang_english": "English",
   "lang_french": "French",
+  "lang_spanish": "Spanish",
+  "lang_portuguese": "Portuguese",
   "languages": "English or French",
   "languages_list": "English and French"
 }

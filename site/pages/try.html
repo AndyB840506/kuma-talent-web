@@ -125,7 +125,7 @@
                   <div class="f"><label class="mono" for="try-name">{{try_name}}</label><input id="try-name" name="name" autocomplete="name" required></div>
                   <div class="f"><label class="mono" for="try-email">{{try_email}}</label><input id="try-email" name="email" type="email" autocomplete="email" required></div>
                 </div>
-                <label class="consent" for="try-consent"><input type="checkbox" id="try-consent" required><span>{{try_consent}}</span></label>
+                <label class="consent" for="try-consent"><input type="checkbox" id="try-consent" name="consent" value="1" required><span>{{try_consent}}</span></label>
               </div>
             </div>
           </section>
@@ -155,7 +155,8 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
 <script>
-var HS = { preview: {{preview}}, t: { tryPending: {{js:try_pending}}, off: {{js:cfg_sum_off}}, need: {{js:demo_need}} } };
+var HS = { preview: {{preview}}, api: {{demo_api}}, lang: {{js:_short}},
+  t: { tryPending: {{js:try_pending}}, off: {{js:cfg_sum_off}}, need: {{js:demo_need}}, sending: {{js:try_sending}}, fail: {{js:try_fail}} } };
 {{include:partials/field.js}}
 
 // The configurator: keeps the summary in step with the choices, shows the explanation for the
@@ -184,7 +185,21 @@ var HS = { preview: {{preview}}, t: { tryPending: {{js:try_pending}}, off: {{js:
     e.preventDefault();
     var name = $('#try-name').value.trim(), email = $('#try-email').value.trim();
     if (!name || email.indexOf('@') < 1 || !$('#try-consent').checked) { status.className = 'status err'; status.textContent = HS.t.need; return; }
-    status.className = 'status'; status.textContent = HS.t.tryPending;
+    // The private preview has no app behind it: it only says the demo opens soon.
+    if (HS.preview) { status.className = 'status'; status.textContent = HS.t.tryPending; return; }
+    var data = new FormData(form);
+    data.append('site_lang', HS.lang);
+    var btn = form.querySelector('button[type="submit"]');
+    if (btn) btn.disabled = true;
+    status.className = 'status'; status.textContent = HS.t.sending;
+    fetch(HS.api, { method: 'POST', body: data })
+      .then(function (r) { return r.json().catch(function () { return {}; }); })
+      .then(function (j) {
+        status.className = j.ok ? 'status ok' : 'status err';
+        status.textContent = j.message || HS.t.fail;
+        if (btn && !j.ok) btn.disabled = false;
+      })
+      .catch(function () { status.className = 'status err'; status.textContent = HS.t.fail; if (btn) btn.disabled = false; });
   });
 })();
 
