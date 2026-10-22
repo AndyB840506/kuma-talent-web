@@ -13,6 +13,7 @@
   "nav_team": "Team",
   "nav_demo": "Book a demo",
   "nav_lang_label": "Language",
+  "nav_main": "Main",
   "brand_home": "HireSignal home",
 
   "hero_tagline": "Every applicant interviewed.",
@@ -57,6 +58,15 @@
   "m_full_transcript": "Full transcript attached",
   "m_ranking": "Ranking",
   "m_rank_role": "Administrative Assistant",
+  "m_verdict": "SUGGESTED: ADVANCE",
+  "m_d1": "Technical depth",
+  "m_d2": "Authenticity",
+  "m_d3": "English proficiency",
+  "m_d4": "Pressure resilience",
+  "m_pill_advance": "ADVANCE",
+  "m_pill_review": "WORTH A REVIEW",
+  "m_pill_cv": "CV ALERT",
+  "m_pill_notmeet": "DOES NOT MEET REQUIREMENTS",
 
   "change_label": "(In plain words)",
   "change_title": "What changes *with* HireSignal.",
@@ -203,6 +213,9 @@
   "lang_french": "French",
   "lang_spanish": "Spanish",
   "lang_portuguese": "Portuguese",
-  "languages": "English or French",
-  "languages_list": "English and French"
+  "languages": "English, French, Spanish or Portuguese",
+  "languages_list": "English, French, Spanish and Portuguese",
+
+  "nf_title": "Page not found",
+  "nf_home": "Go to the home page"
 }

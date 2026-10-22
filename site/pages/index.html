@@ -95,12 +95,12 @@
               <div class="phone" aria-hidden="true"><div class="screen">
                 <div class="rep-head">Maria Gomez<small>{{m_role}}</small></div>
                 <div class="sc-pad">
-                  <div class="verdict"><span class="pill p-ok">SUGGESTED: ADVANCE</span><span class="score">78/100</span></div>
+                  <div class="verdict"><span class="pill p-ok">{{m_verdict}}</span><span class="score">78/100</span></div>
                   <div class="bars">
-                    <div class="bar">Technical depth<b>8.0</b></div><div class="bar"><span style="--v:80%"></span></div>
-                    <div class="bar">Authenticity<b>8.5</b></div><div class="bar"><span style="--v:85%"></span></div>
-                    <div class="bar">English proficiency<b>7.5</b></div><div class="bar"><span style="--v:75%"></span></div>
-                    <div class="bar">Pressure resilience<b>7.0</b></div><div class="bar"><span style="--v:70%"></span></div>
+                    <div class="bar">{{m_d1}}<b>8.0</b></div><div class="bar"><span style="--v:80%"></span></div>
+                    <div class="bar">{{m_d2}}<b>8.5</b></div><div class="bar"><span style="--v:85%"></span></div>
+                    <div class="bar">{{m_d3}}<b>7.5</b></div><div class="bar"><span style="--v:75%"></span></div>
+                    <div class="bar">{{m_d4}}<b>7.0</b></div><div class="bar"><span style="--v:70%"></span></div>
                   </div>
                   <div class="muted" style="font-size:8.5px">{{m_full_transcript}}</div>
                 </div>
@@ -114,10 +114,10 @@
                 <div class="sc-pad">
                   <span class="sc-title">{{m_rank_role}}</span>
                   <div class="rank">
-                    <div class="rrow"><span class="no">1</span><div><div class="nm">Maria Gomez</div><div class="pills"><span class="pill p-ok">ADVANCE</span></div></div><span class="sc" style="color:#16a34a">78</span></div>
-                    <div class="rrow"><span class="no">2</span><div><div class="nm">Daniel Ruiz</div><div class="pills"><span class="pill p-maybe">WORTH A REVIEW</span><span class="pill p-amber">CV ALERT</span></div></div><span class="sc" style="color:#d97706">71</span></div>
-                    <div class="rrow"><span class="no">3</span><div><div class="nm">Ana Torres</div><div class="pills"><span class="pill p-maybe">WORTH A REVIEW</span></div></div><span class="sc" style="color:#d97706">64</span></div>
-                    <div class="rrow" style="opacity:.75"><span class="no"></span><div><div class="nm">Luis Pardo</div><div class="pills"><span class="pill p-crit">DOES NOT MEET REQUIREMENTS</span></div></div><span class="sc" style="color:#9c918a">69</span></div>
+                    <div class="rrow"><span class="no">1</span><div><div class="nm">Maria Gomez</div><div class="pills"><span class="pill p-ok">{{m_pill_advance}}</span></div></div><span class="sc" style="color:#16a34a">78</span></div>
+                    <div class="rrow"><span class="no">2</span><div><div class="nm">Daniel Ruiz</div><div class="pills"><span class="pill p-maybe">{{m_pill_review}}</span><span class="pill p-amber">{{m_pill_cv}}</span></div></div><span class="sc" style="color:#d97706">71</span></div>
+                    <div class="rrow"><span class="no">3</span><div><div class="nm">Ana Torres</div><div class="pills"><span class="pill p-maybe">{{m_pill_review}}</span></div></div><span class="sc" style="color:#d97706">64</span></div>
+                    <div class="rrow" style="opacity:.75"><span class="no"></span><div><div class="nm">Luis Pardo</div><div class="pills"><span class="pill p-crit">{{m_pill_notmeet}}</span></div></div><span class="sc" style="color:#9c918a">69</span></div>
                   </div>
                 </div>
               </div></div>
@@ -229,7 +229,7 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
 <script>
-var HS = { preview: {{preview}}, appsScript: 'https://script.google.com/macros/s/AKfycbxutVyb4mWXaE_svN-99GGbx1G17Jc1PH8vWSljVIj0xK9iB34JksM12s_6zVOUb8lk/exec',
+var HS = { preview: {{preview}}, lang: {{js:_short}}, appsScript: 'https://script.google.com/macros/s/AKfycbxutVyb4mWXaE_svN-99GGbx1G17Jc1PH8vWSljVIj0xK9iB34JksM12s_6zVOUb8lk/exec',
   t: { need: {{js:demo_need}}, sending: {{js:demo_sending}}, ok: {{js:demo_ok}}, err: {{js:demo_err}}, tryPending: {{js:try_pending}} } };
 
 {{include:partials/field.js}}
@@ -244,7 +244,7 @@ var HS = { preview: {{preview}}, appsScript: 'https://script.google.com/macros/s
     if (HS.preview) { status.className = 'status ok'; status.textContent = HS.t.ok + ' (Preview: nothing was sent.)'; return; }
     var label = btn.innerHTML; btn.disabled = true; btn.textContent = HS.t.sending;
     var payload = { name: name, email: email, role: 'Employer', company: document.getElementById('bz-company').value,
-      message: '[HireSignal demo] ' + document.getElementById('bz-msg').value, fileName: '', fileMime: '', fileData: '' };
+      message: '[HireSignal demo] [' + HS.lang + '] ' + document.getElementById('bz-msg').value, fileName: '', fileMime: '', fileData: '' };
     fetch(HS.appsScript, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) })
       .then(function () { status.className = 'status ok'; status.textContent = HS.t.ok; form.reset(); })
       .catch(function () { status.className = 'status err'; status.textContent = HS.t.err; })

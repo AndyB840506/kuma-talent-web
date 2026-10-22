@@ -1,7 +1,11 @@
 """Builds the HireSignal site from shared partials, one template per page and one copy file per language.
 
-    python site/build.py                  -> site/out/<lang>/index.html and site/out/<lang>/try/index.html
-                                             (root-relative /assets/ paths, as they will be served)
+    python site/build.py                  -> site/out/, laid out exactly as it is served: index.html and
+                                             try/index.html for English, fr/ es/ pt/ for the others, plus
+                                             404.html, fr.html (the old French URL, now a redirect),
+                                             sitemap.xml and robots.txt (root-relative /assets/ paths)
+    python site/build.py --root           -> the same files into the repo root, which is what the live
+                                             site serves: committing them and pushing master publishes
     python site/build.py --inline OUTDIR  -> a self-contained English preview for a private Artifact:
                                              OUTDIR/hiresignal-concept.html (main page) + OUTDIR/try.html,
                                              fonts and images embedded, forms send nothing.
@@ -40,13 +44,23 @@ LANG_PATH = {"en": "/", "fr": "/fr/", "es": "/es/", "pt": "/pt/"}
 PAGE_PATH = {"index": "", "try": "try/"}
 INLINE_FILE = {"index": "hiresignal-concept.html", "try": "try.html"}
 INLINE_HREF = {"index": "./", "try": "try.html"}
-ALLOW = {"co-founder"}
+ALLOW = {"co-founder", "e-mail"}
 ZODIAK_CSS = "https://api.fontshare.com/v2/css?f[]=zodiak@300,301,400,401&display=swap"
 CHANGE_ROWS = 6
+SITE_URL = "https://kumatalent.com"
+PAGE_META = {"index": ("meta_title", "meta_description"), "try": ("cfg_meta_title", "cfg_meta_description")}
+OG_LOCALE = {"en": "en_CA", "fr": "fr_CA", "es": "es_LA", "pt": "pt_BR"}
+# Built once, not per language: the page is bilingual by listing every language (see render_404).
+SINGLE_PAGES = {"404"}
 
 
 def load_copies():
-    return {f.stem: json.loads(f.read_text(encoding="utf-8")) for f in sorted(COPY.glob("*.json"))}
+    copies = {f.stem: json.loads(f.read_text(encoding="utf-8")) for f in sorted(COPY.glob("*.json"))}
+    # French puts a no-break space before : ; ! ? (same rule as the HireSignal catalogs).
+    if "fr" in copies:
+        copies["fr"] = {k: re.sub(r" ([:;!?])", " \\1", v) if isinstance(v, str) else v
+                        for k, v in copies["fr"].items()}
+    return copies
 
 
 def lint(lang, copy):
@@ -130,6 +144,43 @@ def page_href(lang, page, inline):
     return INLINE_HREF[page] if inline else LANG_PATH[lang] + PAGE_PATH[page]
 
 
+def page_url(lang, page):
+    return SITE_URL + LANG_PATH[lang] + PAGE_PATH[page]
+
+
+def seo_head(page, lang, copy, copies, built):
+    """Canonical, language alternates, share card and favicon; on the main page, the JSON-LD too."""
+    title, desc = (plain(copy[k], copy) for k in PAGE_META[page])
+    image = f"{SITE_URL}/assets/og/og-{lang}.jpg"
+    tags = [f'<link rel="canonical" href="{page_url(lang, page)}">']
+    tags += [f'<link rel="alternate" hreflang="{copies[l]["_locale"]}" href="{page_url(l, page)}">' for l in built]
+    tags += [f'<link rel="alternate" hreflang="x-default" href="{page_url("en", page)}">',
+             '<meta name="robots" content="index, follow">',
+             '<link rel="icon" type="image/png" href="/assets/logo/isotipo-light.png">',
+             '<meta property="og:type" content="website">',
+             '<meta property="og:site_name" content="HireSignal">',
+             f'<meta property="og:title" content="{title}">',
+             f'<meta property="og:description" content="{desc}">',
+             f'<meta property="og:url" content="{page_url(lang, page)}">',
+             f'<meta property="og:locale" content="{OG_LOCALE[lang]}">']
+    tags += [f'<meta property="og:locale:alternate" content="{OG_LOCALE[l]}">' for l in built if l != lang]
+    tags += [f'<meta property="og:image" content="{image}">',
+             '<meta property="og:image:width" content="1200">', '<meta property="og:image:height" content="630">',
+             f'<meta property="og:image:alt" content="{plain(copy["hero_tagline"], copy)} {plain(copy["hero_tagline_b"], copy)}">',
+             '<meta name="twitter:card" content="summary_large_image">']
+    if page == "index":
+        org = {"@type": "Organization", "@id": SITE_URL + "/#org", "name": "Kuma Group", "url": SITE_URL + "/",
+               "logo": SITE_URL + "/assets/logo/logo-principal.png", "email": copy["contact_email"],
+               "founder": [{"@type": "Person", "name": copy["team_h_name"]}, {"@type": "Person", "name": copy["team_a_name"]}]}
+        app = {"@type": "SoftwareApplication", "name": "HireSignal", "url": page_url(lang, page),
+               "applicationCategory": "BusinessApplication", "operatingSystem": "Web",
+               "description": fill(copy["meta_description"], copy), "inLanguage": copy["_locale"],
+               "publisher": {"@id": SITE_URL + "/#org"}}
+        ld = json.dumps({"@context": "https://schema.org", "@graph": [org, app]}, ensure_ascii=False)
+        tags.append('<script type="application/ld+json">' + ld.replace("</", "<\\/") + "</script>")
+    return "\n".join(tags)
+
+
 def render(template, page, lang, copy, copies, inline):
     built = [l for l in SITE_LANGS if l in copies]
     full_doc = (f'<!doctype html>\n<html lang="{copy["_locale"]}">\n<head>\n<meta charset="utf-8">\n'
@@ -145,8 +196,7 @@ def render(template, page, lang, copy, copies, inline):
             sub["meta_title"] = "HireSignal Concept"
     else:
         sub.update(doc_open=full_doc, doc_body="</head>\n<body>", doc_close="</body>\n</html>",
-                   head_extra="\n".join(f'<link rel="alternate" hreflang="{copies[l]["_locale"]}" '
-                                        f'href="https://kumatalent.com{LANG_PATH[l]}{PAGE_PATH[page]}">' for l in built),
+                   head_extra=seo_head(page, lang, copy, copies, built),
                    zodiak=f'<link href="{ZODIAK_CSS}" rel="stylesheet">', preview="false")
     sub["nav_base"] = "" if page == "index" else page_href(lang, "index", inline)
     sub["demo_api"] = json.dumps(APP_URL + "/api/demo-request.php")
@@ -204,6 +254,7 @@ def main():
     if errors:
         print("REFUSED:\n  " + "\n  ".join(errors)); sys.exit(1)
     pages = {p.stem: p.read_text(encoding="utf-8") for p in sorted(PAGES.glob("*.html"))}
+    single = {p: pages.pop(p) for p in SINGLE_PAGES}
     if len(sys.argv) > 2 and sys.argv[1] == "--inline":
         outdir = Path(sys.argv[2]); outdir.mkdir(parents=True, exist_ok=True)
         rendered = {p: render(t, p, "en", copies["en"], copies, inline=True) for p, t in pages.items()}
@@ -211,12 +262,60 @@ def main():
             (outdir / INLINE_FILE[p]).write_text(page, encoding="utf-8", newline="\n")
             print(f"inline {p} -> {outdir / INLINE_FILE[p]} ({len(page.encode())} bytes)")
         return
-    rendered = {(l, p): render(t, p, l, c, copies, inline=False) for l, c in copies.items() for p, t in pages.items()}
-    for (l, p), page in rendered.items():
-        dest = OUT / l / PAGE_PATH[p] / "index.html"
+    base = ROOT if sys.argv[1:] == ["--root"] else OUT
+    built = [l for l in SITE_LANGS if l in copies]
+    files = {(LANG_PATH[l] + PAGE_PATH[p]).lstrip("/") + "index.html": render(t, p, l, copies[l], copies, inline=False)
+             for l in built for p, t in pages.items()}
+    files["404.html"] = render_404(single["404"], copies, built)
+    files["fr.html"] = redirect_page(LANG_PATH["fr"])
+    files["sitemap.xml"] = sitemap(pages, copies, built)
+    files["robots.txt"] = f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n"
+    for rel, text in files.items():
+        dest = base / rel
         dest.parent.mkdir(parents=True, exist_ok=True)
-        dest.write_text(page, encoding="utf-8", newline="\n")
-        print(f"{l}/{p} -> {dest.relative_to(ROOT)} ({len(page.encode())} bytes)")
+        dest.write_text(text, encoding="utf-8", newline="\n")
+        print(f"{dest.relative_to(ROOT)} ({len(text.encode())} bytes)")
+
+
+def render_404(template, copies, built):
+    """One page for every language: the host serves it for any missing URL, whatever the language."""
+    en = copies["en"]
+    rows = "\n      ".join(
+        f'<p lang="{copies[l]["_locale"]}"><span class="mono">{plain(copies[l]["nf_title"], copies[l])}</span>'
+        f' <a href="{LANG_PATH[l]}">{plain(copies[l]["nf_home"], copies[l])} <span aria-hidden="true">&rarr;</span></a></p>'
+        for l in built)
+    full_doc = (f'<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
+                '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">')
+    out = includes(template)
+    for k, v in {"doc_open": full_doc, "doc_body": "</head>\n<body>", "doc_close": "</body>\n</html>",
+                 "nf_rows": rows, "meta_title": plain(en["nf_title"], en),
+                 "zodiak": f'<link href="{ZODIAK_CSS}" rel="stylesheet">'}.items():
+        out = out.replace("{{" + k + "}}", v)
+    left = re.findall(r"\{\{[^}]+\}\}", out)
+    if left:
+        raise RuntimeError(f"404: unresolved markers {left[:5]}")
+    return out
+
+
+def redirect_page(target):
+    """A static host cannot send a 301 here, so the old URL sends the browser on and tells search engines where."""
+    url = SITE_URL + target
+    return (f'<!doctype html>\n<html lang="fr">\n<head>\n<meta charset="utf-8">\n<title>HireSignal</title>\n'
+            f'<link rel="canonical" href="{url}">\n<meta name="robots" content="noindex, follow">\n'
+            f'<meta http-equiv="refresh" content="0; url={target}">\n'
+            f'<script>location.replace({json.dumps(target)});</script>\n</head>\n<body>\n'
+            f'<p><a href="{target}">{url}</a></p>\n</body>\n</html>\n')
+
+
+def sitemap(pages, copies, built):
+    urls = []
+    for p in pages:
+        alts = "".join(f'\n    <xhtml:link rel="alternate" hreflang="{copies[l]["_locale"]}" href="{page_url(l, p)}"/>' for l in built)
+        alts += f'\n    <xhtml:link rel="alternate" hreflang="x-default" href="{page_url("en", p)}"/>'
+        urls += [f"  <url>\n    <loc>{page_url(l, p)}</loc>{alts}\n  </url>" for l in built]
+    return ('<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
+            + "\n".join(urls) + "\n</urlset>\n")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://kumatalent.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kumatalent.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kumatalent.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kumatalent.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kumatalent.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kumatalent.com/"/>
+  </url>
+  <url>
+    <loc>https://kumatalent.com/fr/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kumatalent.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kumatalent.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kumatalent.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kumatalent.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kumatalent.com/"/>
+  </url>
+  <url>
+    <loc>https://kumatalent.com/es/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kumatalent.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kumatalent.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kumatalent.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kumatalent.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kumatalent.com/"/>
+  </url>
+  <url>
+    <loc>https://kumatalent.com/pt/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kumatalent.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kumatalent.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kumatalent.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kumatalent.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kumatalent.com/"/>
+  </url>
+  <url>
+    <loc>https://kumatalent.com/try/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kumatalent.com/try/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kumatalent.com/fr/try/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kumatalent.com/es/try/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kumatalent.com/pt/try/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kumatalent.com/try/"/>
+  </url>
+  <url>
+    <loc>https://kumatalent.com/fr/try/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kumatalent.com/try/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kumatalent.com/fr/try/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kumatalent.com/es/try/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kumatalent.com/pt/try/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kumatalent.com/try/"/>
+  </url>
+  <url>
+    <loc>https://kumatalent.com/es/try/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kumatalent.com/try/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kumatalent.com/fr/try/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kumatalent.com/es/try/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kumatalent.com/pt/try/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kumatalent.com/try/"/>
+  </url>
+  <url>
+    <loc>https://kumatalent.com/pt/try/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kumatalent.com/try/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kumatalent.com/fr/try/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kumatalent.com/es/try/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://kumatalent.com/pt/try/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kumatalent.com/try/"/>
+  </url>
+</urlset>

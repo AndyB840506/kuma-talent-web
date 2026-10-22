@@ -1,0 +1,26 @@
+{{doc_open}}
+<title>HireSignal: {{meta_title}}</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="/assets/logo/isotipo-light.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+{{zodiak}}
+<style>
+{{include:partials/base.css}}
+/* Not found: the wordmark and one line per language, each with its own way home. */
+.nf { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; gap: 40px; max-width: 980px; margin: 0 auto; }
+.nf .wordmark { font-size: clamp(56px, 12vw, 150px); }
+.nf .rows { display: grid; gap: 14px; }
+.nf .rows p { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: baseline; color: var(--bone-2); }
+.nf .rows a { color: var(--signal); border-bottom: 1px solid currentColor; }
+</style>
+{{doc_body}}
+<div class="glow" aria-hidden="true"></div>
+<main class="nf">
+  <h1 class="wordmark"><a href="/"><span class="w1">Hire</span><span class="it w2">Signal</span></a></h1>
+  <div class="rows">
+      {{nf_rows}}
+  </div>
+</main>
+{{doc_close}}
